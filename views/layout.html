@@ -72,12 +72,7 @@
 
                 <ul class="nav nav-pills pull-right">
                     <li><a href="{{=URL(myconf.take('web.application'),'contact','index')}}" style="padding-right: 0;">{{=T('Contact')}}</a></li>
-                    <li>{{if session.forced_language=='de':}}
-                        <a href="/contact/imprint.html">Impressum</a>
-                        {{elif session.forced_language=='en':}}
-                        <a href="/contact/imprint.html">Legal Notice</a>
-                        {{pass}}
-                    </li>
+                    <li><a href="{{=URL(myconf.take('web.application'),'contact','imprint')}}" style="padding-right: 0;">{{=T('Legal Notice')}}</a></li>
          <!--<li><a href="suche.html">{{=T('Search')}} |</a></li>-->
                     <!--<li><a href="faq.html">FAQ |</a></li>-->
                      {{if session.forced_language=='en':}}
@@ -250,26 +245,14 @@
 
                     <div class="row">
 
-                        <div class="col-lg-3">
+                        <div class="col-lg-6">
 
                           <div id="footer_logo_ub" class="widget"><a href="http://www.ub.uni-heidelberg.de" title="Homepage Universitätsbibliothek Heidelberg"><img alt="Logo - Universitätsbibliothek Heidelberg" src="{{=URL(myconf.take('web.application'),'static','/images/press/footer_logoUBHei.png')}}" /></a></div>
 
                         </div>
 
-
-                        <div class="col-lg-3">
-                           <div id="footer_logo_dfg" class="widget"><a href="http://www.dfg.de" title="Deutsche Forschungsgesellschaft"><img alt="Logo - Deutsche Forschungsgesellschaft" src="{{=URL(myconf.take('web.application'),'static','/images/press/footer_logoDFG.png')}}" /></a></div>
-
-                        </div>
-
-
-                        <div class="col-lg-3">
-                           <div id="footer_logo_ahn" class="widget"><a href="http://www.arthistoricum.net/" title="Homepage Arthistoricum.net"><img alt="Logo - Arthistoricum.net" src="{{=URL(myconf.take('web.application'),'static','/images/press/footer_logoAHN.png')}}" /></a></div>
-                        </div>
-
-                        <div class="col-lg-3">
+                        <div class="col-lg-6">
                           <div id="footer_logo_pkp" class="widget">
-                          Template by&nbsp;<a href="http://bootstraptaste.com/free-bootstrap-template-corporate-moderna/">bootstraptaste.com</a><br />
                           <a href="https://pkp.sfu.ca/" title="Homepage PKP - Public Knowledge Project"><img class="" alt="Public Knowledge Project" src="http://books.ub.uni-heidelberg.de/lib/pkp/templates/images/pkp_brand.png"></a>
                           </div>
                         </div>

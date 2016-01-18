@@ -2,30 +2,44 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12" style="height: 500px">
+            <div id="main" class="container">
             <h3>            {{=T('Contact')}}</h3>
-
-            <p>
 
 
               {{if session.forced_language=='de':}}
-                     <strong>Dr. Maria Effinger</strong><br>
+                    <p>  <strong>Dr. Maria Effinger</strong><br>
                          Universitätsbibliothek Heidelberg<br>
                          Plöck 107-109<br>
                          69117 Heidelberg<br>
                          Tel.: +49 6221 54-3561<br>
-                         E-Mail: effinger@ub.uni-heidelberg.de
+                         E-Mail: effinger@ub.uni-heidelberg.de</p>
+                   <p>  <strong>Anja Konopka</strong><br>
+                         Universitätsbibliothek Heidelberg<br>
+                         Plöck 107-109<br>
+                         69117 Heidelberg<br>
+                         Tel.: +49 6221 54 2569<br>
+                         Fax: +49 6221 54 2623<br>
+                         E-Mail: konopka@ub.uni-heidelberg.de<br></p>
               {{elif session.forced_language=='en':}}
-                         <strong>Dr. Maria Effinger</strong><br>
+                   <p>   <strong>Dr. Maria Effinger</strong><br>
                          Universitätsbibliothek Heidelberg<br>
                          Plöck 107-109<br>
                          69117 Heidelberg<br>
                          Germany<br>
                          Tel.: +49 6221 54-3561<br>
-                         E-Mail: effinger@ub.uni-heidelberg.de
+                         Mail: effinger@ub.uni-heidelberg.de</p>
+                          <p>  <strong>Anja Konopka</strong><br>
+                         Universitätsbibliothek Heidelberg<br>
+                         Plöck 107-109<br>
+                         69117 Heidelberg<br>
+                         Germany<br>
+                         Tel.: +49 6221 54 2569<br>
+                         Fax: +49 6221 54 2623<br>
+                         Mail: konopka@ub.uni-heidelberg.de<br></p>
                 {{pass}}
                 </p>
 
-
+          </div>
         </div>
     </div>
 </div>

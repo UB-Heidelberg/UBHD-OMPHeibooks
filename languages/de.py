@@ -197,6 +197,7 @@
 'Layout': 'Layout',
 'Layout Plugins': 'Layout Plugins',
 'Layouts': 'Layouts',
+'Legal Notice': 'Impressum',
 'Leseprobe': 'Leseprobe',
 'Letzte Seite': 'Letzte Seite',
 'Licenses': 'Lizenz',
