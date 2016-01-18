@@ -70,8 +70,6 @@ def index():
         authors = authors[:-2]
           
       subs.setdefault(i.submission_id, {})['authors'] = authors
-    if len(subs) == 0:
-      redirect( URL('home', 'index'))  
     return dict(submissions=submissions, subs=subs)
 
 
