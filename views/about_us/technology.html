@@ -1,0 +1,29 @@
+{{extend 'layout.html'}}
+
+<div id="main" class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>  {{if session.forced_language =='de': }}
+                Technik
+                {{elif session.forced_language =='en': }}
+                Technology
+            {{pass}}
+            </h3>
+
+            <p>
+                {{if session.forced_language =='de': }}
+                <p>Als technische Plattform für die Veröffentlichung elektronischer Bücher kommt die Open-Source Software <a href="https://pkp.sfu.ca/omp/" title="Open Monograph Press">OMP (Open Monograph Press)</a> zum Einsatz, die vom <a href="https://pkp.sfu.ca/">Public Knowledge Project (PKP)</a> entwickelt wird.<br />Die UB Heidelberger, als Betreiber von "arthistoricum-net - ART-Books", ist Teil der internationalen Entwicklergemeinschaft.</p>
+
+
+{{elif session.forced_language =='en': }}
+                <p>Als technische Plattform für die Veröffentlichung elektronischer Bücher kommt die Open-Source Software <a href="https://pkp.sfu.ca/omp/" title="Open Monograph Press">OMP (Open Monograph Press)</a> zum Einsatz, die vom <a href="https://pkp.sfu.ca/">Public Knowledge Project (PKP)</a> entwickelt wird.<br />Die UB Heidelberger, als Betreiber von "arthistoricum-net - ART-Books", ist Teil der internationalen Entwicklergemeinschaft.</p>
+
+                {{pass}}
+
+
+            </p>
+
+        </div>
+    </div>
+  </div>  
+                    

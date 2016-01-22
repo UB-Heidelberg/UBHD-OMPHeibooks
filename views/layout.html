@@ -116,11 +116,9 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                                        data-delay="0" data-close-others="false">{{=T('About us')}}<b class=" icon-angle-down"></b></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{{=URL(myconf.take('web.application'),'about_us', 'mission_statement')}}"> {{=T('Mission Statement')}}</a></li>
-                                        <li><a href="{{=URL(myconf.take('web.application'),'about_us','profile')}}">{{=T('Profile')}}</a></li>
-                                        <li><a href="{{=URL(myconf.take('web.application'),'about_us','advisory_board')}}"> {{=T('Advisory Board')}}</a></li>
-                                        <li><a href="{{=URL(myconf.take('web.application'),'about_us','team')}}">{{=T('Team')}}</a></li>
-
+                                        <li><a href="{{=URL(myconf.take('web.application'),'about_us', 'profile')}}"> {{=T('Profil')}}</a></li>
+                                        <li><a href="{{=URL(myconf.take('web.application'),'about_us','our_service')}}">{{=T('Our Service')}}</a></li>
+                                        <li><a href="{{=URL(myconf.take('web.application'),'about_us','technology')}}"> {{=T('Technology')}}</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="{{=URL(myconf.take('web.application'),'catalog','index')}}">{{=T('Books')}}</a></li>
@@ -206,7 +204,35 @@
     {{end}}
     <!-- Main ========================================= -->
     <!-- Begin page content -->
+<script type="text/javascript" charset="utf-8">
+    $(window).load(function() {
+        $('.flexslider').flexslider();
+    });
+</script>
+
+
     <div class="container-fluid">
+            <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-12">
+
+                    <!-- Slider -->
+
+                    <div id="main-slider" class="flexslider">
+
+                        <ul class="slides">
+                            <li>
+                                <img id="hup-logo" src="{{=URL(myconf.take('web.application'),'static','images/press/slideshow/01_alte_aula.png')}}" />
+                            </li>
+                        </ul>
+
+                    </div>
+            </div>
+        </div>
+      </div>
+
       {{if left_sidebar_enabled:}}
         <div class="col-md-3 left-sidebar">
             {{block left_sidebar}}

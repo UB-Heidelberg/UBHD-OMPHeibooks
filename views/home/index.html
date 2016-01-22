@@ -8,38 +8,6 @@
 
     <!-- end header -->
 
-    <section id="featured">
-
-        <!-- start slider -->
-
-        <div class="container">
-
-            <div class="row">
-
-                <div class="col-lg-12">
-
-                    <!-- Slider -->
-
-                    <div id="main-slider" class="flexslider">
-
-                        <ul class="slides">                
-                            <li>
-                                <img id="hup-logo" src="{{=URL(myconf.take('web.application'),'static','images/press/slideshow/01_ebook_reader.jpg')}}" />
-                            </li>
-                        </ul>
-
-                    </div>
-
-                    <!-- end slider -->
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
     <section id="content">
 
         <div class="container">
@@ -91,9 +59,7 @@
               <div class="box-gray aligncenter">
               {{if session.forced_language =='de': }}  
                   <p class="boxText">
-
-                      <b>arthistoricum.net - ART-Books</b> bietet Ihnen eine technische Plattform zur Veröffentlichung elektronischer Bücher im Open Access. Das Angebot richtet sich an Kunstwissenschaftlerinnen und Kunstwissenschaftler weltweit.
-
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus es
                   </p>
           {{elif session.forced_language =='en': }}
           
@@ -229,15 +195,14 @@ The aim of this annual event is to promote free access to scholarly publications
    <h4>Forthcoming</h4>                                    
                                        {{pass}}                                    
 
-                                    <img src="{{=URL(myconf.take('web.application'),'static','images/press/home/Cover2English.jpg')}}" width="145px"/>
-
+                                    {{=IMG(_src=URL(myconf.take('web.application'),'static','monographs/11/simple/cover.jpg'),_width='145px')}}
                                 </div>
 
                                 <div class="box-bottom">
    {{if session.forced_language =='de': }}
-                                    <a href="http://heiup.uni-heidelberg.de/catalog">Mehr</a>
+                                    <a href="http://heiup.uni-heidelberg.de/UBHD_OMPHeibooks/catalog">Mehr</a>
       {{elif session.forced_language =='en': }}
-                                    <a href="http://heiup.uni-heidelberg.de/catalog">More Information</a>
+                                    <a href="http://heiup.uni-heidelberg.de/UBHD_OMPHeibooks/catalog">More Information</a>
                                       {{pass}}         
                                 </div>
 
@@ -251,16 +216,14 @@ The aim of this annual event is to promote free access to scholarly publications
 
                                 <div class="box-gray">
                                     
-                                    <b><span style="text-align: left">Heidelberg Studies in Transculturality</span></b>
                                                                        
                                     {{if session.forced_language =='de': }}
                                     
                                     <p class="boxText">
-                                    HST ist eine Peer-Review-geprüfte Open-Access-Schriftenreihe zum Thema Transkulturalität. Sie untersucht kulturelle, soziale und regionale Formationen, die sich durch den Kontakt mit anderen Regionen und Kulturen konstituierten und durch ihn transformiert wurden.                             </p>
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus es
                                     {{elif session.forced_language =='en': }}
                                     <p class="boxText">
-                                    HST is a peer-reviewed, open access book series promoting research on transcultuality. The series features works that investigate cultural, social, and regional formations that have themselves been constituted and transformed through contact with other regions and cultures.                           </p>
-                                    {{pass}}
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus es{{pass}}
 
                                 </div>
 
@@ -276,28 +239,19 @@ The aim of this annual event is to promote free access to scholarly publications
 
                         </div>
 
-                        <div class="col-lg-6" >
+                        <div class="col-lg-6" id="boxAktuelles">
 
-                            <!--<div>-->
+                        <div class="box">
+                        <div class="box-gray aligncenter">
+                        <h4>heiBOOKS</h4>
+                        <p class="boxText">
+                        bietet Wissenschaftlerinnen und Wissenschaftlern der Universität Heidelberg die Möglichkeit, E-Books im Open Access zu publizieren. Die Universitätsbibliothek hostet die Open Source Software Open Monograph Systems (OMP), unterstützt bei der Erstellung des E-Books, sichert die Nachhaltigkeit der publizierten Inhalte und sorgt für deren größtmögliche Sichtbarkeit.
+                        </p>
+                        </div>
 
-                                <!-- TWITTER TIMELINE-->
+                      <div class="box-bottom">&nbsp;</div>
+                      </div>
 
- 				<div>
-                                    <a class="twitter-timeline"  href="https://twitter.com/UniHeidelberg" data-widget-id="521961404698341376"  height='350'>{{=T('Tweets by @UniHeidelberg')}}</a>
-                                    <script>!function (d, s, id) {
-                                        var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
-                                        if (!d.getElementById(id)) {
-                                            js = d.createElement(s);
-                                            js.id = id;
-                                            js.src = p + "://platform.twitter.com/widgets.js";
-                                            fjs.parentNode.insertBefore(js, fjs);
-                                        }
-                                    }(document, "script", "twitter-wjs");</script>
-                                </div>
-
-                                <!-- /TWITTER TIMELINE -->
-
-                            <!--</div>-->
 
                         </div>
 
