@@ -1,4 +1,5 @@
 {{extend 'layout.html'}}
+
 <div id="main" class="container">
 
 <section id="content">
@@ -61,9 +62,9 @@
                    <div class="tab-content">
                      <div class="tab-pane active" id="one2">
                        <table class="table">                
-                         
                          {{file_ids=[]}}
                                      
+                         
                           {{for fullbook in full_files:}}
                           {{file_id=str(fullbook['submission_id'])+'-'+str(fullbook['file_id'])+'-'+fullbook['original_file_name'].rsplit('.')[1].lower()}}
                           {{if fullbook['original_file_name'].rsplit('.')[1].lower()==myconf.take('omp.xml_category_name').lower():}}     
@@ -79,6 +80,7 @@
                               {{full_pdf=file_id}}
                           {{pass}}
                           {{file_ids.append(file_id)}}
+                        
                           {{pass}}
                          
                        </table>
@@ -139,7 +141,6 @@
         <article>
           <div class="">
             <div class="btn-group" role="group" aria-label="1">
-	    {{=full_files}}
               {{for fullbook in full_files:}}
                 {{if fullbook['original_file_name'].rsplit('.')[1].lower()==myconf.take('omp.xml_category_name').lower():}}
               
