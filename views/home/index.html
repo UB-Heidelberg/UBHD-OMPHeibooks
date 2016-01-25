@@ -64,8 +64,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
           {{elif session.forced_language =='en': }}
           
                  <p class="boxText">
-
-                      <b>arthistoricum.net - ART-Books</b> bietet Ihnen eine technische Plattform zur Veröffentlichung elektronischer Bücher im Open Access. Das Angebot richtet sich an Kunstwissenschaftlerinnen und Kunstwissenschaftler weltweit.
+                   Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus es
                   </p>
                 {{pass}}  
               </div>
@@ -245,7 +244,11 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
                         <div class="box-gray aligncenter">
                         <h4>heiBOOKS</h4>
                         <p class="boxText">
-                        bietet Wissenschaftlerinnen und Wissenschaftlern der Universität Heidelberg die Möglichkeit, E-Books im Open Access zu publizieren. Die Universitätsbibliothek hostet die Open Source Software Open Monograph Systems (OMP), unterstützt bei der Erstellung des E-Books, sichert die Nachhaltigkeit der publizierten Inhalte und sorgt für deren größtmögliche Sichtbarkeit.
+                        {{if session.forced_language =='de': }}
+                        heiBOOKS bietet Wissenschaftlerinnen und Wissenschaftlern der Universität Heidelberg die Möglichkeit, E-Books im Open Access zu publizieren. Die Universitätsbibliothek hostet die Open Source Software Open Monograph Systems (OMP), unterstützt bei der Erstellung des E-Books, sichert die Nachhaltigkeit der publizierten Inhalte und sorgt für deren größtmögliche Sichtbarkeit.
+                        {{elif session.forced_language =='en': }}
+                        The service heiBOOKS provides researchers at Heidelberg University with the opportunity to publish e-books in Open Access. The University Library hosts the open source software Open Monograph Press (OMP), provides support with the production of the e-book, guarantees long term availability and ensures the greatest possible visibility.
+                        {{pass}}
                         </p>
                         </div>
 
