@@ -57,19 +57,33 @@
           <div class="box">
 
               <div class="box-gray aligncenter">
-{{if session.forced_language =='de': }}
-                                    <h4>Bereits erschienen</h4>
-   {{elif session.forced_language =='en': }}
-   <h4>Already published</h4>
-                                       {{pass}}
 
-                                    {{=IMG(_src=URL(myconf.take('web.application'),'static','monographs/11/simple/cover.jpg'),_width='145px')}}
-              </div>
+                                    <p class="boxText">
 
-              <div class="box-bottom">
-                  {{=A(T('More'),_href=URL('catalog','book/11'))}}              
 
-              </div>
+                                    {{if session.forced_language =='de': }}
+                                <h4>Neuerscheinung</h4>
+
+                                   {{=IMG(_src=URL(myconf.take('web.application'),'static','monographs/61/simple/cover.jpg'),_width='145px')}}
+                                      {{elif session.forced_language =='en': }}
+                                    <h4>New Titles</h4>
+
+                                   {{=IMG(_src=URL(myconf.take('web.application'),'static','monographs/61/simple/cover.jpg'),_width='145px')}}
+
+
+                                      {{pass}}
+
+                                   </p>
+
+                                </div>
+
+                                <div class="box-bottom">
+                  {{=A(T('More'),_href=URL('catalog','book/61'))}}
+
+                                </div>
+
+
+
 
           </div>
 
@@ -178,13 +192,22 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
                             <div class="box">
 
                                 <div class="box-gray aligncenter">
-   {{if session.forced_language =='de': }}
 
                                     <p class="boxText">
-                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus es
-                                    {{elif session.forced_language =='en': }}
-                                    <p class="boxText">
-                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus es{{pass}}
+   {{if session.forced_language =='de': }}
+
+                                    <h4>Universitätsmuseum Heidelberg. Kataloge.</h4>
+
+                                   {{=IMG(_src=URL(myconf.take('web.application'),'static','images/catalog/religion_exposition_cover.png'),_width='145px')}}
+                                  
+  {{elif session.forced_language =='en': }}
+                                    <h4>Kataloge des Heidelberger Universitätsmuseums</h4>
+
+                                   {{=IMG(_src=URL(myconf.take('web.application'),'static','images/catalog/religion_exposition_cover.png'),_width='145px')}}
+
+
+                                      {{pass}}
+                                   </p>
                                 </div>
 
                                 <div class="box-bottom">&nbsp;
@@ -203,26 +226,21 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 
                             <div class="box">
 
-                                <div class="box-gray">
-                                    
-                                                                       
+                                <div class="box-gray aligncenter">
                                     {{if session.forced_language =='de': }}
-                                    
-                                    <p class="boxText">
-                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus es
+                                    <h4>Bereits erschienen</h4>
                                     {{elif session.forced_language =='en': }}
-                                    <p class="boxText">
-                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus es{{pass}}
+                                     <h4>Already published</h4>
+                                    {{pass}}
+
+                                    {{=IMG(_src=URL(myconf.take('web.application'),'static','monographs/11/simple/cover.jpg'),_width='145px')}}
+                                </div>
+
+                                <div class="box-bottom">
+                                    {{=A(T('More'),_href=URL('catalog','book/11'))}}
 
                                 </div>
 
-                                <div class="box-bottom">&nbsp;
-   <!--{{if session.forced_language =='de': }}
-                                    <a href="http://heiup.uni-heidelberg.de/#"><span style="color: #EFEFEF;">Mehr</span>
-      {{elif session.forced_language =='en': }}
-                                    <a href="http://heiup.uni-heidelberg.de/#"><span style="color: #EFEFEF;">More</span>
-                                      {{pass}}-->         
-                                </div>
 
                             </div>
 

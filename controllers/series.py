@@ -8,7 +8,7 @@ locale = 'de_DE'
 if session.forced_language == 'en':
   locale = 'en_US'
 
-def hst():
+def universitaetsmuseum_info():
 	return dict()
 
 def index():
