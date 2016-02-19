@@ -201,7 +201,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
                                    {{=IMG(_src=URL(myconf.take('web.application'),'static','images/catalog/religion_exposition_cover.png'),_width='145px')}}
                                   
   {{elif session.forced_language =='en': }}
-                                    <h4>Kataloge des Heidelberger Universitätsmuseums</h4>
+                                    <h4>Universitätsmuseum Heidelberg. Kataloge.</h4>
 
                                    {{=IMG(_src=URL(myconf.take('web.application'),'static','images/catalog/religion_exposition_cover.png'),_width='145px')}}
 
@@ -211,11 +211,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
                                 </div>
 
                                 <div class="box-bottom">&nbsp;
-<!--   {{if session.forced_language =='de': }}
-                                    <a href="http://heiup.uni-heidelberg.de/UBHD_OMPHeibooks/catalog">Mehr</a>
-      {{elif session.forced_language =='en': }}
-                                    <a href="http://heiup.uni-heidelberg.de/UBHD_OMPHeibooks/catalog">More Information</a>
-                                      {{pass}}         -->
+                                       {{=A(T('More'),_href=URL('series','universitaetsmuseum_info'))}}
                                 </div>
 
                             </div>
