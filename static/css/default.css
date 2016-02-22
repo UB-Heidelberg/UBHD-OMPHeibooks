@@ -49,12 +49,12 @@ header .nav li.active ul.dropdown-menu li.active a{
 .pagination ul > .active > span,
 .flex-control-nav li a:hover, 
 .flex-control-nav li a.active {
-  background-color: #0077bb;
+  background-color: #900;
 }
 
 
 .breadcrumb {
-  background-color: #0077bb;
+  background-color: #900;
 }
 
 /* === border color === */
@@ -125,7 +125,7 @@ ul.clients li:hover {
 }
 
 .box-bottom a {
-    color: #606060;
+    color: #900;
 }
 
 /* buttons */
