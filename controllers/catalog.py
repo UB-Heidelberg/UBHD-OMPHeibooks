@@ -17,7 +17,9 @@ def series():
     
     if request.args == []:
       redirect( URL('home', 'index'))
-    series = request.args[0]
+    series=''
+    if request.args[0]:
+  	 series = request.args[0]
     
     query = ((db.submissions.context_id == myconf.take('omp.press_id'))  &  (db.submissions.submission_id!=ignored_submissions) & (db.submissions.status == 3) & (
         db.submission_settings.submission_id == db.submissions.submission_id) & (db.submission_settings.locale == locale) & (db.submissions.context_id==db.series.press_id) & (db.series.path==series) & (db.submissions.context_id == myconf.take('omp.press_id')) & (db.submissions.series_id==db.series.series_id) &(db.submissions.context_id==db.series.press_id) & (db.series.path==series))
@@ -161,9 +163,22 @@ def book():
         if name and identification_code:
             identification_codes[
                 identification_code['value']] = name['setting_value']
+    date_pub_query =  (db.publication_formats.submission_id == book_id) & (db.publication_format_settings.publication_format_id == db.publication_formats.publication_format_id)
+    publication_dates = db(date_pub_query & (db.publication_format_settings.setting_value == myconf.take('omp.doi_format_name')) & (
+        db.publication_dates.publication_format_id == db.publication_format_settings.publication_format_id)).select(db.publication_dates.date, db.publication_dates.role, db.publication_dates.date_format)
 
-    published_date = db(pub_query & (db.publication_format_settings.setting_value == myconf.take('omp.doi_format_name')) & (
-        db.publication_dates.publication_format_id == db.publication_format_settings.publication_format_id)).select(db.publication_dates.date)
+    published_date = None
+    publication_year = ""
+    for row in publication_dates:
+        if row['date_format'] == '20': #YYYYMMDD
+		published_date = row['date']
+		publication_year = published_date[:4]
+	if row['date_format'] == '05' and row['role'] == '19': #YYYY, original date
+		print_published_date = row['date']
+
+    press_location = "Heidelberg"
+
+#{{=press_location}}: {{=press_name}}, {{=publication_year}}
 
     representatives = db(
         (db.representatives.submission_id == book_id) & (

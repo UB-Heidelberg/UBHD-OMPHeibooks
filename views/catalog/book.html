@@ -27,7 +27,7 @@
                 : {{=subtitle}}
                 {{pass}}
               </i>
-              {{=press_name}},
+              {{=press_location}}: {{=press_name}}, {{=publication_year}}.
             </p>
             {{if publication_format_settings_doi:}}
             <p>
@@ -53,7 +53,10 @@
             {{pass}}
             <!--<p><B>Statistik</B></p>-->
             {{if published_date:}}
-            <p>{{=T('Published')}} {{=published_date.first()['date'][6:8]}}.{{=published_date.first()['date'][4:6]}}.{{=published_date.first()['date'][0:4]}}</p>
+		<p>{{=T('Published')}} {{=published_date[6:8]}}.{{=published_date[4:6]}}.{{=published_date[0:4]}}</p>
+            {{pass}}
+	    {{if print_published_date:}}
+		<p>{{=T('Print version published')}} {{=print_published_date}}.</p>
             {{pass}}
              <!---a data-toggle="modal" class="btn btn-info" href="../../../cgi-bin/oastats.cgi?repo=omphp" data-target="#myModal">{{=T('')}}</a-->
            <div id="oas-widget" class="applied-to-ojs">
