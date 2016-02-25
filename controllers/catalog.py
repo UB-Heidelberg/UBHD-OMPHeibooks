@@ -168,6 +168,7 @@ def book():
         db.publication_dates.publication_format_id == db.publication_format_settings.publication_format_id)).select(db.publication_dates.date, db.publication_dates.role, db.publication_dates.date_format)
 
     published_date = None
+    print_published_date = None
     publication_year = ""
     for row in publication_dates:
         if row['date_format'] == '00':
@@ -175,10 +176,6 @@ def book():
 		publication_year = published_date[:4]
 	if row['date_format'] == '05' and row['role'] == '19': #YYYY, original date
 		print_published_date = row['date']
-
-    press_location = "Heidelberg"
-
-#{{=press_location}}: {{=press_name}}, {{=publication_year}}
 
     representatives = db(
         (db.representatives.submission_id == book_id) & (
@@ -189,9 +186,12 @@ def book():
 
     full_files = db((db.submission_files.submission_id == book_id) & (db.submission_files.genre_id == myconf.take('omp.monograph_type_id'))& (db.submission_files.file_stage > 5)).select(db.submission_files.original_file_name, db.submission_files.submission_id, db.submission_files.genre_id, db.submission_files.file_id, db.submission_files.revision, db.submission_files.file_stage, db.submission_files.date_uploaded , orderby=db.submission_files.file_id)
 
+    press_location = ""
     for j in press_settings:
         if j.setting_name == 'name':
             press_name = j.setting_value
+	if j.setting_name == 'location':
+	    press_location = j.setting_value
 
     for i in book:
         if i.setting_name == 'abstract':
