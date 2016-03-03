@@ -2000,7 +2000,7 @@ article img.pull-right, article .align-right{
         }
        #main
         {
-           padding:0 !important;
+           padding:2em !important;
         }
        footer #sub-footer .container .col-lg-12 .row .col-lg-3 img
         {
@@ -2067,7 +2067,7 @@ article img.pull-right, article .align-right{
         } 
        #main
         {
-           padding:0 !important;
+           padding:1em !important;
         }
        #main .row
         {
