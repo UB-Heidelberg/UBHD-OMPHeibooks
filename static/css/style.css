@@ -2002,6 +2002,14 @@ article img.pull-right, article .align-right{
         {
            padding:2em !important;
         }
+       .title_volumes
+        {
+           margin-left:0.4em;
+        }
+       .subtitle_volumes
+        {
+           margin-left:0.5em;
+        }
        footer #sub-footer .container .col-lg-12 .row .col-lg-3 img
         {
            width:50%;
@@ -2027,8 +2035,11 @@ article img.pull-right, article .align-right{
         }
 }
 
-@media (max-width: 360px) {
-
+@media (max-width: 768px) {
+       #infoBoxRechts
+        {
+          width:100% !important;
+        }
 }
 
 
@@ -2072,6 +2083,14 @@ article img.pull-right, article .align-right{
        #main .row
         {
            padding:1em !important;
+        }
+       .title_volumes
+        {
+           margin-left:0.4em;
+        }
+       .subtitle_volumes
+        {
+           margin-left:0.5em;
         }
        .box
         {
