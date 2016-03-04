@@ -186,6 +186,13 @@
               {{=XML(abstract)}}
             </p>
 	   {{if author_bio:}}
+            <p>
+            {{if session.forced_language =='de': }}
+            <b>Über den Autor/Herausgeber</b>
+            {{elif session.forced_language =='en': }}
+            <b>About the author/editor</b>
+            {{pass}}
+            </p>
             <p>{{=XML(author_bio['setting_value'])}}</p>
           {{pass}}
           </div>
