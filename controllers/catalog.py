@@ -6,7 +6,7 @@ LICENSE.md
 '''
 import os
 from operator import itemgetter
-local_import(dal)
+dal = local_import('dal')
 
 def series():
     abstract, author, cleanTitle, subtitle = '', '', '', ''
