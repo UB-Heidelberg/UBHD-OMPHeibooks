@@ -6,7 +6,7 @@ LICENSE.md
 '''
 import os
 from operator import itemgetter
-dal = local_import('dal')
+from ompdal import OMPDAL
 
 def series():
     abstract, author, cleanTitle, subtitle = '', '', '', ''
@@ -92,21 +92,13 @@ def index():
       if i.setting_name == 'title':
           subs.setdefault(i.submission_id, {})[
               'title'] = i.setting_value
-      author_q = ((db.authors.submission_id == i.submission_id))
-      authors_list = db(author_q).select(
-          db.authors.first_name, db.authors.last_name)
-      for j in authors_list:
-          authors += j.first_name + ' ' + j.last_name + ', '
-      if authors.endswith(', '):
-        authors = authors[:-2]
 
-      subs.setdefault(i.submission_id, {})['authors'] = dal.OMPDAL.getAuthors(i.submission_id)
-      subs.setdefault(i.submission_id, {})['editors'] = dal.OMPDAL.getEditors(i.submission_id)
+      ompdal = OMPDAL(db, myconf)
+
+      subs.setdefault(i.submission_id, {})['authors'] = ompdal.getAuthors(i.submission_id)
+      subs.setdefault(i.submission_id, {})['editors'] = ompdal.getEditors(i.submission_id)
           
-    if len(subs) == 0:
-      redirect( URL('home', 'index'))  
-    return dict(submissions=submissions, subs=subs, order=order)
-
+    return locals() 
 
 def book():
     abstract, authors, cleanTitle, publication_format_settings_doi, press_name, subtitle = '', '', '', '', '', ''
@@ -135,8 +127,10 @@ def book():
     if authors.endswith(', '):
         authors = authors[:-2]
 
-    authors = dal.OMPDAL.getAuthors(i.submission_id)
-    editors = dal.OMPDAL.getEditors(i.submission_id)
+    ompdal = OMPDAL(db, myconf)
+
+    authors = ompdal.getAuthors(book_id)
+    editors = ompdal.getEditors(book_id)
 
     author_bio = db((db.authors.submission_id == book_id) & (db.authors.author_id == db.author_settings.author_id) & (
         db.author_settings.locale == locale) & (db.author_settings.setting_name == 'biography')).select(db.author_settings.setting_value).first()

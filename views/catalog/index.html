@@ -19,7 +19,7 @@
                     <div class="post-heading">
                         <h4>
 			{{if subs[entry]['editors']:}}
-				{{=", ".join([" ".join([e.first_name, e.middle_name, e.last_name]) for e in subs[entry]['editors']])}}
+				{{=", ".join([" ".join([e.first_name, e.middle_name, e.last_name]) for e in subs[entry]['editors']])+" "+T("(eds)")}}
 			{{else:}}
 				{{=", ".join([" ".join([e.first_name, e.middle_name, e.last_name]) for e in subs[entry]['authors']])}}
 			{{pass}}

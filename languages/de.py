@@ -122,6 +122,8 @@
 'Druckfarbe': 'Druckfarbe',
 'E-mail': 'E-mail',
 'Edit current record': 'Diesen Eintrag editieren',
+'(ed.)': '(Hrsg.)',
+'(eds)': '(Hrsg.)',
 'Editor': 'Herausgeber',
 'Email and SMS': 'Email und SMS',
 'Endformatbreite, min. 105 / max. 210 bei PB, bei HB min. 148 / max. abhängig von Rückenbreite, aufgeklappter Buchdeckel max. 450.': 'Endformatbreite, min. 105 / max. 210 bei PB, bei HB min. 148 / max. abhängig von Rückenbreite, aufgeklappter Buchdeckel max. 450.',
