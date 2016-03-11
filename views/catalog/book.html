@@ -184,7 +184,12 @@
               <br/>
                  <h5>
 		   {{if editors:}}
-		      {{=", ".join([" ".join([e.first_name, e.middle_name, e.last_name]) for e in editors])+" "+T("(eds)")}}
+		      {{=", ".join([" ".join([e.first_name, e.middle_name, e.last_name]) for e in editors])}}
+		      {{if len(editors) > 1:}}
+			{{=T("(eds)")}}
+		      {{else:}}
+			{{=T("(ed.)")}}
+		       {{pass}}
 		   {{else:}}
 		      {{=", ".join([" ".join([e.first_name, e.middle_name, e.last_name]) for e in authors])}}
 		   {{pass}}

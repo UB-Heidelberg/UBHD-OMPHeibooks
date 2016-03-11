@@ -9,7 +9,7 @@ from operator import itemgetter
 from ompdal import OMPDAL
 
 def series():
-    abstract, author, cleanTitle, subtitle = '', '', '', ''
+    abstract, cleanTitle, subtitle = '', '', ''
     locale = 'de_DE'
     if session.forced_language == 'en':
         locale = 'en_US'
@@ -18,7 +18,6 @@ def series():
     if request.args == []:
       redirect( URL('home', 'index'))
     series = request.args[0]
-    
     
     query = ((db.submissions.context_id == myconf.take('omp.press_id'))  &  (db.submissions.submission_id!=ignored_submissions) & (db.submissions.status == 3) & (
         db.submission_settings.submission_id == db.submissions.submission_id) & (db.submission_settings.locale == locale) & (db.submissions.context_id==db.series.press_id) & (db.series.path==series) & (db.submissions.context_id == myconf.take('omp.press_id')) & (db.submissions.series_id==db.series.series_id) &(db.submissions.context_id==db.series.press_id) & (db.series.path==series))
@@ -49,23 +48,19 @@ def series():
 	 except:
 	   series_positions[i.submission_id] = pos_counter
 	   pos_counter += 1
-      authors=''
       if i.setting_name == 'abstract':
           subs.setdefault(i.submission_id, {})['abstract'] = i.setting_value
       if i.setting_name == 'subtitle':
-          subs.setdefault(i.submission_id, {})['subtitle'] = i.setting_value
+      	  subs.setdefault(i.submission_id, {})['subtitle'] = i.setting_value
       if i.setting_name == 'title':
           subs.setdefault(i.submission_id, {})[
-              'title'] = i.setting_value
-      author_q = ((db.authors.submission_id == i.submission_id))
-      authors_list = db(author_q).select(
-          db.authors.first_name, db.authors.last_name)
-      for j in authors_list:
-          authors += j.first_name + ' ' + j.last_name + ', '
-      if authors.endswith(', '):
-        authors = authors[:-2]
+               'title'] = i.setting_value
+
+      ompdal = OMPDAL(db, myconf)
+
+      subs.setdefault(i.submission_id, {})['authors'] = ompdal.getAuthors(i.submission_id)
+      subs.setdefault(i.submission_id, {})['editors'] = ompdal.getEditors(i.submission_id)
           
-      subs.setdefault(i.submission_id, {})['authors'] = authors
       order = [e[0] for e in sorted(series_positions.items(), key=itemgetter(1), reverse=True)]
 
     return dict(submissions=submissions, subs=subs, order=order, series_title=series_title, series_subtitle=series_subtitle)
@@ -84,7 +79,6 @@ def index():
     for i in submissions:
       if not i.submission_id in order:
         order.append(i.submission_id)
-      authors=''
       if i.setting_name == 'abstract':
           subs.setdefault(i.submission_id, {})['abstract'] = i.setting_value
       if i.setting_name == 'subtitle':
@@ -117,15 +111,6 @@ def book():
 
     #if len(book) == 0:
     #    redirect(URL('catalog', 'index'))
-
-    author_q = ((db.authors.submission_id == book_id))
-    authors_list = db(author_q).select(
-        db.authors.first_name, db.authors.last_name)
-
-    for i in authors_list:
-        authors += i.first_name + ' ' + i.last_name + ', '
-    if authors.endswith(', '):
-        authors = authors[:-2]
 
     ompdal = OMPDAL(db, myconf)
 
