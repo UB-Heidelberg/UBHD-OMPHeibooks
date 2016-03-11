@@ -170,7 +170,7 @@ def book():
     published_date = None
     publication_year = ""
     for row in publication_dates:
-        if row['date_format'] == '20': #YYYYMMDD
+        if row['date_format'] == '00':
 		published_date = row['date']
 		publication_year = published_date[:4]
 	if row['date_format'] == '05' and row['role'] == '19': #YYYY, original date
