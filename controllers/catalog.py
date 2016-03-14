@@ -118,6 +118,19 @@ def book():
 
     authors = ompdal.getAuthors(book_id)
     editors = ompdal.getEditors(book_id)
+    
+    sub = ompdal.getSubmission(book_id)
+    series_info = {}
+    if sub.series_id:
+	series_settings = ompdal.getLocalizedSeriesSettings(sub.series_id, locale)
+	if not series_settings:
+		ompdal.getSeriesSettings(sub.series_id)
+	for r in series_settings:
+		if r.setting_name == "title":
+			series_info["series_title"] = r.setting_value
+		elif r.setting_name == "subtitle":
+			series_info["series_subtitle"] = r.setting_value
+	series_info["series_position"] = sub.series_position
 
     author_bio = db((db.authors.submission_id == book_id) & (db.authors.author_id == db.author_settings.author_id) & (
         db.author_settings.locale == locale) & (db.author_settings.setting_name == 'biography')).select(db.author_settings.setting_value).first()
