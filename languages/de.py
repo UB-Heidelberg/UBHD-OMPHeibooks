@@ -402,4 +402,5 @@
 'ed': 'Hrsg',
 'eds': 'Hrsg',
 'and': 'und',
+'vol.': 'Band',
 }
