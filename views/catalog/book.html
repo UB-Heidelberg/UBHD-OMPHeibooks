@@ -48,7 +48,10 @@
                 {{pass}}
               </i>
 		{{if series_info:}}
-		  {{=("{0[series_title]}, "+T('Vol.')+" {0[series_position]}. ").format(series_info)}}
+		  {{="{}, {} {}".format(". ".join(filter(None, [series_info.get("series_title"), series_info.get("series_subtitle")])),
+			T('Vol.'),
+			series_info.get("series_position"))
+		  }}
 		{{pass}}
               {{=press_location}}: {{=press_name}}, {{=publication_year}}.
 	      {{if publication_format_settings_doi:}} <a href="http://dx.doi.org/{{=publication_format_settings_doi['setting_value']}}" title="DOI: {{=cleanTitle}}, {{=press_name}}, 2015">{{=publication_format_settings_doi['setting_value']}}</a>. {{pass}}
