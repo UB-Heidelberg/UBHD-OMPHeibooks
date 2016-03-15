@@ -135,11 +135,10 @@ def book():
     author_bio = db((db.authors.submission_id == book_id) & (db.authors.author_id == db.author_settings.author_id) & (
         db.author_settings.locale == locale) & (db.author_settings.setting_name == 'biography')).select(db.author_settings.setting_value).first()
 
-    chapter_query = ((db.submission_chapters.submission_id == book_id) & (db.submission_chapters.chapter_id == db.submission_chapter_settings.chapter_id) & (db.submission_chapter_settings.locale == locale) & (db.submission_file_settings.setting_name ==
-                                                                                                                                                                                                                 "chapterID") & (db.submission_file_settings.setting_value == db.submission_chapters.chapter_id) & (db.submission_file_settings.file_id == db.submission_files.file_id) & (db.submission_chapter_settings.setting_name == 'title'))
+    chapters = ompdal.getLocalizedChapters(book_id, locale)
+    if not chapters:
+      chapters = ompdal.getChapters(book_id)
 
-    chapters = db(chapter_query).select(db.submission_chapters.chapter_id, db.submission_chapter_settings.setting_value, db.submission_files.assoc_id, db.submission_files.submission_id, db.submission_files.genre_id,
-                                        db.submission_files.file_id, db.submission_files.revision, db.submission_files.file_stage, db.submission_files.date_uploaded, orderby=[db.submission_chapters.chapter_seq, db.submission_files.assoc_id], groupby=[db.submission_chapters.chapter_id])
 
     pub_query = (db.publication_formats.submission_id == book_id) & (db.publication_format_settings.publication_format_id == db.publication_formats.publication_format_id) & (
         db.publication_format_settings.locale == locale)
