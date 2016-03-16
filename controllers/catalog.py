@@ -8,19 +8,19 @@ import os
 from operator import itemgetter
 from ompdal import OMPDAL
 
+
 def series():
-    abstract, cleanTitle, subtitle = '', '', ''
     locale = 'de_DE'
     if session.forced_language == 'en':
         locale = 'en_US'
-    ignored_submissions =  myconf.take('omp.ignore_submissions') if myconf.take('omp.ignore_submissions') else -1
-    
+    ignored_submissions = myconf.take('omp.ignore_submissions') if myconf.take('omp.ignore_submissions') else -1
+
     if request.args == []:
-      redirect( URL('home', 'index'))
+        redirect( URL('home', 'index'))
     series=''
     if request.args[0]:
-  	 series = request.args[0]
-    
+        series = request.args[0]
+
     query = ((db.submissions.context_id == myconf.take('omp.press_id'))  &  (db.submissions.submission_id!=ignored_submissions) & (db.submissions.status == 3) & (
         db.submission_settings.submission_id == db.submissions.submission_id) & (db.submission_settings.locale == locale) & (db.submissions.context_id==db.series.press_id) & (db.series.path==series) & (db.submissions.context_id == myconf.take('omp.press_id')) & (db.submissions.series_id==db.series.series_id) &(db.submissions.context_id==db.series.press_id) & (db.series.path==series))
     submissions = db(query).select(db.submission_settings.ALL,orderby=db.submissions.series_position|~db.submissions.date_submitted)
@@ -31,41 +31,40 @@ def series():
     rows = db(db.series.path == series).select(db.series.series_id)
     if len(rows) == 1:
         series_id = rows[0]['series_id']
-    	rows = db((db.series_settings.series_id == series_id) & (db.series_settings.setting_name == 'title') & (db.series_settings.locale == locale)).select(db.series_settings.setting_value)
-	if rows:
-	    series_title=rows[0]['setting_value']
-	rows = db((db.series_settings.series_id == series_id) & (db.series_settings.setting_name == 'subtitle') & (db.series_settings.locale == locale)).select(db.series_settings.setting_value)
+        rows = db((db.series_settings.series_id == series_id) & (db.series_settings.setting_name == 'title') & (db.series_settings.locale == locale)).select(db.series_settings.setting_value)
+        if rows:
+            series_title=rows[0]['setting_value']
+        rows = db((db.series_settings.series_id == series_id) & (db.series_settings.setting_name == 'subtitle') & (db.series_settings.locale == locale)).select(db.series_settings.setting_value)
         if rows:
             series_subtitle=rows[0]['setting_value']
 
+    ompdal = OMPDAL(db, myconf)
     series_positions = {}
     for i in submissions:
-      series_position = db(db.submissions.submission_id == i.submission_id).select(db.submissions.series_position).first()['series_position']
-      if series_position:
-         subs.setdefault(i.submission_id, {})['series_position'] = series_position
-	 pos_counter = 0
-         try:
-	   int_pos = int(series_position)
-	   series_positions[i.submission_id] = int_pos
-	 except:
-	   series_positions[i.submission_id] = pos_counter
-	   pos_counter += 1
-      if i.setting_name == 'abstract':
-          subs.setdefault(i.submission_id, {})['abstract'] = i.setting_value
-      if i.setting_name == 'subtitle':
-      	  subs.setdefault(i.submission_id, {})['subtitle'] = i.setting_value
-      if i.setting_name == 'title':
-          subs.setdefault(i.submission_id, {})[
-               'title'] = i.setting_value
+        series_position = db(db.submissions.submission_id == i.submission_id).select(db.submissions.series_position).first()['series_position']
+        if series_position:
+            subs.setdefault(i.submission_id, {})['series_position'] = series_position
+            pos_counter = 0
+            try:
+                int_pos = int(series_position)
+                series_positions[i.submission_id] = int_pos
+            except:
+                series_positions[i.submission_id] = pos_counter
+                pos_counter += 1
+        if i.setting_name == 'abstract':
+            subs.setdefault(i.submission_id, {})['abstract'] = i.setting_value
+        if i.setting_name == 'subtitle':
+            subs.setdefault(i.submission_id, {})['subtitle'] = i.setting_value
+        if i.setting_name == 'title':
+            subs.setdefault(i.submission_id, {})[
+                'title'] = i.setting_value
+        subs.setdefault(i.submission_id, {})['authors'] = ompdal.getAuthors(i.submission_id)
+        subs.setdefault(i.submission_id, {})['editors'] = ompdal.getEditors(i.submission_id)
 
-      ompdal = OMPDAL(db, myconf)
-
-      subs.setdefault(i.submission_id, {})['authors'] = ompdal.getAuthors(i.submission_id)
-      subs.setdefault(i.submission_id, {})['editors'] = ompdal.getEditors(i.submission_id)
-          
-      order = [e[0] for e in sorted(series_positions.items(), key=itemgetter(1), reverse=True)]
+    order = [e[0] for e in sorted(series_positions.items(), key=itemgetter(1), reverse=True)]
 
     return dict(submissions=submissions, subs=subs, order=order, series_title=series_title, series_subtitle=series_subtitle)
+
 
 def index():
     abstract, author, cleanTitle, subtitle = '', '', '', ''
@@ -73,28 +72,45 @@ def index():
     if session.forced_language == 'en':
         locale = 'en_US'
     ignored_submissions =  myconf.take('omp.ignore_submissions') if myconf.take('omp.ignore_submissions') else -1
-    query = ((db.submissions.context_id == myconf.take('omp.press_id')) &  (db.submissions.submission_id!=ignored_submissions) & (db.submissions.status == 3) & (
+    query = ((db.submissions.context_id == myconf.take('omp.press_id')) & (db.submissions.submission_id!=ignored_submissions) & (db.submissions.status == 3) & (
         db.submission_settings.submission_id == db.submissions.submission_id) & (db.submission_settings.locale == locale))
-    submissions = db(query).select(db.submission_settings.ALL,orderby=~db.submissions.date_submitted)
+    submissions = db(query).select(db.submission_settings.ALL, db.submissions.series_id, db.submissions.series_position,
+                                   orderby=~db.submissions.date_submitted)
     subs = {}
     order = []
+    series_info = {}
+    ompdal = OMPDAL(db, myconf)
     for i in submissions:
-      if not i.submission_id in order:
-        order.append(i.submission_id)
-      if i.setting_name == 'abstract':
-          subs.setdefault(i.submission_id, {})['abstract'] = i.setting_value
-      if i.setting_name == 'subtitle':
-          subs.setdefault(i.submission_id, {})['subtitle'] = i.setting_value
-      if i.setting_name == 'title':
-          subs.setdefault(i.submission_id, {})[
-              'title'] = i.setting_value
+        id = i.submission_settings.submission_id
+        if id not in order:
+            order.append(id)
+        setting_name = i.submission_settings.setting_name
+        setting_value = i.submission_settings.setting_value
+        if setting_name == 'abstract':
+            subs.setdefault(id, {})['abstract'] = setting_value
+        if setting_name == 'subtitle':
+            subs.setdefault(id, {})['subtitle'] = setting_value
+        if setting_name == 'title':
+            subs.setdefault(id, {})['title'] = setting_value
+        subs.setdefault(id, {})['authors'] = ompdal.getAuthors(id)
+        subs[id]['editors'] = ompdal.getEditors(id)
+        subs[id]['series_position'] = i.submissions.series_position
+        series_id = i.submissions.series_id
+        if series_id != 0:
+            subs[id]['series_id'] = series_id
+            if series_id not in series_info:
+                series_settings = ompdal.getLocalizedSeriesSettings(series_id, locale)
+                if not series_settings:
+                    series_settings = ompdal.getSeriesSettings(series_id)
+                series_info[series_id] = {}
+                for s in series_settings:
+                    if s.setting_name == 'title':
+                        series_info[series_id]['title'] = s.setting_value
+                    if s.setting_name == 'subtitle':
+                        series_info[series_id]['subtitle'] = s.setting_value
 
-      ompdal = OMPDAL(db, myconf)
+    return dict(subs=subs, order=order, series_info=series_info)
 
-      subs.setdefault(i.submission_id, {})['authors'] = ompdal.getAuthors(i.submission_id)
-      subs.setdefault(i.submission_id, {})['editors'] = ompdal.getEditors(i.submission_id)
-          
-    return locals() 
 
 def book():
     abstract, authors, cleanTitle, publication_format_settings_doi, press_name, subtitle = '', '', '', '', '', ''
@@ -118,26 +134,26 @@ def book():
 
     authors = ompdal.getAuthors(book_id)
     editors = ompdal.getEditors(book_id)
-    
+
     sub = ompdal.getSubmission(book_id)
     series_info = {}
     if sub.series_id:
-	series_settings = ompdal.getLocalizedSeriesSettings(sub.series_id, locale)
-	if not series_settings:
-		ompdal.getSeriesSettings(sub.series_id)
-	for r in series_settings:
-		if r.setting_name == "title":
-			series_info["series_title"] = r.setting_value
-		elif r.setting_name == "subtitle":
-			series_info["series_subtitle"] = r.setting_value
-	series_info["series_position"] = sub.series_position
+        series_settings = ompdal.getLocalizedSeriesSettings(sub.series_id, locale)
+        if not series_settings:
+            ompdal.getSeriesSettings(sub.series_id)
+        for r in series_settings:
+            if r.setting_name == "title":
+                series_info["series_title"] = r.setting_value
+            elif r.setting_name == "subtitle":
+                series_info["series_subtitle"] = r.setting_value
+        series_info["series_position"] = sub.series_position
 
     author_bio = db((db.authors.submission_id == book_id) & (db.authors.author_id == db.author_settings.author_id) & (
         db.author_settings.locale == locale) & (db.author_settings.setting_name == 'biography')).select(db.author_settings.setting_value).first()
 
     chapters = ompdal.getLocalizedChapters(book_id, locale)
     if not chapters:
-      chapters = ompdal.getChapters(book_id)
+        chapters = ompdal.getChapters(book_id)
 
 
     pub_query = (db.publication_formats.submission_id == book_id) & (db.publication_format_settings.publication_format_id == db.publication_formats.publication_format_id) & (
@@ -167,7 +183,7 @@ def book():
                 db.publication_format_settings.publication_format_id == i['publication_format_id']) & (
                 db.publication_format_settings.setting_name == 'name') & (
                 db.publication_format_settings.setting_value != myconf.take('omp.xml_category_name'))) .select(
-                    db.publication_format_settings.setting_value).first()
+            db.publication_format_settings.setting_value).first()
         identification_code = db(
             (db.identification_codes.publication_format_id == i['publication_format_id']) & (
                 db.identification_codes.code == 15)).select(
@@ -184,10 +200,10 @@ def book():
     publication_year = ""
     for row in publication_dates:
         if row['date_format'] == '00':
-		published_date = row['date']
-		publication_year = published_date[:4]
-	if row['date_format'] == '05' and row['role'] == '19': #YYYY, original date
-		print_published_date = row['date']
+            published_date = row['date']
+            publication_year = published_date[:4]
+        if row['date_format'] == '05' and row['role'] == '19': #YYYY, original date
+            print_published_date = row['date']
 
     representatives = db(
         (db.representatives.submission_id == book_id) & (
@@ -202,8 +218,8 @@ def book():
     for j in press_settings:
         if j.setting_name == 'name':
             press_name = j.setting_value
-	if j.setting_name == 'location':
-	    press_location = j.setting_value
+        if j.setting_name == 'location':
+            press_location = j.setting_value
 
     for i in book:
         if i.setting_name == 'abstract':
@@ -215,12 +231,12 @@ def book():
 
     cover_image = URL(myconf.take('web.application'), 'static',
                       'monographs/' + book_id + '/simple/cover.jpg')
-    
+
     types=['jpg','png','gif']
     cover_image=''
     path=request.folder+'static/monographs/'+book_id+'/simple/cover.'
     for  t in types:
-    	if os.path.exists(path+t):
-		cover_image= URL(myconf.take('web.application'), 'static','monographs/' + book_id + '/simple/cover.'+t)
+        if os.path.exists(path+t):
+            cover_image= URL(myconf.take('web.application'), 'static','monographs/' + book_id + '/simple/cover.'+t)
 
     return locals()

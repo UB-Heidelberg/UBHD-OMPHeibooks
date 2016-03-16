@@ -18,19 +18,26 @@
                 <article>
                     <div class="post-heading">
                         <h4>
-			{{if subs[entry]['editors']:}}
-				{{=", ".join([" ".join([e.first_name, e.middle_name, e.last_name]) for e in subs[entry]['editors']])}}
-                      		{{if len(subs[entry]['editors']) > 1:}}
-                        		{{=T("(eds)")}}
-		                {{else:}}
-                        		{{=T("(ed.)")}}
-                       		{{pass}}
-			{{else:}}
-				{{=", ".join([" ".join([e.first_name, e.middle_name, e.last_name]) for e in subs[entry]['authors']])}}
-			{{pass}}
-			</h4>
-                            <h4>{{=subs[entry]['title']}}<br />
-                                {{=subs[entry]['subtitle']}}</h4>
+                        {{if subs[entry]['editors']:}}
+                            {{=", ".join([" ".join([e.first_name, e.middle_name, e.last_name]) for e in subs[entry]['editors']])}}
+                                        {{if len(subs[entry]['editors']) > 1:}}
+                                            {{=T("(eds)")}}
+                                        {{else:}}
+                                            {{=T("(ed.)")}}
+                                        {{pass}}
+                        {{else:}}
+                            {{=", ".join([" ".join([e.first_name, e.middle_name, e.last_name]) for e in subs[entry]['authors']])}}
+                        {{pass}}
+                        </h4>
+                        <h4>{{=subs[entry]['title']}}<br />
+                            {{=subs[entry]['subtitle']}}</h4>
+                            {{ if subs[entry].has_key('series_id'):
+                                    series_subtitle = series_info[subs[entry]['series_id']]['subtitle']
+                                    series_title = series_info[subs[entry]['series_id']]['title']
+                                }}
+				            <p><i>{{=series_title}}{{ if series_subtitle: }} – {{=series_subtitle}}{{pass}}, {{=T('Vol.')}} {{=subs[entry]['series_position']}}</i></p>
+				            {{pass}}
+
                     </div>
                     <p>
                         <i class="icon-quote-left"></i>
