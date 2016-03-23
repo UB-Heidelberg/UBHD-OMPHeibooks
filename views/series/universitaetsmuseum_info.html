@@ -9,6 +9,11 @@
                 Universitätsmuseum Heidelberg. Kataloge.
             {{pass}}
             </h3>
+             {{if session.forced_language =='de': }}
+            <p class="reihen_herausgeber">Herausgeber: Matthias Untermann</p>
+                {{elif session.forced_language =='en': }}
+            <p class="reihen_herausgeber">Editor: Matthias Untermann</p>
+            {{pass}}
 
 
                 {{if session.forced_language =='de': }}
