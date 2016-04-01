@@ -43,9 +43,14 @@
 		  {{first=contributors[0]}}
 		  {{second=contributors[1]}}
 		  {{last=contributors[2]}}
+		  {{if len(contributors) > 3:}}
+		    {{add="et al"}}
+		  {{else:}}
+		    {{add=""}}
+		  {{pass}}
 		  {{=format_string.format(T(', ').join([first.last_name+", "+" ".join([first.first_name, first.middle_name]).strip(), 
 										" ".join([second.first_name, second.middle_name]).strip()+" "+second.last_name]), 
-							" ".join([last.first_name, last.middle_name]).strip()+" "+last.last_name)}}
+							" ".join([last.first_name, last.middle_name]).strip()+" "+last.last_name)+add}}
 		{{pass}}
               <i>
                 {{if len(subtitle)>0:}}
