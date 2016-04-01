@@ -4,10 +4,10 @@ Copyright (c) 2015 Heidelberg University Library
 Distributed under the GNU GPL v3. For full terms see the file
 LICENSE.md
 '''
+
 import os
 from operator import itemgetter
 from ompdal import OMPDAL
-
 
 def series():
     locale = 'de_DE'
@@ -63,8 +63,7 @@ def series():
 
     order = [e[0] for e in sorted(series_positions.items(), key=itemgetter(1), reverse=True)]
 
-    return dict(submissions=submissions, subs=subs, order=order, series_title=series_title, series_subtitle=series_subtitle)
-
+    return locals()
 
 def index():
     abstract, author, cleanTitle, subtitle = '', '', '', ''
@@ -109,8 +108,7 @@ def index():
                     if s.setting_name == 'subtitle':
                         series_info[series_id]['subtitle'] = s.setting_value
 
-    return dict(subs=subs, order=order, series_info=series_info)
-
+    return locals() 
 
 def book():
     abstract, authors, cleanTitle, publication_format_settings_doi, press_name, subtitle = '', '', '', '', '', ''
