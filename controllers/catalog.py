@@ -148,9 +148,9 @@ def book():
     author_bio = db((db.authors.submission_id == book_id) & (db.authors.author_id == db.author_settings.author_id) & (
         db.author_settings.locale == locale) & (db.author_settings.setting_name == 'biography')).select(db.author_settings.setting_value).first()
 
-    chapters = ompdal.getLocalizedChapters(book_id, locale)
+    chapters = ompdal.getLocalizedLatestRevisionOfChapters(book_id, locale)
     if not chapters:
-        chapters = ompdal.getChapters(book_id)
+        chapters = ompdal.getLatestRevisionOfChapters(book_id)
 
     pub_query = (db.publication_formats.submission_id == book_id) & (db.publication_format_settings.publication_format_id == db.publication_formats.publication_format_id) & (
         db.publication_format_settings.locale == locale)

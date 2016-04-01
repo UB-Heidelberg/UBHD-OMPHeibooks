@@ -105,18 +105,11 @@ class OMPDAL:
 
 		return self.db(q).select(self.db.submission_chapters.chapter_id, 
 					self.db.submission_chapter_settings.setting_value, 
-					self.db.submission_files.assoc_id, 
-					self.db.submission_files.submission_id, 
-					self.db.submission_files.genre_id,
-					self.db.submission_files.file_id, 
-					self.db.submission_files.revision, 
-					self.db.submission_files.file_stage, 
-					self.db.submission_files.date_uploaded, 
+					self.db.submission_files.ALL, 
 					orderby=[self.db.submission_chapters.chapter_seq, self.db.submission_files.assoc_id], 
-					groupby=[self.db.submission_chapters.chapter_id]
 		)
 
-        def getChapters(self, submission_id):
+        def getChapters(self, submission_id, locale):
 		"""
 		Get all chapters associated with the given submission.
 		"""
@@ -129,17 +122,65 @@ class OMPDAL:
 		)
 
                 return self.db(q).select(self.db.submission_chapters.chapter_id,
-                                	self.db.submission_chapter_settings.setting_value,
-                                	self.db.submission_files.assoc_id,
-                                	self.db.submission_files.submission_id,
-                                	self.db.submission_files.genre_id,
-                                	self.db.submission_files.file_id,
-                                	self.db.submission_files.revision,
-                                	self.db.submission_files.file_stage,
-                                	self.db.submission_files.date_uploaded,
+                                        self.db.submission_chapter_settings.setting_value,
+                                        self.db.submission_files.ALL,
                                 	orderby=[self.db.submission_chapters.chapter_seq, self.db.submission_files.assoc_id],
-                                	groupby=[self.db.submission_chapters.chapter_id]
 		)
+
+	def getLocalizedLatestRevisionOfChapters(self, submission_id, locale):
+                """
+                Get the latest revision for all chapter files associated with the given submission and a given locale.
+                """
+                q = ((self.db.submission_chapters.submission_id == submission_id)
+                                & (self.db.submission_chapters.chapter_id == self.db.submission_chapter_settings.chapter_id)
+                                & (self.db.submission_file_settings.locale == locale)
+                                & (self.db.submission_file_settings.setting_name == "chapterID")
+                                & (self.db.submission_file_settings.setting_value == self.db.submission_chapters.chapter_id)
+                                & (self.db.submission_file_settings.file_id == self.db.submission_files.file_id)
+                                & (self.db.submission_chapter_settings.setting_name == 'title')
+                )
+
+                chapters = self.db(q).select(self.db.submission_chapters.chapter_id,
+                                        self.db.submission_chapter_settings.setting_value,
+                                        self.db.submission_files.ALL,
+                                        orderby=[self.db.submission_chapters.chapter_seq, self.db.submission_files.assoc_id],
+                                        distinct=True
+                )
+                
+		latest_revision_chapters = []
+                for row in chapters:
+                        latest_revision = self.db(self.db.submission_files.file_id == row.submission_files.file_id).select(self.db.submission_files.revision.max()).first()[self.db.submission_files.revision.max()]
+                        if row.submission_files.revision == latest_revision:
+                                latest_revision_chapters.append(row)
+
+                return latest_revision_chapters
+
+	def getLatestRevisionOfChapters(self, submission_id):
+                """
+                Get the latest revision for all chapter files associated with the given submission.
+                """
+                q = ((self.db.submission_chapters.submission_id == submission_id)
+                                & (self.db.submission_chapters.chapter_id == self.db.submission_chapter_settings.chapter_id)
+                                & (self.db.submission_file_settings.setting_name == "chapterID")
+                                & (self.db.submission_file_settings.setting_value == self.db.submission_chapters.chapter_id)
+                                & (self.db.submission_file_settings.file_id == self.db.submission_files.file_id)
+                                & (self.db.submission_chapter_settings.setting_name == 'title')
+                )
+
+		chapters = self.db(q).select(self.db.submission_chapters.chapter_id,
+                                        self.db.submission_chapter_settings.setting_value,
+                                        self.db.submission_files.ALL,
+					orderby=[self.db.submission_chapters.chapter_seq, self.db.submission_files.assoc_id],
+                                        distinct=True
+		)
+		
+		latest_revision_chapters = []
+		for row in chapters:
+			latest_revision = self.db(self.db.submission_files.file_id == row.submission_files.file_id).select(self.db.submission_files.revision.max()).first()[self.db.submission_files.revision.max()]
+			if row.submission_files.revision == latest_revision:
+				latest_revision_chapters.append(row)
+
+		return latest_revision_chapters
 
 	def getLatestRevisionsOfFullBook(self, submission_id):
 		try:
