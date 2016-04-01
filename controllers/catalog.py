@@ -114,12 +114,13 @@ def index():
 
 def book():
     abstract, authors, cleanTitle, publication_format_settings_doi, press_name, subtitle = '', '', '', '', '', ''
+    
     locale = ''
     if session.forced_language == 'en':
         locale = 'en_US'
-
     if session.forced_language == 'de':
         locale = 'de_DE'
+    
     book_id = request.args[0] if request.args else redirect(
         URL('home', 'index'))
 
@@ -127,15 +128,13 @@ def book():
              & (db.submission_settings.locale == locale))
     book = db(query).select(db.submission_settings.ALL)
 
-    #if len(book) == 0:
-    #    redirect(URL('catalog', 'index'))
-
     ompdal = OMPDAL(db, myconf)
 
     authors = ompdal.getAuthors(book_id)
     editors = ompdal.getEditors(book_id)
 
     sub = ompdal.getSubmission(book_id)
+
     series_info = {}
     if sub.series_id:
         series_settings = ompdal.getLocalizedSeriesSettings(sub.series_id, locale)
@@ -154,7 +153,6 @@ def book():
     chapters = ompdal.getLocalizedChapters(book_id, locale)
     if not chapters:
         chapters = ompdal.getChapters(book_id)
-
 
     pub_query = (db.publication_formats.submission_id == book_id) & (db.publication_format_settings.publication_format_id == db.publication_formats.publication_format_id) & (
         db.publication_format_settings.locale == locale)
@@ -191,14 +189,11 @@ def book():
         if name and identification_code:
             identification_codes[
                 identification_code['value']] = name['setting_value']
-    date_pub_query =  (db.publication_formats.submission_id == book_id) & (db.publication_format_settings.publication_format_id == db.publication_formats.publication_format_id)
-    publication_dates = db(date_pub_query & (db.publication_format_settings.setting_value == myconf.take('omp.doi_format_name')) & (
-        db.publication_dates.publication_format_id == db.publication_format_settings.publication_format_id)).select(db.publication_dates.date, db.publication_dates.role, db.publication_dates.date_format)
 
     published_date = None
     print_published_date = None
     publication_year = ""
-    for row in publication_dates:
+    for row in ompdal.getPublicationDates(book_id):
         if row['date_format'] == '00':
             published_date = row['date']
             publication_year = published_date[:4]

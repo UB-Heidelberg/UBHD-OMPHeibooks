@@ -266,7 +266,7 @@
                 {{type_dict={} }}
                 {{=TR()}}
                 {{=TD()}}
-                {{for i  in publication_formats:}}
+                {{for i in publication_formats:}}
                 {{if i.publication_format_settings.setting_value == myconf.take('omp.xml_category_name'):}}
                 {{=TD('HTML')}}
                 {{else:}}
