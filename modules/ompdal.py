@@ -160,3 +160,15 @@ class OMPDAL:
 			files.append(self.db(q_latest).select(sf.ALL, orderby=sf.file_id, distinct=True).first())
 
 		return files
+
+	def getPublicationDates(self, submission_id):
+		q = ((self.db.publication_formats.submission_id == submission_id)
+			& (self.db.publication_format_settings.publication_format_id == self.db.publication_formats.publication_format_id)
+			& (self.db.publication_format_settings.setting_value == self.conf.take('omp.doi_format_name'))
+			& (self.db.publication_dates.publication_format_id == self.db.publication_format_settings.publication_format_id)
+		)
+		return self.db(q).select(self.db.publication_dates.date, 
+			self.db.publication_dates.role, 
+			self.db.publication_dates.date_format
+		)
+
