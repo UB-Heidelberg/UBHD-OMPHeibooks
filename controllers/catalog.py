@@ -212,7 +212,7 @@ def book():
         db.representatives.url,
         orderby=db.representatives.representative_id)
 
-    full_files = db((db.submission_files.submission_id == book_id) & (db.submission_files.genre_id == myconf.take('omp.monograph_type_id'))& (db.submission_files.file_stage > 5)).select(db.submission_files.original_file_name, db.submission_files.submission_id, db.submission_files.genre_id, db.submission_files.file_id, db.submission_files.revision, db.submission_files.file_stage, db.submission_files.date_uploaded , orderby=db.submission_files.file_id)
+    full_files = ompdal.getLatestRevisionsOfFullBook(book_id)
 
     press_location = ""
     for j in press_settings:

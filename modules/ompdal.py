@@ -16,7 +16,8 @@ class OMPDAL:
 					self.db.authors.first_name, 
 					self.db.authors.middle_name, 
 					self.db.authors.last_name, 
-					orderby=self.db.authors.seq)
+					orderby=self.db.authors.seq
+		)
 
 	def getEditors(self, submission_id):
         	"""
@@ -31,7 +32,8 @@ class OMPDAL:
 					self.db.authors.first_name, 
 					self.db.authors.middle_name, 
 					self.db.authors.last_name, 
-					orderby=self.db.authors.seq)
+					orderby=self.db.authors.seq
+		)
 
 	def getChapterAuthors(self, submission_id):
        		"""
@@ -46,7 +48,8 @@ class OMPDAL:
 					self.db.authors.first_name, 
 					self.db.authors.middle_name, 
 					self.db.authors.last_name, 
-					orderby=self.db.authors.seq)
+					orderby=self.db.authors.seq
+		)
 
         def getSubmission(self, submission_id):
 		"""
@@ -61,7 +64,8 @@ class OMPDAL:
 		return self.db(self.db.series.press_id==self.conf.take("omp.press_id")).select(
 					self.db.series.series_id, 
 					self.db.series.path, 
-					self.db.series.image)
+					self.db.series.image
+		)
 
 	def getLocalizedSeriesSettings(self, series_id, locale):
 		"""
@@ -72,7 +76,8 @@ class OMPDAL:
 					self.db.series_settings.series_id, 
 					self.db.series_settings.locale, 
 					self.db.series_settings.setting_name, 
-					self.db.series_settings.setting_value)
+					self.db.series_settings.setting_value
+		)
 
         def getSeriesSettings(self, series_id):
 		"""
@@ -82,7 +87,8 @@ class OMPDAL:
 					self.db.series_settings.series_id, 
 					self.db.series_settings.locale, 
 					self.db.series_settings.setting_name, 
-					self.db.series_settings.setting_value)
+					self.db.series_settings.setting_value
+		)
 
 	def getLocalizedChapters(self, submission_id, locale):
 		"""
@@ -94,7 +100,8 @@ class OMPDAL:
 				& (self.db.submission_file_settings.setting_name == "chapterID") 
 				& (self.db.submission_file_settings.setting_value == self.db.submission_chapters.chapter_id) 
 				& (self.db.submission_file_settings.file_id == self.db.submission_files.file_id) 
-				& (self.db.submission_chapter_settings.setting_name == 'title'))
+				& (self.db.submission_chapter_settings.setting_name == 'title')
+		)
 
 		return self.db(q).select(self.db.submission_chapters.chapter_id, 
 					self.db.submission_chapter_settings.setting_value, 
@@ -106,7 +113,8 @@ class OMPDAL:
 					self.db.submission_files.file_stage, 
 					self.db.submission_files.date_uploaded, 
 					orderby=[self.db.submission_chapters.chapter_seq, self.db.submission_files.assoc_id], 
-					groupby=[self.db.submission_chapters.chapter_id])
+					groupby=[self.db.submission_chapters.chapter_id]
+		)
 
         def getChapters(self, submission_id):
 		"""
@@ -117,7 +125,8 @@ class OMPDAL:
                         	& (self.db.submission_file_settings.setting_name == "chapterID")
                         	& (self.db.submission_file_settings.setting_value == self.db.submission_chapters.chapter_id)
                         	& (self.db.submission_file_settings.file_id == self.db.submission_files.file_id)
-                        	& (self.db.submission_chapter_settings.setting_name == 'title'))
+                        	& (self.db.submission_chapter_settings.setting_name == 'title')
+		)
 
                 return self.db(q).select(self.db.submission_chapters.chapter_id,
                                 	self.db.submission_chapter_settings.setting_value,
@@ -129,4 +138,25 @@ class OMPDAL:
                                 	self.db.submission_files.file_stage,
                                 	self.db.submission_files.date_uploaded,
                                 	orderby=[self.db.submission_chapters.chapter_seq, self.db.submission_files.assoc_id],
-                                	groupby=[self.db.submission_chapters.chapter_id])
+                                	groupby=[self.db.submission_chapters.chapter_id]
+		)
+
+	def getLatestRevisionsOfFullBook(self, submission_id):
+		try:
+			monograph_type_id = self.conf.take('omp.monograph_type_id')
+		except:
+			return []
+		sf = self.db.submission_files
+		q = ((sf.submission_id == submission_id)
+                        & (sf.genre_id == monograph_type_id)
+                        & (sf.file_stage > 5)
+		)
+		files = []
+		for f in self.db(q).select(sf.file_id, orderby=sf.file_id, distinct=True):
+			latest_revision = self.db(sf.file_id == f.file_id).select(sf.revision.max()).first()[sf.revision.max()]
+			q_latest = ((sf.file_id == f.file_id)
+				& (sf.revision == latest_revision)
+                	)
+			files.append(self.db(q_latest).select(sf.ALL, orderby=sf.file_id, distinct=True).first())
+
+		return files
