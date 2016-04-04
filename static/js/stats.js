@@ -29,7 +29,7 @@
      $('#oas').slideToggle()
    });
    var script = 'oastats-json.cgi';
-   var url = "../../../cgi-bin/"+script+"?repo=omphp&type=json&ids="+ids;
+   var url = "../../../cgi-bin/"+script+"?repo=omp&type=json&ids="+ids;
   var count, chapter_pdf, chapter_xml;
   //initialize
   chapter_pdf = 0;
