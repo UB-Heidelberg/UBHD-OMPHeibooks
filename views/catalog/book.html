@@ -285,5 +285,16 @@
   </div>
 </div>
 </section>
+<script>
+  var ids={{=XML(file_ids)}};
+  var full_xml, full_pdf;
+   {{ if 'full_xml' in  locals():}}
+    full_xml = "{{=full_xml}}";
+  {{pass}}
+  {{ if 'full_pdf' in  locals():}}
+    full_pdf= "{{=full_pdf}}";
+  {{pass}}
 
+
+</script>
 <script src="{{=URL(myconf.take('web.application'),'static','js/stats.js')}}" data-ids="{{=XML(file_ids)}}" data-full_pdf=full_pdf data-full_xml=full_xml ></script>
