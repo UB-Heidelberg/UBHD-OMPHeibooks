@@ -92,6 +92,9 @@ def index():
         if setting_name == 'title':
             subs.setdefault(id, {})['title'] = setting_value
         subs.setdefault(id, {})['authors'] = ompdal.getAuthors(id)
+        for row in ompdal.getPublicationDates(id):
+            if row['date_format'] == '00':
+                subs[id]['publication_date'] = row['date']
         subs[id]['editors'] = ompdal.getEditors(id)
         subs[id]['series_position'] = i.submissions.series_position
         series_id = i.submissions.series_id
@@ -107,7 +110,6 @@ def index():
                         series_info[series_id]['title'] = s.setting_value
                     if s.setting_name == 'subtitle':
                         series_info[series_id]['subtitle'] = s.setting_value
-
     return locals() 
 
 def book():
