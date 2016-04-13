@@ -218,7 +218,7 @@ db.define_table("submission_settings",
                 Field("setting_name", "string"),
                 Field("setting_value", "string"),
                 Field("setting_type", "string"),
-                primarykey=['submission_id'],
+                primarykey=['submission_id', 'locale', 'setting_name'],
                 migrate=False
                 )
 db.define_table("submission_file_settings",
