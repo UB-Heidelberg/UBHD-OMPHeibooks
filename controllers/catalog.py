@@ -66,7 +66,6 @@ def series():
     return locals()
 
 def index():
-    abstract, author, cleanTitle, subtitle = '', '', '', ''
     locale = 'de_DE'
     if session.forced_language == 'en':
         locale = 'en_US'
