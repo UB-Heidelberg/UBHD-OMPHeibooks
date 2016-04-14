@@ -33,6 +33,7 @@ def index():
     for st in settings:
       if st.setting_name in setting_types:
         series_info[st.setting_name] = st.setting_value
+    series_info['editors'] = ompdal.getSeriesEditors(s.series_id)
     series.append(series_info)
 
   series.sort(key=lambda s: s.get('title', 'z'))
