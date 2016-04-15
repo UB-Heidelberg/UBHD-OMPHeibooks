@@ -9,16 +9,13 @@
                 Universitätsmuseum Heidelberg. Kataloge.
             {{pass}}
             </h3>
-             {{if session.forced_language =='de': }}
-            <p class="reihen_herausgeber">Herausgeber: Matthias Untermann</p>
-                {{elif session.forced_language =='en': }}
-            <p class="reihen_herausgeber">Editor: Matthias Untermann</p>
-            {{pass}}
-
 
                 {{if session.forced_language =='de': }}
 <div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL(myconf.take('web.application'),'static','images/series/universitaetsmuseum_logo.png'),_width='230px')}}</p>
 <br>
+                <p><b>Herausgeber</b><br>
+                Matthias Untermann
+                </p>
                 <p><b>Kontakt</b><br>
                 Universitätsmuseum<br />
                 Grabengasse 1 <br />
@@ -46,7 +43,11 @@
 
                      {{elif session.forced_language =='en': }}
 <div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL(myconf.take('web.application'),'static','images/series/universitaetsmuseum_logo.png'),_width='230px')}}</p>
-<br>
+<br>i
+                <p><b>Editor</b><br>
+                Matthias Untermann
+                </p>
+
                 <p><b>Contact</b><br>
                 Universitätsmuseum<br />
                 Grabengasse 1 <br />
