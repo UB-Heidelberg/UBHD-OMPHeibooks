@@ -5,17 +5,16 @@ Distributed under the GNU GPL v3. For full terms see the file
 LICENSE.md
 '''
 
-
-def for_authors():
-    return dict()
-
-
-def book_proposal():
-    return dict()
-
-
-def rights_and_licences():
-    return dict()
+from os.path import exists
 
 def index():
-  return dict()
+    if request.args == []:
+        redirect( URL('home', 'index'))
+    partner_token = request.args[0]
+    
+    if exists(request.folder+'views/partner/'+partner_token+'.html'):
+        content = 'partner/'+partner_token+'.html'
+    else:
+        redirect( URL('home', 'index'))
+        
+    return locals()
