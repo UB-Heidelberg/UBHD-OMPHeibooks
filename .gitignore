@@ -46,3 +46,10 @@ errors/*
 private/
 errors/*
 *.swp
+*.swo
+
+# Eclipse project folders #
+###########################
+.project
+.pydevproject
+.settings/
