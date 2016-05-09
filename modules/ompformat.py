@@ -10,6 +10,7 @@ from gluon import current
 from datetime import datetime
 from locale import getlocale, setlocale, getdefaultlocale, LC_TIME
 from os.path import exists, join
+from re import findall
 
 ONIX_INPUT_DATE_MAP = {
     "00": "%Y%m%d",    #Year month day (default).
@@ -238,3 +239,27 @@ def haveMultipleAuthors(chapters):
         return False
     else:
         return True
+
+def seriesPositionCompare(s1, s2):
+    p1 = s1.attributes.series_position
+    p2 = s2.attributes.series_position
+    try:
+        # Try casting to integer
+        p1 = float(p1)
+        p2 = float(p2)
+    except ValueError:
+        try:
+            # Try finding an integer substring
+            p1 = int(findall("[0-9]+", p1).pop())
+            p2 = int(findall("[0-9]+", p2).pop())
+        except IndexError:
+            # No integer value found – keep position values as is for comparison
+            pass
+            
+    if p1 > p2:
+	return 1
+    elif p2 > p1:
+        return -1
+    else:
+	return 0
+

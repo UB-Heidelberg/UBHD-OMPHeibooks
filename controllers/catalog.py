@@ -8,15 +8,16 @@ LICENSE.md
 import os
 from operator import itemgetter
 from ompdal import OMPDAL, OMPSettings, OMPItem
-from ompformat import convertDate
+from ompformat import convertDate, seriesPositionCompare
 from datetime import datetime
 
 def series():
-    locale = ''
     if session.forced_language == 'en':
         locale = 'en_US'
     elif session.forced_language == 'de':
         locale = 'de_DE'
+    else:
+        locale = ''
 
     ignored_submission_id = myconf.take('omp.ignore_submissions') if myconf.take('omp.ignore_submissions') else -1
     
@@ -49,7 +50,8 @@ def series():
         )
         
         submissions.append(submission)
-    
+
+    submissions = sorted(submissions, cmp=seriesPositionCompare, reverse=True)
     series.associated_items['submissions'] = submissions
 
     return locals()
