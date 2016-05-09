@@ -80,7 +80,7 @@ class OMPDAL:
 			& (s.status == status)
 		)
 		
-		return self.db(q).select(s.ALL, orderby=s.series_position)
+		return self.db(q).select(s.ALL, orderby=~s.series_position)
 	
 	def getPublishedSubmission(self, submission_id, press_id=None):
 		"""
@@ -271,7 +271,7 @@ class OMPDAL:
 	
 	def getPublicationFormatsBySubmission(self, submission_id, available=True, approved=True):
 		"""
-		Get all publication formats for the given submission.
+		Get all approved and available publication formats for the given submission.
 		"""
 		pf = self.db.publication_formats
 		q = ((pf.submission_id == submission_id) 
@@ -280,7 +280,16 @@ class OMPDAL:
 		)
 		
 		return self.db(q).select(pf.ALL)
-
+        
+        def getAllPublicationFormatsBySubmission(self, submission_id, available=True, approved=True):
+                """
+            	Get all approved and available publication formats for the given submission.
+            	"""
+            	pf = self.db.publication_formats
+            	q = (pf.submission_id == submission_id)
+                
+            	return self.db(q).select(pf.ALL)
+    
 	def getPhysicalPublicationFormats(self, submission_id, available=True, approved=True):
 		"""
 		Get all publication formats marked as physical format for the given submission.
