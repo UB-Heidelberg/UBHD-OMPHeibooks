@@ -40,13 +40,14 @@ Thumbs.db
 databases/*
 .idea/*
 sessions/*
+static/monographs
+static/series
 static/files
 private/*
 errors/*
 private/
 errors/*
 *.swp
-*.swo
 
 # Eclipse project folders #
 ###########################
