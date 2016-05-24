@@ -11,7 +11,7 @@
             </h3>
 
                 {{if session.forced_language =='de': }}
-<div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL(myconf.take('web.application'),'static','images/series/universitaetsmuseum_logo.png'),_width='230px')}}</p>
+<div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL('static','images/series/universitaetsmuseum_logo.png'),_width='230px')}}</p>
 <br>
                 <p><b>Herausgeber</b><br>
                 Matthias Untermann
@@ -32,7 +32,7 @@
              
                             <li>
                               
-                               <p><a href="../catalog/series/universitaetsmuseum">{{=T('Volumes')}}</a></p>
+                               <p><a href="{{=URL('catalog', 'series/universitaetsmuseum')}}">{{=T('Volumes')}}</a></p>
 
                             </li>
                               
@@ -42,7 +42,7 @@
                     </div>
 
                      {{elif session.forced_language =='en': }}
-<div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL(myconf.take('web.application'),'static','images/series/universitaetsmuseum_logo.png'),_width='230px')}}</p>
+<div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL('static','images/series/universitaetsmuseum_logo.png'),_width='230px')}}</p>
 <br>i
                 <p><b>Editor</b><br>
                 Matthias Untermann
@@ -63,7 +63,7 @@
                         <ul class="tags">
              
                             <li>
-                               <p><a href="../catalog/series/universitaetsmuseum">{{=T('Volumes')}}</a></p>
+                               <p><a href="{{=URL('catalog', 'series/universitaetsmuseum')}}">{{=T('Volumes')}}</a></p>
                             </li>
 
                         </ul>
