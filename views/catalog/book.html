@@ -3,6 +3,101 @@
 {{from ompdal import OMPDAL}}
 {{from os.path import join}}
 
+
+
+<script>
+    var book_csl_json = {
+    "id": "Item-1",
+    "type": "book",
+    "title": "Digital Typography",
+    "publisher": "Center for the Study of Language and Information",
+    "publisher-place": "Heidelberg",
+    "number-of-pages": "685",
+    "source": "Amazon.com",
+    "ISBN": "1575860104",
+    "DOI": "10.11588/heibooks.70.60",
+    "author": [
+        {
+            "family": "Wurst",
+            "given": "Sepp"
+        },
+            {
+            "family": "Wurst",
+            "given": "Hans"
+        },
+      {
+        "family": "Knuth",
+        "given": "Donald E."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          "1998",
+          6,
+          1
+        ]
+      ]
+    }
+    }
+
+    // Initialize a system object, which contains two methods needed by the
+    // engine.
+
+    // Given the identifier of a CSL style and language code, this function loads the style, preloads a locale file for
+    // the given language and then instantiates a CSL.Engine object that can render citations in that style.
+    function initProcessor(styleID, lang, processorReady) {
+        // Get the CSL style as a serialized string of XML
+        var citeprocSys = {
+                // Given a language tag in RFC-4646 form, this method retrieves the
+                // locale definition file.  This method must return a valid *serialized*
+                // CSL locale. (In other words, an blob of XML as an unparsed string.  The
+                // processor will fail on a native XML object or buffer).
+                retrieveLocale: function (lang){
+                    return this.localeXml;
+                },
+
+                // Given an identifier, this retrieves one citation item.  This method
+                // must return a valid CSL-JSON object.
+                retrieveItem: function(id){
+                    // Always return the static json for testing
+                    return book_csl_json;
+                }
+            };
+        if(lang == 'de') {
+            lang = 'de-DE';
+        }
+        else if (lang == 'en') {
+            lang = 'en-US';
+        }
+        else {
+            console.log('Unsupported locale: ' + lang);
+        }
+        $.when(
+          // Get the CSL style
+          $.get('{{=URL('static', 'csl/')}}' + styleID + '.csl', function( data ) {
+              citeprocSys.style = data;
+          }),
+          // Get the locale file
+          $.get('{{=URL('static','csl/locales-')}}' + lang + '.xml', function(localeText) {
+              citeprocSys.localeXml = localeText;
+          }, 'text')
+        ).then(function() {
+            processorReady(new CSL.Engine(citeprocSys, citeprocSys.style, lang, true));
+        });
+    }
+
+    function renderBib(citeproc) {
+        citeproc.updateItems(['Item-1']);
+        // Function returns an array, the first
+        var bibHtml = citeproc.makeBibliography()[1][0];
+        $('#cite-suggestion').html(bibHtml);
+    }
+
+    $(function() {
+        initProcessor('chicago-fullnote-bibliography', '{{=session.forced_language}}', renderBib);
+    });
+</script>
 <div id="main" class="container">
 	<section id="content">
 	  <div style="height: 20px"></div>
@@ -27,6 +122,7 @@
 	        <div class="box">
 	          <div class="box-gray alignleft" style="height: auto;">
 	            <h5 style="color: #656565; margin-bottom: 0.5em;">{{=T('How to cite this title')}}</h5>
+                <div id="cite-suggestion"></div>
 	            <p>
 	            {{citation_year=dateToStr(date_published, locale, "%Y")}}
 	            {{=formatCitation(cleanTitle, subtitle, authors, editors, citation_year, press_settings.getLocalizedValue('location', ''), press_settings.getLocalizedValue('publisher', ''), doi, locale, series_name=series_name, series_pos=submission.series_position, max_contrib=3)}}
@@ -71,9 +167,7 @@
 							</ul>
 							<div class="tab-content">
 								<div class="tab-pane active" id="full">
-									<table class="table">
 									{{=stats.getFullHTMLTable(submission_id,file_types, "width: inherit; padding:0; font-size:15px")}}
-									</table>
 								</div>
 								{{if len(chapter_html)> 1:}}
 									<div class="tab-pane" id="chapters">
@@ -188,7 +282,7 @@
 	            	<div class="chapter_row table_head">
 	            		<div class="chapter_cell">{{=T('Contents')}}</div>
 	            		{{for pf in digital_publication_formats:}}
-	            			<div class="chapter_cell">{{=TD(pf.settings.getLocalizedValue('name', locale))}}</div>
+	            			<div class="chapter_cell">{{=pf.settings.getLocalizedValue('name', locale)}}</div>
 	            		{{pass}}
 	            	</div>
 	            	{{display_authors=haveMultipleAuthors(chapters)}}
