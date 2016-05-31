@@ -2,48 +2,12 @@
 {{from ompformat import formatCitation, formatContributors, formatName, dateFromRow, dateToStr, formatONIXDate, formatONIXDateWithText, coverImageLink, downloadLink, haveMultipleAuthors}}
 {{from ompdal import OMPDAL}}
 {{from os.path import join}}
+{{from ompcsl import build_csl_data}}
 
-
-
+<script type="application/json" id="book-csl-json">{{=XML(book_json)}}</script>
 <script>
-    var book_csl_json = {
-    "id": "Item-1",
-    "type": "book",
-    "title": "Digital Typography",
-    "publisher": "Center for the Study of Language and Information",
-    "publisher-place": "Heidelberg",
-    "number-of-pages": "685",
-    "source": "Amazon.com",
-    "ISBN": "1575860104",
-    "DOI": "10.11588/heibooks.70.60",
-    "author": [
-        {
-            "family": "Wurst",
-            "given": "Sepp"
-        },
-            {
-            "family": "Wurst",
-            "given": "Hans"
-        },
-      {
-        "family": "Knuth",
-        "given": "Donald E."
-      }
-    ],
-    "issued": {
-      "date-parts": [
-        [
-          "1998",
-          6,
-          1
-        ]
-      ]
-    }
-    }
-
     // Initialize a system object, which contains two methods needed by the
     // engine.
-
     // Given the identifier of a CSL style and language code, this function loads the style, preloads a locale file for
     // the given language and then instantiates a CSL.Engine object that can render citations in that style.
     function initProcessor(styleID, lang, processorReady) {
@@ -60,8 +24,8 @@
                 // Given an identifier, this retrieves one citation item.  This method
                 // must return a valid CSL-JSON object.
                 retrieveItem: function(id){
-                    // Always return the static json for testing
-                    return book_csl_json;
+                    // Return the Json of the Script element
+                    return $.parseJSON($('#book-csl-json').html());
                 }
             };
         if(lang == 'de') {
@@ -75,11 +39,11 @@
         }
         $.when(
           // Get the CSL style
-          $.get('{{=URL('static', 'csl/')}}' + styleID + '.csl', function( data ) {
+          $.get('{{=URL('static', 'files/csl/')}}' + styleID + '.csl', function( data ) {
               citeprocSys.style = data;
           }),
           // Get the locale file
-          $.get('{{=URL('static','csl/locales-')}}' + lang + '.xml', function(localeText) {
+          $.get('{{=URL('static','files/csl/locales-')}}' + lang + '.xml', function(localeText) {
               citeprocSys.localeXml = localeText;
           }, 'text')
         ).then(function() {
@@ -88,7 +52,7 @@
     }
 
     function renderBib(citeproc) {
-        citeproc.updateItems(['Item-1']);
+        citeproc.updateItems([{{=XML(submission_id)}}]);
         // Function returns an array, the first
         var bibHtml = citeproc.makeBibliography()[1][0];
         $('#cite-suggestion').html(bibHtml);
