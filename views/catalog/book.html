@@ -1,67 +1,9 @@
 {{extend 'layout.html'}}
 {{from ompformat import formatCitation, formatContributors, formatName, dateFromRow, dateToStr, formatONIXDate, formatONIXDateWithText, coverImageLink, downloadLink, haveMultipleAuthors}}
 {{from ompdal import OMPDAL}}
+{{from ompcsl import render_citeproc_javascript}}
 {{from os.path import join}}
-{{from ompcsl import build_csl_data}}
 
-<script type="application/json" id="book-csl-json">{{=XML(book_json)}}</script>
-<script>
-    // Initialize a system object, which contains two methods needed by the
-    // engine.
-    // Given the identifier of a CSL style and language code, this function loads the style, preloads a locale file for
-    // the given language and then instantiates a CSL.Engine object that can render citations in that style.
-    function initProcessor(styleID, lang, processorReady) {
-        // Get the CSL style as a serialized string of XML
-        var citeprocSys = {
-                // Given a language tag in RFC-4646 form, this method retrieves the
-                // locale definition file.  This method must return a valid *serialized*
-                // CSL locale. (In other words, an blob of XML as an unparsed string.  The
-                // processor will fail on a native XML object or buffer).
-                retrieveLocale: function (lang){
-                    return this.localeXml;
-                },
-
-                // Given an identifier, this retrieves one citation item.  This method
-                // must return a valid CSL-JSON object.
-                retrieveItem: function(id){
-                    // Return the Json of the Script element
-                    return $.parseJSON($('#book-csl-json').html());
-                }
-            };
-        if(lang == 'de') {
-            lang = 'de-DE';
-        }
-        else if (lang == 'en') {
-            lang = 'en-US';
-        }
-        else {
-            console.log('Unsupported locale: ' + lang);
-        }
-        $.when(
-          // Get the CSL style
-          $.get('{{=URL('static', 'files/csl/')}}' + styleID + '.csl', function( data ) {
-              citeprocSys.style = data;
-          }),
-          // Get the locale file
-          $.get('{{=URL('static','files/csl/locales-')}}' + lang + '.xml', function(localeText) {
-              citeprocSys.localeXml = localeText;
-          }, 'text')
-        ).then(function() {
-            processorReady(new CSL.Engine(citeprocSys, citeprocSys.style, lang, true));
-        });
-    }
-
-    function renderBib(citeproc) {
-        citeproc.updateItems([{{=XML(submission_id)}}]);
-        // Function returns an array, the first
-        var bibHtml = citeproc.makeBibliography()[1][0];
-        $('#cite-suggestion').html(bibHtml);
-    }
-
-    $(function() {
-        initProcessor('chicago-fullnote-bibliography', '{{=session.forced_language}}', renderBib);
-    });
-</script>
 <div id="main" class="container">
 	<section id="content">
 	  <div style="height: 20px"></div>
@@ -86,12 +28,8 @@
 	        <div class="box">
 	          <div class="box-gray alignleft" style="height: auto;">
 	            <h5 style="color: #656565; margin-bottom: 0.5em;">{{=T('How to cite this title')}}</h5>
-                <div id="cite-suggestion"></div>
-	            <p>
-	            {{citation_year=dateToStr(date_published, locale, "%Y")}}
-	            {{=formatCitation(cleanTitle, subtitle, authors, editors, citation_year, press_settings.getLocalizedValue('location', ''), press_settings.getLocalizedValue('publisher', ''), doi, locale, series_name=series_name, series_pos=submission.series_position, max_contrib=3)}}
-	            {{=A(doi, _href="http://dx.doi.org/"+doi)}}
-	            </p>
+                {{=render_citeproc_javascript(book_data, 'chicago-fullnote-bibliography', session.forced_language, '#citation')}}
+                <div id="citation"></div>
 				<h5 style="color: #656565; margin-top: 1.2em; margin-bottom: 0.5em;">{{=T('Licenses')}}</h5>
 				{{if session.forced_language =='de': }}
 					<p>Dieses Werk ist unter der<br> <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.de" title="Homepage Creative Commons; Lizenz CC BY-SA 4.0">Creative Commons-Lizenz 4.0<br/> (CC BY-SA 4.0)</a> veröffentlicht.<br>

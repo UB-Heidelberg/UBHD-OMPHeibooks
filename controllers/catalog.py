@@ -12,7 +12,6 @@ from ompformat import dateFromRow, seriesPositionCompare
 from ompstats import OMPStats
 from ompcsl import build_csl_data
 from datetime import datetime
-from gluon.serializers import json
 
 
 def series():
@@ -106,6 +105,7 @@ def book():
         locale = 'de_DE'
     else:
         locale = ''
+    response.files.append(URL('static', 'js/citeproc.js'))
 
     submission_id = request.args[0] if request.args else redirect(
         URL('home', 'index'))
@@ -198,6 +198,7 @@ def book():
     
     stats = OMPStats(myconf, db, locale)
 
-    book_json = json(build_csl_data(OMPItem(submission, submission_settings), authors, date_published, doi, press_settings,
-                                    locale, series, editors))
+    # For citeproc-js
+    book_data = build_csl_data(OMPItem(submission, submission_settings), authors, date_published, doi, press_settings,
+                                    locale, series, editors)
     return locals()
