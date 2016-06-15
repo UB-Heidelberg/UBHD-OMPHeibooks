@@ -1,7 +1,6 @@
 {{extend 'layout.html'}}
 {{from ompformat import formatCitation, formatContributors, formatName, dateFromRow, dateToStr, formatONIXDate, formatONIXDateWithText, coverImageLink, downloadLink, haveMultipleAuthors}}
 {{from ompdal import OMPDAL}}
-{{from ompcsl import render_citeproc_javascript}}
 {{from os.path import join}}
 
 <div id="main" class="container">
@@ -15,6 +14,8 @@
 	            {{=IMG(_src=coverImageLink(request, press.press_id, submission.submission_id))}}
 	          </div>
 	        </article>
+              <script src="{{=URL('static', 'citeproc/citeproc.js')}}"></script>
+              <script src="{{=URL('static', 'citeproc/citeproc.jquery.js')}}"></script>
 	        {{cleanTitle = " ".join([submission_settings.getLocalizedValue('prefix', locale), submission_settings.getLocalizedValue('title', locale)])}}
 	    	{{subtitle = submission_settings.getLocalizedValue('subtitle', locale)}}
 	    	{{abstract = submission_settings.getLocalizedValue('abstract', locale)}}
@@ -28,8 +29,14 @@
 	        <div class="box">
 	          <div class="box-gray alignleft" style="height: auto;">
 	            <h5 style="color: #656565; margin-bottom: 0.5em;">{{=T('How to cite this title')}}</h5>
-                {{=render_citeproc_javascript(book_data, 'chicago-fullnote-bibliography', session.forced_language, '#citation')}}
                 <div id="citation"></div>
+                <script type="text/javascript">
+                    $.fn.citeRender.defaults.baseUrl = '{{=URL('static', 'citeproc')}}';
+                    $.fn.citeRender.defaults.dataUrl = '{{=URL('api', 'csl_data')}}';
+                    $.fn.citeRender.defaults.lang = '{{=session.forced_language}}';
+                    $('#citation').citeRender({{=XML(submission_id)}});
+                </script>
+
 				<h5 style="color: #656565; margin-top: 1.2em; margin-bottom: 0.5em;">{{=T('Licenses')}}</h5>
 				{{if session.forced_language =='de': }}
 					<p>Dieses Werk ist unter der<br> <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.de" title="Homepage Creative Commons; Lizenz CC BY-SA 4.0">Creative Commons-Lizenz 4.0<br/> (CC BY-SA 4.0)</a> veröffentlicht.<br>

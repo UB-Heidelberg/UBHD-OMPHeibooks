@@ -105,7 +105,6 @@ def book():
         locale = 'de_DE'
     else:
         locale = ''
-    response.files.append(URL('static', 'js/citeproc.js'))
 
     submission_id = request.args[0] if request.args else redirect(
         URL('home', 'index'))
