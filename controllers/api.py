@@ -151,7 +151,6 @@ def oastatistik():
 
 
 def csl_data():
-    submission_id = None
     if request.args:
         submission_id = request.args[0]
     else:
