@@ -15,7 +15,7 @@
 	          </div>
 	        </article>
               <script src="{{=URL('static', 'citeproc/citeproc.js')}}"></script>
-              <script src="{{=URL('static', 'citeproc/citeproc.jquery.js')}}"></script>
+              <script src="{{=URL('static', 'citeproc/citeproc-wrapper.js')}}"></script>
 	        {{cleanTitle = " ".join([submission_settings.getLocalizedValue('prefix', locale), submission_settings.getLocalizedValue('title', locale)])}}
 	    	{{subtitle = submission_settings.getLocalizedValue('subtitle', locale)}}
 	    	{{abstract = submission_settings.getLocalizedValue('abstract', locale)}}
