@@ -150,7 +150,7 @@ def oastatistik():
     return sj.dumps(subs, separators=(',', ':'), sort_keys=True)
 
 
-def csl_data():
+def csl():
     if request.args:
         submission_id = request.args[0]
     else:

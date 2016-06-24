@@ -14,8 +14,8 @@
 	            {{=IMG(_src=coverImageLink(request, press.press_id, submission.submission_id))}}
 	          </div>
 	        </article>
-              <script src="{{=URL('static', 'citeproc/citeproc.js')}}"></script>
-              <script src="{{=URL('static', 'citeproc/citeproc-wrapper.js')}}"></script>
+              {{=SCRIPT(_src=URL('static', 'citeproc/citeproc.min.js'))}}
+              {{=SCRIPT(_src=URL('static', 'citeproc/citeproc-wrapper.js'))}}
 	        {{cleanTitle = " ".join([submission_settings.getLocalizedValue('prefix', locale), submission_settings.getLocalizedValue('title', locale)])}}
 	    	{{subtitle = submission_settings.getLocalizedValue('subtitle', locale)}}
 	    	{{abstract = submission_settings.getLocalizedValue('abstract', locale)}}
@@ -32,7 +32,6 @@
                 <div id="citation"></div>
                 <script type="text/javascript">
                     $.fn.citeRender.defaults.baseUrl = '{{=URL('static', 'citeproc')}}';
-                    $.fn.citeRender.defaults.dataUrl = '{{=URL('api', 'csl_data')}}';
                     $.fn.citeRender.defaults.lang = '{{=session.forced_language}}';
                     $('#citation').citeRender({{=XML(submission_id)}});
                 </script>
