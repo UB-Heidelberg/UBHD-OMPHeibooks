@@ -32,6 +32,7 @@
                 <div id="citation"></div>
                 <script type="text/javascript">
                     $.fn.citeRender.defaults.baseUrl = '{{=URL('static', 'citeproc')}}';
+                    $.fn.citeRender.defaults.dataUrl = '{{=URL('api', 'csl')}}';
                     $.fn.citeRender.defaults.lang = '{{=session.forced_language}}';
                     $('#citation').citeRender({{=XML(submission_id)}});
                 </script>
