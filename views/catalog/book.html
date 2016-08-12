@@ -104,7 +104,7 @@
 	              	{{full_file = pf.associated_items.get('full_file')}}
 	              	{{if full_file and "html" in full_file.file_type:}}
 	              		<div class="btn-group" role="group" aria-label="1">
-	              			<li type="button" class="btn btn-default"><a href={{=downloadLink(request.application, full_file)}} target="_blank">{{=T('Read')}}</a></li>
+	              			<li type="button" class="btn btn-default" ><a href={{=downloadLink(request.application, full_file)}} target="_blank">{{=T('Read')}}</a></li>
 	              		</div>
 	              	{{pass}}
 	              {{pass}}
@@ -124,7 +124,35 @@
 		              {{pass}}
                     </div>
 				  {{pass}}
-	            
+                      <!-- Button Zitationen anzeigen -->
+	            <div class="btn-group" role="group" aria-label="2">
+                    <li type="button" class="btn btn-default" data-toggle="modal" data-target="#citationModal"><a target="_blank">{{=T('Cite')}}</a></li>
+                </div>
+                      <!-- Modal -->
+                        <div id="citationModal" class="modal fade" role="dialog">
+                          <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Modal Header</h4>
+                              </div>
+                              <div id="citationModalBody" class="modal-body">
+
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+
+
+                          </div>
+                        </div>
+                      <script>
+                          $('#citationModalBody').citeRenderAll({{=XML(submission_id)}});
+                      </script>
+                      <!-- End Button Zitationen anzeigen-->
 	            <div class="btn-group" role="group" aria-label="2">
 		        {{if representatives:}}
 	              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
