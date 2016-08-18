@@ -82,6 +82,27 @@
               <h4>News</h4>
           {{pass}}
           
+		    <div class="media">
+                  <div class="media-left pull-left">
+                        <img src="{{=URL('static','images/home/heibooks_logo.png')}}" width="50px" />
+                  </div>                        
+                  <div class="media-body">      
+                      <p class="media-heading">18.08.2016<br>
+        {{if session.forced_language =='de': }}  
+            <h5>Neu in heiBOOKS</h5>
+        {{elif session.forced_language =='en': }}
+            <h5>New in heiBOOKS</h5> 
+        {{pass}}          
+                      </p>
+                  <p class="boxText">
+        {{if session.forced_language =='de': }} 
+            Einige der älteren Bände der <b>"{{=A('Schriften der Universitätsbibliothek Heidelberg',_href=URL('series','info/ubhd_schriften'))}}"</b> erscheinen ab sofort auch online. Die 1999 begründete Schriftenreihe umfasst die Kataloge der in der UB Heidelberg gezeigten Ausstellungen, in denen in Kooperation mit Instituten der Heidelberger Universität aber auch mit auswärtigen Partnern überwiegend hauseigene Bestände präsentiert wurden.  
+{{elif session.forced_language =='en': }}
+            Some of the older volumes of <b>"{{=A('Schriften der Universitätsbibliothek Heidelberg',_href=URL('series','info/ubhd_schriften'))}}"</b> are now being published online with immediate effectThe publication series, established in 1999, includes catalogues of exhibitions - mostly presenting in-house-collections - which took place  at Heidelberg University Library, in collaboration with institutes of Heidelberg University or external partners.      
+                          {{pass}}                                   
+                                      </p>
+                                    </div>
+                                </div>   
           
               <div class="media">
                   <div class="media-left pull-left">
