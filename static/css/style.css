@@ -2069,6 +2069,8 @@ article img.pull-right, article .align-right{
 
 /*Anpassungen WWW Heidelberg*/
 
+.bildrahmen, .post-image img {border:1px solid #cdcbcc} 
+
 @media (min-width:769px) and (max-width: 979px)
        {
        .navbar-default .navbar-nav > .open > a {
@@ -2263,6 +2265,8 @@ li.active {
 #boxAktuelles {
   width: 45%;
 } 
+
+.media-heading {text-align:left;} 
 
 #boxAktuelles .box .media {
   font-size: 0.9em;

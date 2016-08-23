@@ -76,7 +76,9 @@
 							</ul>
 							<div class="tab-content">
 								<div class="tab-pane active" id="full">
+									<table class="table">
 									{{=stats.getFullHTMLTable(submission_id,file_types, "width: inherit; padding:0; font-size:15px")}}
+									</table>
 								</div>
 								{{if len(chapter_html)> 1:}}
 									<div class="tab-pane" id="chapters">
@@ -102,13 +104,13 @@
 	          	<div class="">
 	              {{for pf in digital_publication_formats:}}
 	              	{{full_file = pf.associated_items.get('full_file')}}
-	              	{{if full_file and "html" in full_file.file_type:}}
+	              	{{if full_file and ("xml" in full_file.attributes.file_type or "html" in full_file.attributes.file_type):}}
 	              		<div class="btn-group" role="group" aria-label="1">
-	              			<li type="button" class="btn btn-default" ><a href={{=downloadLink(request.application, full_file)}} target="_blank">{{=T('Read')}}</a></li>
+	              			<li type="button" class="btn btn-default"><a href={{=downloadLink(request, full_file.attributes, myconf.take('web.url'), full_file.settings.getLocalizedValue("vgWortPublic", ""))}} target="_blank">{{=T('Read')}}</a></li>
 	              		</div>
 	              	{{pass}}
 	              {{pass}}
-	              {{if [pf.associated_items.get('full_file', None).file_type != "text/html" for pf in digital_publication_formats if pf.associated_items.get('full_file', None)].count(True):}}
+	              {{if [(pf.associated_items.get('full_file', None).attributes.file_type != "text/html" or pf.associated_items.get('full_file', None).attributes.file_type != "text/xml") for pf in digital_publication_formats if pf.associated_items.get('full_file', None)].count(True):}}
 	              	<div class="btn-group" role="group" aria-label="2">
 	              	  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
 	                	{{=T('Download')}}
@@ -116,9 +118,9 @@
 	              	  </button>
 		              {{for pf in digital_publication_formats:}}
 		              	{{full_file = pf.associated_items.get('full_file')}}
-		              	{{if full_file and not "html" in full_file.file_type:}}
+		              	{{if full_file and not "html" in full_file.attributes.file_type and not "xml" in full_file.attributes.file_type:}}
 		             		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-		                		<li role="presentation"><a role="menuitem" tabindex="-1" href={{=downloadLink(request.application, full_file)}}>PDF</a></li>
+		                		<li role="presentation"><a role="menuitem" tabindex="-1" href={{=downloadLink(request, full_file.attributes, myconf.take('web.url'), full_file.settings.getLocalizedValue("vgWortPublic", ""))}}>{{=pf.settings.getLocalizedValue('name', locale)}}</a></li>
 		              		</ul>
 		              	{{pass}}
 		              {{pass}}
@@ -219,7 +221,7 @@
 	            	<div class="chapter_row table_head">
 	            		<div class="chapter_cell">{{=T('Contents')}}</div>
 	            		{{for pf in digital_publication_formats:}}
-	            			<div class="chapter_cell">{{=pf.settings.getLocalizedValue('name', locale)}}</div>
+	            			<div class="chapter_cell">{{=TD(pf.settings.getLocalizedValue('name', locale))}}</div>
 	            		{{pass}}
 	            	</div>
 	            	{{display_authors=haveMultipleAuthors(chapters)}}
@@ -243,8 +245,13 @@
 	            				{{if c_files:}}
 	            					{{c_file = c_files.get(pf.attributes.publication_format_id)}}
 	            					{{if c_file:}}
+	            						{{if "xml" in c_file.attributes.file_type or "html" in c_file.attributes.file_type:}}
+	            							{{css_class="fa fa-html5"}}
+	            						{{else:}}
+	            							{{css_class="fa fa-file-text-o"}}
+	            						{{pass}}
 	            						<div class="chapter_file">
-	            							{{=A(I(_class="fa fa-file-text-o"), _href=downloadLink(request.application, c_file))}}
+	            							{{=A(I(_class=css_class), _href=downloadLink(request, c_file.attributes, myconf.take('web.url'), c_file.settings.getLocalizedValue('vgWortPublic', '')))}}
 	            						</div>
 	            					{{pass}}
 	            				{{pass}}
