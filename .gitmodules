@@ -3,4 +3,4 @@
 	url = https://github.com/UB-Heidelberg/omp-modules.git
 [submodule "static/citeproc"]
 	path = static/citeproc
-	url = git@github.com:UB-Heidelberg/citeproc-js-wrapper.git
+	url = https://github.com/UB-Heidelberg/citeproc-js-wrapper.git
