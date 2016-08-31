@@ -2307,11 +2307,12 @@ li.active {
 /**************/
 
 #infoBoxRechts {
-  float: right;
-  background-color:#f7f7f7;
+/*  float: right;
   padding-top:1em;
-  padding-bottom:1em;
-  margin-left:1em;
+  margin-left:1em;*/
+  background-color:#f7f7f7;
+  overflow: hidden;
+  padding: 15px;
 }
 
 
