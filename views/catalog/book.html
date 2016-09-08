@@ -47,8 +47,8 @@
 				{{pass}}
 	            {{identification_codes = [i for i in [pf.associated_items.get('identification_codes', []) for pf in digital_publication_formats+physical_publication_formats] if i]}}
 	            {{if identification_codes:}}
-	            	<h5 style="color: #656565; margin-bottom: 0.5em; margin-top: 1.2em;">ISBN</h5>
 	            {{pass}}
+	            	<h5 style="color: #656565; margin-bottom: 0.5em; margin-top: 1.2em;">ISBN</h5>
 	            {{for pf in digital_publication_formats+physical_publication_formats:}}
 	           	  <p style="margin:0px">
 	              {{for identification_code in pf.associated_items.get('identification_codes', []):}}
@@ -137,10 +137,10 @@
                         <div class="modal-content">
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Modal Header</h4>
+                          <h4 class="modal-title">{{=T('Choose citation style')}}</h4>
                         </div>
                         <div id="citationModalBody" class="modal-body">
-                          <!-- Citation accordian will be displayed here-->
+                          <!-- Citation accordion will be displayed here-->
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
