@@ -4,7 +4,7 @@
 {{from os.path import join}}
 
 <div id="main" class="container">
-	<section id="content">
+  <section id="content">
 	  <div style="height: 20px"></div>
 	  <div class="container">
 	    <div class="row">
@@ -28,23 +28,44 @@
 	    	{{pass}}
 	        <div class="box">
 	          <div class="box-gray alignleft" style="height: auto;">
+              <!-- Zitationen anzeigen -->
 	            <h5 style="color: #656565; margin-bottom: 0.5em;">{{=T('How to cite this title')}}</h5>
-                <div id="citation"></div>
-                <script type="text/javascript">
-                    $.fn.citeRender.defaults.baseUrl = '{{=URL('static', 'citeproc')}}';
-                    $.fn.citeRender.defaults.dataUrl = '{{=URL('api', 'csl')}}';
-                    $.fn.citeRender.defaults.lang = '{{=session.forced_language}}';
-                    $('#citation').citeRender({{=XML(submission_id)}});
-                </script>
-
-				<h5 style="color: #656565; margin-top: 1.2em; margin-bottom: 0.5em;">{{=T('Licenses')}}</h5>
-				{{if session.forced_language =='de': }}
-					<p>Dieses Werk ist unter der<br> <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.de" title="Homepage Creative Commons; Lizenz CC BY-SA 4.0">Creative Commons-Lizenz 4.0<br/> (CC BY-SA 4.0)</a> veröffentlicht.<br>
-					<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.de" title="Homepage Creative Commons; Lizenz CC BY-SA 4.0"><img alt="Creative Commons Lizenz BY-SA 4.0" src="{{=URL(request.application, 'static', 'images/catalog/cc_by-sa-4-0_88x31.png')}}" /></a></p>
-				{{elif session.forced_language =='en': }}
-					<p>This work is licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/" title="Homepage Creative Commons; License CC BY-SA 4.0">Creative Commons License 4.0<br/> (CC BY-SA 4.0)</a> .<br>
-					<a href="https://creativecommons.org/licenses/by-sa/4.0/" title="Homepage Creative Commons; Lizenz CC BY-SA 4.0"><img alt="Creative Commons License BY-SA 4.0" src="{{=URL(request.application, 'static', 'images/catalog/cc_by-sa-4-0_88x31.png')}}" /></a></p>
-				{{pass}}
+              <div id="citation"></div>
+              <a target="_blank" class="btn btn-default" data-toggle="modal" data-target="#citationModal" role="button">{{=T('More citation styles')}}</a>
+              <!-- Modal -->
+              <div id="citationModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                  <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h5 class="modal-title">{{=T('Choose citation style')}}</h5>
+                    </div>
+                    <div id="citationModalBody" class="modal-body">
+                      <!-- Citation accordion will be displayed here-->
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <script type="text/javascript">
+                  $.fn.citeRender.defaults.baseUrl = '{{=URL('static', 'citeproc')}}';
+                  $.fn.citeRender.defaults.dataUrl = '{{=URL('api', 'csl')}}';
+                  $.fn.citeRender.defaults.lang = '{{=session.forced_language}}';
+                  $('#citation').citeRender({{=XML(submission_id)}});
+                  $('#citationModalBody').citationDisplay({{=XML(submission_id)}});
+              </script>
+              <!-- End Button Zitationen anzeigen-->
+              <h5 style="color: #656565; margin-top: 1.2em; margin-bottom: 0.5em;">{{=T('Licenses')}}</h5>
+              {{if session.forced_language =='de': }}
+                <p>Dieses Werk ist unter der<br> <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.de" title="Homepage Creative Commons; Lizenz CC BY-SA 4.0">Creative Commons-Lizenz 4.0<br/> (CC BY-SA 4.0)</a> veröffentlicht.<br>
+                <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.de" title="Homepage Creative Commons; Lizenz CC BY-SA 4.0"><img alt="Creative Commons Lizenz BY-SA 4.0" src="{{=URL(request.application, 'static', 'images/catalog/cc_by-sa-4-0_88x31.png')}}" /></a></p>
+              {{elif session.forced_language =='en': }}
+                <p>This work is licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/" title="Homepage Creative Commons; License CC BY-SA 4.0">Creative Commons License 4.0<br/> (CC BY-SA 4.0)</a> .<br>
+                <a href="https://creativecommons.org/licenses/by-sa/4.0/" title="Homepage Creative Commons; Lizenz CC BY-SA 4.0"><img alt="Creative Commons License BY-SA 4.0" src="{{=URL(request.application, 'static', 'images/catalog/cc_by-sa-4-0_88x31.png')}}" /></a></p>
+              {{pass}}
 	            {{identification_codes = [i for i in [pf.associated_items.get('identification_codes', []) for pf in digital_publication_formats+physical_publication_formats] if i]}}
 	            {{if identification_codes:}}
 	            {{pass}}
@@ -126,32 +147,6 @@
 		              {{pass}}
                     </div>
 				  {{pass}}
-                  <!-- Button Zitationen anzeigen -->
-	              <div class="btn-group" role="group" aria-label="2">
-                    <li type="button" class="btn btn-default" data-toggle="modal" data-target="#citationModal"><a target="_blank">{{=T('Cite')}}</a></li>
-                  </div>
-                  <!-- Modal -->
-                  <div id="citationModal" class="modal fade" role="dialog">
-                    <div class="modal-dialog">
-                      <!-- Modal content-->
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">{{=T('Choose citation style')}}</h4>
-                        </div>
-                        <div id="citationModalBody" class="modal-body">
-                          <!-- Citation accordion will be displayed here-->
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                      <script>
-                          $('#citationModalBody').citationDisplay({{=XML(submission_id)}});
-                      </script>
-                      <!-- End Button Zitationen anzeigen-->
 	            <div class="btn-group" role="group" aria-label="2">
 		        {{if representatives:}}
 	              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
