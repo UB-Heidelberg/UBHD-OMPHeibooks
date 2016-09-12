@@ -9,10 +9,27 @@
                 Universitätsmuseum Heidelberg. Kataloge.
             {{pass}}
             </h3>
+		</div>	
 
-                {{if session.forced_language =='de': }}
-           <div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL('static','images/series/universitaetsmuseum_logo.png'),_width='230px')}}</p>
-<br>
+        {{if session.forced_language =='de': }}
+		<div class="col-lg-9">
+		   <p>Das <a title="Homepage des Universitätsmuseums" href="http://www.uni-heidelberg.de/einrichtungen/museen/universitaetsmuseum.html">Universitätsmuseum</a> ist das "Schaufenster der Universität": Neben Einblicken in aktuelle Forschungen an der Ruperto Carola - von Affen bis Zellteilung - bieten die Ausstellungen auch Ergebnisse von Lehrveranstaltungen und Beiträge bürgerschaftlicher Gruppen zu universitären Themen. Vielfach dokumentieren Begleitbände diese Studioausstellungen; sie erscheinen in der Reihe "Universitätsmuseum Heidelberg. Kataloge". Ursprünglich als "Ausstellung zum Mitnehmen" für das Ausstellungspublikum konzipiert, sind die Kataloge dank der Online-Publikation nun weiten Kreisen zugänglich. Konzentriert und übersichtlich bieten sie Fachleuten, die nach selten publizierten Objekten und Archivalien suchen, ebenso spannende Lektüre wie Laien, die sich einen schnellen Überblick über ein ungewöhnliches Thema verschaffen möchten.</p>
+           <div class="widget">
+                        <ul class="tags">
+             
+                            <li>
+                              
+                               <p><a href="{{=URL('catalog', 'series/universitaetsmuseum')}}">{{=T('Volumes')}}</a></p>
+
+                            </li>
+
+                        </ul>
+           </div> 
+		</div>
+		
+		<div class="col-lg-3">
+		  <div id="infoBoxRechts">
+		   <p>{{=IMG(_src=URL('static','images/series/universitaetsmuseum_logo.png'),_width='230px')}}</p>
                 <p><b>Herausgeber</b><br>
                 Matthias Untermann
                 </p>
@@ -29,25 +46,27 @@
                 ISSN 1614-8797 (Print)<br>
                    ISSN 2509-2618 (eISSN)
                 </p>
-            </div>
-                <p>Das <a title="Homepage des Universitätsmuseums" href="http://www.uni-heidelberg.de/einrichtungen/museen/universitaetsmuseum.html">Universitätsmuseum</a> ist das "Schaufenster der Universität": Neben Einblicken in aktuelle Forschungen an der Ruperto Carola - von Affen bis Zellteilung - bieten die Ausstellungen auch Ergebnisse von Lehrveranstaltungen und Beiträge bürgerschaftlicher Gruppen zu universitären Themen. Vielfach dokumentieren Begleitbände diese Studioausstellungen; sie erscheinen in der Reihe "Universitätsmuseum Heidelberg. Kataloge". Ursprünglich als "Ausstellung zum Mitnehmen" für das Ausstellungspublikum konzipiert, sind die Kataloge dank der Online-Publikation nun weiten Kreisen zugänglich. Konzentriert und übersichtlich bieten sie Fachleuten, die nach selten publizierten Objekten und Archivalien suchen, ebenso spannende Lektüre wie Laien, die sich einen schnellen Überblick über ein ungewöhnliches Thema verschaffen möchten.</p>
-<div class="widget">
+		   </div>
+		</div>
+		
+        {{elif session.forced_language =='en': }}
+		
+		<div class="col-lg-9">
+		        <p>The <a title="Homepage of the University Museum" href="http://www.uni-heidelberg.de/einrichtungen/museen/universitaetsmuseum.html">University Museum</a> is the showcase of Heidelberg University: While offering insights into the multifaceted areas of research at the Ruperto Carola - from big bang theory to contemporary Art - the exhibitions also show the output of teaching courses and contributions from civic organisations regarding university related subjects. Often these small exhibitions are documented in companion volumes published in  the series "Universitätsmuseum Heidelberg. Kataloge". Originally designed as a handout for visitors, they are now accessible to a wider audience, thanks to the online publication of the catalogues by the University Museum of Heidelberg with the support of the University Library. With their condensed content and clear presentation they are helpful both to experts who are researching rarely published objects and archives, and to the interested amateur who would like to learn more about an unusual topic.</p>
+                <div class="widget">
                         <ul class="tags">
              
                             <li>
-                              
                                <p><a href="{{=URL('catalog', 'series/universitaetsmuseum')}}">{{=T('Volumes')}}</a></p>
-
                             </li>
-                              
-                            
 
                         </ul>
-                    </div>
-
-                     {{elif session.forced_language =='en': }}
-<div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL('static','images/series/universitaetsmuseum_logo.png'),_width='230px')}}</p>
-<br>i
+                </div>
+		</div>
+		
+		<div class="col-lg-3">
+		  <div id="infoBoxRechts">
+		   <p>{{=IMG(_src=URL('static','images/series/universitaetsmuseum_logo.png'),_width='230px')}}</p>
                 <p><b>Editor</b><br>
                 Matthias Untermann
                 </p>
@@ -61,21 +80,14 @@
                 Tel.: +49 06221 54 3547<br />
                 E-Mail: museum@rektorat.uni-heidelberg.de
                 </p>
-                </div>
-                <p>The <a title="Homepage of the University Museum" href="http://www.uni-heidelberg.de/einrichtungen/museen/universitaetsmuseum.html">University Museum</a> is the showcase of Heidelberg University: While offering insights into the multifaceted areas of research at the Ruperto Carola - from big bang theory to contemporary Art - the exhibitions also show the output of teaching courses and contributions from civic organisations regarding university related subjects. Often these small exhibitions are documented in companion volumes published in  the series "Universitätsmuseum Heidelberg. Kataloge". Originally designed as a handout for visitors, they are now accessible to a wider audience, thanks to the online publication of the catalogues by the University Museum of Heidelberg with the support of the University Library. With their condensed content and clear presentation they are helpful both to experts who are researching rarely published objects and archives, and to the interested amateur who would like to learn more about an unusual topic.</p>
-<div class="widget">
-                        <ul class="tags">
-             
-                            <li>
-                               <p><a href="{{=URL('catalog', 'series/universitaetsmuseum')}}">{{=T('Volumes')}}</a></p>
-                            </li>
-
-                        </ul>
-                    </div>
-
-{{pass}}
-
-        </div>
+				<p><b>ISSN</b><br>
+                ISSN 1614-8797 (Print)<br>
+                ISSN 2509-2618 (eISSN)
+                </p>
+		   </div>
+		</div>		
+		{{pass}}
+		
     </div>
 </div>
 

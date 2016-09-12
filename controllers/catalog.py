@@ -9,10 +9,8 @@ import os
 from operator import itemgetter
 from ompdal import OMPDAL, OMPSettings, OMPItem
 from ompformat import dateFromRow, seriesPositionCompare
-from ompstats import OMPStats
-from ompcsl import build_csl_data
+#from ompstats import OMPStats
 from datetime import datetime
-
 
 def series():
     if session.forced_language == 'en':
@@ -199,9 +197,6 @@ def book():
     # Get purchase info
     representatives = ompdal.getRepresentativesBySubmission(submission_id, myconf.take('omp.representative_id_type'))
     
-    stats = OMPStats(myconf, db, locale)
+    #stats = OMPStats(myconf, db, locale)
 
-    # For citeproc-js
-    book_data = build_csl_data(OMPItem(submission, submission_settings), authors, date_published, doi, press_settings,
-                                    locale, series, editors)
     return locals()
