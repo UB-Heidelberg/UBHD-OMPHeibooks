@@ -30,7 +30,11 @@
 	          <div class="box-gray alignleft" style="height: auto;">
               <!-- Zitationen anzeigen -->
 	            <h5 style="color: #656565; margin-bottom: 0.5em;">{{=T('How to cite this title')}}</h5>
-              <div id="citation"></div>
+              <p>
+								{{citation_year=dateToStr(date_published, locale, "%Y")}}
+								{{=formatCitation(cleanTitle, subtitle, authors, editors, citation_year, press_settings.getLocalizedValue('location', ''), press_settings.getLocalizedValue('publisher', ''), doi, locale, series_name=series_name, series_pos=submission.series_position, max_contrib=1)}}
+								{{=A(doi, _href="http://dx.doi.org/"+doi)}}
+							</p>
               <a target="_blank" class="btn btn-default" data-toggle="modal" data-target="#citationModal" role="button">{{=T('More citation styles')}}</a>
               <!-- Modal -->
               <div id="citationModal" class="modal fade" role="dialog">
@@ -54,7 +58,6 @@
                   $.fn.citeRender.defaults.baseUrl = '{{=URL('static', 'citeproc')}}';
                   $.fn.citeRender.defaults.dataUrl = '{{=URL('api', 'csl')}}';
                   $.fn.citeRender.defaults.lang = '{{=session.forced_language}}';
-                  $('#citation').citeRender({{=XML(submission_id)}});
                   $('#citationModalBody').citationDisplay({{=XML(submission_id)}});
               </script>
               <!-- End Button Zitationen anzeigen-->
