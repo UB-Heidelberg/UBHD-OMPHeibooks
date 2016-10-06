@@ -32,7 +32,7 @@
 	            <h5 style="color: #656565; margin-bottom: 0.5em;">{{=T('How to cite this title')}}</h5>
               <p>
 								{{citation_year=dateToStr(date_published, locale, "%Y")}}
-								{{=formatCitation(cleanTitle, subtitle, authors, editors, citation_year, press_settings.getLocalizedValue('location', ''), press_settings.getLocalizedValue('publisher', ''), doi, locale, series_name=series_name, series_pos=submission.series_position, max_contrib=1)}}
+								{{=formatCitation(cleanTitle, subtitle, authors, editors, citation_year, press_settings.getLocalizedValue('location', ''), press_settings.getLocalizedValue('publisher', ''), doi, locale, series_name=series_name, series_pos=submission.series_position, max_contrib=3)}}
 								{{=A(doi, _href="http://dx.doi.org/"+doi)}}
 							</p>
               <a target="_blank" class="btn btn-default" data-toggle="modal" data-target="#citationModal" role="button">{{=T('More citation styles')}}</a>
