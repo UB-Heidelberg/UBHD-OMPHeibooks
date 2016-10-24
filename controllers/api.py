@@ -157,7 +157,7 @@ def csl():
     locale = 'de_DE'
     if session.forced_language == 'en':
         locale = 'en_US'
-    ompcsl = OMPCSL(OMPDAL(db, myconf),myconf, locale)
+    ompcsl = OMPCSL(OMPDAL(db, myconf), myconf, locale)
     response.headers['Content-Type'] = 'application/json'
     try:
         cls_data = ompcsl.load_csl_data(submission_id)
