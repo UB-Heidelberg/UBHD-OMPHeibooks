@@ -14,53 +14,22 @@
 	            {{=IMG(_src=coverImageLink(request, press.press_id, submission.submission_id))}}
 	          </div>
 	        </article>
-              {{=SCRIPT(_src=URL('static', 'citeproc/citeproc.min.js'))}}
-              {{=SCRIPT(_src=URL('static', 'citeproc/citeproc-wrapper.js'))}}
-	        {{cleanTitle = " ".join([submission_settings.getLocalizedValue('prefix', locale), submission_settings.getLocalizedValue('title', locale)])}}
-	    	{{subtitle = submission_settings.getLocalizedValue('subtitle', locale)}}
-	    	{{abstract = submission_settings.getLocalizedValue('abstract', locale)}}
-	    	{{if series:}}
-	    		{{series_title = " ".join([series.settings.getLocalizedValue('prefix', locale), series.settings.getLocalizedValue('title', locale)])}}
-				{{series_subtitle = series.settings.getLocalizedValue('subtitle', locale)}}
-				{{series_name = " – ".join([t for t in [series_title.strip(), series_subtitle] if t])}}
-			{{else:}}
-				{{series_name = ""}}
-	    	{{pass}}
+{{cleanTitle = " ".join([submission_settings.getLocalizedValue('prefix', locale), submission_settings.getLocalizedValue('title', locale)])}}
+{{subtitle = submission_settings.getLocalizedValue('subtitle', locale)}}
+{{abstract = submission_settings.getLocalizedValue('abstract', locale)}}
+{{if series:}}
+  {{series_title = " ".join([series.settings.getLocalizedValue('prefix', locale), series.settings.getLocalizedValue('title', locale)])}}
+  {{series_subtitle = series.settings.getLocalizedValue('subtitle', locale)}}
+  {{series_name = " – ".join([t for t in [series_title.strip(), series_subtitle] if t])}}
+{{else:}}
+  {{series_name = ""}}
+{{pass}}
 	        <div class="box">
 	          <div class="box-gray alignleft" style="height: auto;">
               <!-- Zitationen anzeigen -->
 	            <h5 style="color: #656565; margin-bottom: 0.5em;">{{=T('How to cite this title')}}</h5>
-              <p>
-								{{citation_year=dateToStr(date_published, locale, "%Y")}}
-								{{=formatCitation(cleanTitle, subtitle, authors, editors, citation_year, press_settings.getLocalizedValue('location', ''), press_settings.getLocalizedValue('publisher', ''), doi, locale, series_name=series_name, series_pos=submission.series_position, max_contrib=3)}}
-								{{=A(doi, _href="http://dx.doi.org/"+doi)}}
-							</p>
-              <a target="_blank" class="btn btn-default" data-toggle="modal" data-target="#citationModal" role="button">{{=T('More citation styles')}}</a>
-              <!-- Modal -->
-              <div id="citationModal" class="modal fade" role="dialog">
-                <div class="modal-dialog">
-                  <!-- Modal content-->
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h5 class="modal-title">{{=T('Choose citation style')}}</h5>
-                    </div>
-                    <div id="citationModalBody" class="modal-body">
-                      <!-- Citation accordion will be displayed here-->
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal"> {{=T('Close')}}</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <script type="text/javascript">
-                  $.fn.citeRender.defaults.baseUrl = '{{=URL('static', 'citeproc')}}';
-                  $.fn.citeRender.defaults.dataUrl = '{{=URL('api', 'csl')}}';
-                  $.fn.citeRender.defaults.lang = '{{=session.forced_language}}';
-                  $('#citationModalBody').citationDisplay({{=XML(submission_id)}});
-              </script>
-              <!-- End Button Zitationen anzeigen-->
+              {{include '../static/omp-resources/views/catalog/citation.html' }}
+              <!-- citation button end-->
               <h5 style="color: #656565; margin-top: 1.2em; margin-bottom: 0.5em;">{{=T('Licenses')}}</h5>
               {{if session.forced_language =='de': }}
                 <p>Dieses Werk ist unter der<br> <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.de" title="Homepage Creative Commons; Lizenz CC BY-SA 4.0">Creative Commons-Lizenz 4.0<br/> (CC BY-SA 4.0)</a> veröffentlicht.<br>
