@@ -140,7 +140,11 @@ pass
 	              <i class="icon-quote-left"></i>
 	              {{=XML(abstract)}}
 	            </p>
-	    	  	{{bios = [(formatName(e.attributes), e.settings.getLocalizedValue('biography', locale)) for e in editors]}}
+  
+							<!-- reviews begin -->
+							{{include '../static/omp-resources/views/catalog/reviews.html' }}
+							<!-- reviews end -->
+							{{bios = [(formatName(e.attributes), e.settings.getLocalizedValue('biography', locale)) for e in editors]}}
 	    	  	{{bios_role = "editor"}}
 	    	  	{{if bios == []:}}
 	    	  		{{bios = [(formatName(a.attributes), a.settings.getLocalizedValue('biography', locale)) for a in authors]}}
