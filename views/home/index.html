@@ -23,16 +23,16 @@
                             <div class="box">
                                 <div class="box-gray aligncenter">
                                 {{if session.forced_language =='de': }}
-                                    <h4>Erscheint demnächst</h4>
+                                    <h4>Neuerscheinung</h4>
                                 {{elif session.forced_language =='en': }}
-                                    <h4>Coming Soon</h4>
+                                    <h4>New Titles</h4>
                                 {{pass}}
-				   {{=IMG(_src=URL('static','images/home/Cover_Wintz-Charles_OMP_300.jpg'),_width='145px',_class='bildrahmen')}}
+				   {{=IMG(_src=URL('static','files/presses/1/monographs/178/simple/cover.jpg'),_width='145px',_class='bildrahmen')}}
                                 </div>
 
                                 <div class="box-bottom">
 
-                                    <!--{{=A(T('More'),_href=URL('catalog','book/154'))}}-->&nbsp;
+                                    {{=A(T('More'),_href=URL('catalog','book/178'))}}
 
                                 </div>
 
