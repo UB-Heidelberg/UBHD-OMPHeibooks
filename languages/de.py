@@ -95,6 +95,7 @@
 'Cannot be empty': 'Darf nicht leer sein',
 'Capitals': 'Capitals',
 'Chapters': 'Kapitel',
+'Charles VII et le conseil municipal rouennais': 'Charles VII et le conseil municipal rouennais',
 'Check to delete': 'Auswählen um zu löschen',
 'Choose citation style': 'Zitationsstil auswählen',
 'Clear CACHE?': 'CACHE löschen?',
@@ -454,4 +455,5 @@
 'Zolltarifnummer Verzeihnis': 'Zolltarifnummer Verzeihnis',
 'Zusatz ISBN / EAN': 'Zusatz ISBN / EAN',
 'Zusatzinformationen': 'Zusatzinformationen',
+'„Charles VII et le conseil municipal rouennais“': '„Charles VII et le conseil municipal rouennais“',
 }

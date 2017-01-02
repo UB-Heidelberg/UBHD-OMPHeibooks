@@ -78,6 +78,22 @@
                       <img alt="" src="{{=URL('static','images/home/heibooks_logo.png')}}" style="width: 50px;" />
                     </div>
 					<div class="media-body">
+                      <p class="media-heading">02.01.2017<br>
+                      {{if session.forced_language =='de': }} <h5>Neu bei heiBOOKS</h5>{{elif session.forced_language =='en': }} <h5>New in heiBOOKS</h5>{{pass}}</p> 
+
+                      <p class="boxText">{{if session.forced_language =='de': }}Herrschaftslegitimation am Ende des Hundertjährigen Krieges: Wie der französische König Karl VII. (1403-1461) den Rat der umkämpften Stadt Rouen für sich gewinnen konnte, ist Thema der neu erschienenen Dissertation <strong>{{=A(T('„Charles VII et le conseil municipal rouennais“'),_href=URL('catalog','book/178'))}}</strong> von Elise Wintz.
+                      {{elif session.forced_language =='en': }}                     
+                      }Herrschaftslegitimation am Ende des Hundertjährigen Krieges: Wie der französische König Karl VII. (1403-1461) den Rat der umkämpften Stadt Rouen für sich gewinnen konnte, ist Thema der neu erschienenen Dissertation <strong>{{=A(T('„Charles VII et le conseil municipal rouennais“'),_href=URL('catalog','book/178'))}}</strong> von Elise Wintz.         
+                      {{pass}}
+                      </p>
+                    </div>
+			</div> 
+
+            <div class="media">
+                    <div class="media-left pull-left">
+                      <img alt="" src="{{=URL('static','images/home/heibooks_logo.png')}}" style="width: 50px;" />
+                    </div>
+					<div class="media-body">
                       <p class="media-heading">24.10.2016<br>
                       {{if session.forced_language =='de': }} <h5>Veranstaltungsreihe Open Access am Mittag: Publizieren an der Universität Heidelberg</h5>{{elif session.forced_language =='en': }} <h5>Series of events Open Access at noon: Publishing with the Heidelberg University</h5>{{pass}}</p> 
 
