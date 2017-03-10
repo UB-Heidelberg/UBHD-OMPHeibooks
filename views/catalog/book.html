@@ -168,8 +168,8 @@ pass
 		   	  		{{num_bios = len([b for b in bios if b[1] != ""])}}
 		   	  		{{if bios_role != "author" or num_bios < 4:}}
 		            	{{if num_bios != 0:}}
-                                        <div class="separator"></div>
-                                        <div class="autor_biografie">
+                  <div class="separator"></div>
+                  <div class="autor_biografie">
 			            	<p>
 			            		{{for contributor, bio in bios:}}
 			            			{{if bio:}}
@@ -177,7 +177,7 @@ pass
 			            			{{pass}}
 			            		{{pass}}
 			            	</p>
-                                        </div>
+                  </div>
 		            	{{pass}}	
 		   	  		{{pass}}
 	          	{{pass}}
