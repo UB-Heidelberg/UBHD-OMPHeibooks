@@ -54,3 +54,5 @@ errors/*
 .project
 .pydevproject
 .settings/
+
+.pythonhistory
