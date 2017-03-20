@@ -294,6 +294,7 @@
 'Peer Review': 'Peer Review',
 'Permission': 'Permission',
 'Permissions': 'Permissions',
+'Phenomenology of Affective Subjectivity': 'Phenomenology of Affective Subjectivity',
 'Plagiarism': 'Plagiatskontrolle',
 'please input your password again': 'Bitte geben Sie ihr Passwort erneut ein',
 'Plugins': 'Plugins',
