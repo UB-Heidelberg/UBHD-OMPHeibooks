@@ -49,11 +49,11 @@
                                 {{elif session.forced_language =='en': }}
                                     <h4>New titles</h4>
                                 {{pass}}
-			     	   {{=IMG(_src=URL('static','files/presses/1/monographs/200/simple/cover.jpg'),_width='145px',_class='bildrahmen')}}
+			     	   {{=IMG(_src=URL('static','files/presses/1/monographs/205/simple/cover.jpg'),_width='145px',_class='bildrahmen')}}
                                 </div>
 
                                 <div class="box-bottom">
-                                {{=A(T('More'),_href=URL('catalog','book/200'))}}
+                                {{=A(T('More'),_href=URL('catalog','book/205'))}}
                                 </div>
 
              </div>   
@@ -71,6 +71,25 @@
           {{elif session.forced_language =='en': }}
               <h4>News</h4>
           {{pass}}
+
+			<div class="media">
+                    <div class="media-left pull-left">
+                      <img alt="" src="{{=URL('static','images/press/home/uni_aktuelles.png')}}" style="width: 50px;" />
+                    </div>
+					<div class="media-body">
+                      <p class="media-heading">15.03.2017<br>
+                      {{if session.forced_language =='de': }} <h5>Von Open Access bis Open Research Data: Infrastrukturen für offene Wissenschaft an der Universität Heidelberg</h5>{{elif session.forced_language =='en': }} <h5>Von Open Access bis Open Research Data: Infrastrukturen für offene Wissenschaft an der Universität Heidelberg</h5>{{pass}}</p> 
+
+                      <p class="boxText">{{if session.forced_language =='de': }}
+                      Vortrag von Dr. Jochen Apel und  Dr. Maria Effinger (UB Heidelberg), Do. 16.03.2017, 15&nbsp;Uhr, Uni Heidelberg, Neue&nbsp;Universität, HS&nbsp;14, 2.&nbsp;OG im Rahmen der <a href="https://e-science-tage.de/de/startseite" title="Homepage der E-Science-Tage">E-Science-Tage</a>
+                      {{elif session.forced_language =='en': }}                     
+Talk by Jochen Apel and  Maria Effinger (UB Heidelberg), Tuesday 16th March, 3&nbsp;pm, Uni Heidelberg, Neue Universität, HS&nbsp;14, 2.&nbsp;OG
+  on occasion of the <a href="https://e-science-tage.de/en" title="Homepage E-Science-Days">E-Science-Days</a>        
+                      {{pass}}
+                      </p>
+                    </div>
+			</div> 
+      
 			<div class="media">
                     <div class="media-left pull-left">
                       <img alt="" src="{{=URL('static','images/home/heibooks_logo.png')}}" style="width: 50px;" />
@@ -245,7 +264,6 @@
 
                                 <div class="box-bottom">
                                     {{=A(T('More'),_href=URL('catalog','book/196'))}}
-
                                 </div>
 
                             </div>
@@ -258,18 +276,18 @@
 
                                 <div class="box-gray aligncenter">
                                     {{if session.forced_language =='de': }}
-                                    <h4>Erscheint demnächst</h4>
-                                    {{elif session.forced_language =='en': }}
-                                     <h4>Coming soon</h4>
-                                    {{pass}}
+                                    <h4>Neuerscheinung</h4>
+                                {{elif session.forced_language =='en': }}
+                                    <h4>New titles</h4>
+                                {{pass}}
 
-                                    {{=IMG(_src=URL('static','images/home/Physiker_Cover_OMP_300.jpg'),_width='145px',_class='bildrahmen')}}
+                                    {{=IMG(_src=URL('static','files/presses/1/monographs/192/simple/cover.jpg'),_width='145px',_class='bildrahmen')}}
                                 </div>
 
                                 <div class="box-bottom">
-                                    &nbsp;
-
+                                    {{=A(T('More'),_href=URL('catalog','book/192'))}}
                                 </div>
+
 
 
                             </div>
