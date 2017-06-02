@@ -432,6 +432,7 @@
 'Videos': 'Videos',
 'View': 'Ansicht',
 'View Journal': 'Zur Zeitschrift',
+'Vignettes': 'Vignettes',
 'Vol.': 'Band',
 'Volume': 'Band',
 'Volumes': 'Bände',
