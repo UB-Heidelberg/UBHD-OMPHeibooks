@@ -29,6 +29,7 @@
 '%s selected': '%s selected',
 '%Y-%m-%d': '%Y-%m-%d',
 '%Y-%m-%d %H:%M:%S': '%Y-%m-%d %H:%M:%S',
+'&bdquo;Vignettes&rdquo;': '&bdquo;Vignettes&rdquo;',
 '(ed.)': '(Hrsg.)',
 '(eds)': '(Hrsg.)',
 ', ': ', ',
