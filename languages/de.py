@@ -253,6 +253,7 @@
 'Mehrs': 'Mehrs',
 'Memberships': 'Mitgliedschaften',
 'Mengen Angabe': 'Mengen Angabe',
+'Menschenversuchen in der Weimarer Republik': 'Menschenversuchen in der Weimarer Republik',
 'Menu Model': 'Menü-Muster',
 'Mission Statement': 'Mission Statement',
 'Modified By': 'Verändert von',

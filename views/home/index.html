@@ -72,6 +72,24 @@
                       <img alt="" src="{{=URL('static','images/home/heibooks_logo.png')}}" style="width: 50px;" />
                     </div>
 					<div class="media-body">
+                      <p class="media-heading">27.06.2017<br>
+                      {{if session.forced_language =='de': }} <h5>Neu bei heiBOOKS</h5>{{elif session.forced_language =='en': }} <h5>New on heiBOOKS</h5>{{pass}}</p> 
+
+                      <p class="boxText">{{if session.forced_language =='de': }}
+                     Mit der Untersuchung von <strong>{{=A(T('Menschenversuchen in der Weimarer Republik'),_href=URL('catalog','book/260'))}}</strong> befasst sich die Arbeit des Arztes und Medizinhistorikers Andreas Reuland. Sie zeigt auf eindrückliche Weise, dass nicht erst im Nationalsozialismus, sondern bereits in den Jahrzehnten davor Menschen als &bdquo;Versuchsmaterial&rdquo; verwendet wurden und stellt diese Experimente in den zeitgeschichtlichen Diskurs. 
+                      {{elif session.forced_language =='en': }}                     
+                      In his work <strong>{{=A(T('Menschenversuche in der Weimarer Republik'),_href=URL('catalog','book/260'))}}</strong> the physician and medical historian Andreas Reuland  examines human subject research in the Weimar Republic. It bears evidence to the fact that humans were used as "research material" decades before the Nazi era and puts these experiments into a contemporary discourse.
+    
+                      {{pass}}
+                      </p>
+                    </div>
+			</div>    
+      
+      <div class="media">
+                    <div class="media-left pull-left">
+                      <img alt="" src="{{=URL('static','images/home/heibooks_logo.png')}}" style="width: 50px;" />
+                    </div>
+					<div class="media-body">
                       <p class="media-heading">02.06.2017<br>
                       {{if session.forced_language =='de': }} <h5>Neu bei heiBOOKS</h5>{{elif session.forced_language =='en': }} <h5>New on heiBOOKS</h5>{{pass}}</p> 
 
