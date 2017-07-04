@@ -66,6 +66,24 @@
           {{elif session.forced_language =='en': }}
               <h4>News</h4>
           {{pass}}
+		  
+		  <div class="media">
+                    <div class="media-left pull-left">
+                      <img alt="" src="{{=URL('static','images/home/heibooks_logo.png')}}" style="width: 50px;" />
+                    </div>
+					<div class="media-body">
+                      <p class="media-heading">04.07.2017<br>
+                      {{if session.forced_language =='de': }} <h5>Neu bei heiBOOKS</h5>{{elif session.forced_language =='en': }} <h5>New on heiBOOKS</h5>{{pass}}</p> 
+
+                      <p class="boxText">{{if session.forced_language =='de': }}
+                      Über die Analyse ausgewählter Werke der kubanischen Exilliteratur geht die Romanistin und Amerikanistin Ana-Sofia Uhl in Ihrem Buch <a href="{{=URL('catalog','book/227')}}">Essen - Sprache - Identität: Selbstvergewisserung und kulturelle Transformation in der US-kubanischen Gegenwartsliteratur</a> der Frage nach, welche Bedeutung die jeweiligen AutorInnen den Kommunikationssystemen Sprache bzw. Essen für Identitätsbildungs- und -veränderungsprozesse von Kubaner in den USA beimessen.  
+                      {{elif session.forced_language =='en': }}                     
+                      Über die Analyse ausgewählter Werke der kubanischen Exilliteratur geht die Romanistin und Amerikanistin Ana-Sofia Uhl in Ihrem Buch <a href="{{=URL('catalog','book/227')}}">Essen - Sprache - Identität: Selbstvergewisserung und kulturelle Transformation in der US-kubanischen Gegenwartsliteratur</a> der Frage nach, welche Bedeutung die jeweiligen AutorInnen den Kommunikationssystemen Sprache bzw. Essen für Identitätsbildungs- und -veränderungsprozesse von Kubaner in den USA beimessen.  
+    
+                      {{pass}}
+                      </p>
+                    </div>
+			</div>
           
       <div class="media">
                     <div class="media-left pull-left">
