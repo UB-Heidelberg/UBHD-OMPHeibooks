@@ -18,27 +18,23 @@
 
                     <div class="row">
 
-                        <div class="col-lg-3">
+					<div class="col-lg-3">
+		  
+						  <div class="box">
+											<div class="box-gray aligncenter">
+											{{if session.forced_language =='de': }}
+												<h4>Neuerscheinung</h4>
+											{{elif session.forced_language =='en': }}
+												<h4>New titles</h4>
+											{{pass}}
+								   {{=IMG(_src=URL('static','files/presses/1/monographs/227/simple/cover.jpg'),_width='145px',_class='bildrahmen')}}
+											</div>
 
-                            <div class="box">
-                                <div class="box-gray aligncenter">
-                                {{if session.forced_language =='de': }}
-                                    <h4>Neuerscheinung</h4>
-                                {{elif session.forced_language =='en': }}
-                                    <h4>New titles</h4>
-                                {{pass}}
-				   {{=IMG(_src=URL('static','files/presses/1/monographs/226/simple/cover.jpg'),_width='145px',_class='bildrahmen')}}
-                                </div>
-
-                                <div class="box-bottom">
-
-                                    {{=A(T('More'),_href=URL('catalog','book/226'))}}
-
-                                </div>
-
-          </div>                                    
-                     
-      </div>
+											<div class="box-bottom">
+											{{=A(T('More'),_href=URL('catalog','book/227'))}}
+											</div>
+						 </div>   
+					</div>         
 
       <div class="col-lg-3">
       
@@ -49,15 +45,14 @@
                                 {{elif session.forced_language =='en': }}
                                     <h4>New titles</h4>
                                 {{pass}}
-			     	   {{=IMG(_src=URL('static','files/presses/1/monographs/205/simple/cover.jpg'),_width='145px',_class='bildrahmen')}}
+			     	   {{=IMG(_src=URL('static','files/presses/1/monographs/260/simple/cover.jpg'),_width='145px',_class='bildrahmen')}}
                                 </div>
 
                                 <div class="box-bottom">
-                                {{=A(T('More'),_href=URL('catalog','book/205'))}}
+                                {{=A(T('More'),_href=URL('catalog','book/260'))}}
                                 </div>
 
              </div>   
-
 
       </div>
 
@@ -71,6 +66,60 @@
           {{elif session.forced_language =='en': }}
               <h4>News</h4>
           {{pass}}
+		  
+		  <div class="media">
+                    <div class="media-left pull-left">
+                      <img alt="" src="{{=URL('static','images/home/heibooks_logo.png')}}" style="width: 50px;" />
+                    </div>
+					<div class="media-body">
+                      <p class="media-heading">04.07.2017<br>
+                      {{if session.forced_language =='de': }} <h5>Neu bei heiBOOKS</h5>{{elif session.forced_language =='en': }} <h5>New on heiBOOKS</h5>{{pass}}</p> 
+
+                      <p class="boxText">{{if session.forced_language =='de': }}
+                      Über die Analyse ausgewählter Werke der kubanischen Exilliteratur geht die Romanistin und Amerikanistin Ana-Sofia Uhl in Ihrem Buch <a href="{{=URL('catalog','book/227')}}">Essen - Sprache - Identität: Selbstvergewisserung und kulturelle Transformation in der US-kubanischen Gegenwartsliteratur</a> der Frage nach, welche Bedeutung die jeweiligen AutorInnen den Kommunikationssystemen Sprache bzw. Essen für Identitätsbildungs- und -veränderungsprozesse von Kubaner in den USA beimessen.  
+                      {{elif session.forced_language =='en': }}                     
+                      In her book <a href="{{=URL('catalog','book/227')}}">Essen - Sprache - Identität: Selbstvergewisserung und kulturelle Transformation in der US-kubanischen Gegenwartsliteratur</a> Ana-Sofia Uhl, a scholar of Romance and Americanism, studies what relevance individual authors attribute to the communication systems of language and eating and their impact on the formation and changing processes of cultural identity of Cubans in the US. 
+                      {{pass}}
+                      </p>
+                    </div>
+			</div>
+          
+      <div class="media">
+                    <div class="media-left pull-left">
+                      <img alt="" src="{{=URL('static','images/home/heibooks_logo.png')}}" style="width: 50px;" />
+                    </div>
+					<div class="media-body">
+                      <p class="media-heading">27.06.2017<br>
+                      {{if session.forced_language =='de': }} <h5>Neu bei heiBOOKS</h5>{{elif session.forced_language =='en': }} <h5>New on heiBOOKS</h5>{{pass}}</p> 
+
+                      <p class="boxText">{{if session.forced_language =='de': }}
+                     Mit der Untersuchung von <strong>{{=A(T('Menschenversuchen in der Weimarer Republik'),_href=URL('catalog','book/260'))}}</strong> befasst sich die Arbeit des Arztes und Medizinhistorikers Andreas Reuland. Sie zeigt auf eindrückliche Weise, dass nicht erst im Nationalsozialismus, sondern bereits in den Jahrzehnten davor Menschen als &bdquo;Versuchsmaterial&rdquo; verwendet wurden und stellt diese Experimente in den zeitgeschichtlichen Diskurs. 
+                      {{elif session.forced_language =='en': }}                     
+                      In his work <strong>{{=A(T('Menschenversuche in der Weimarer Republik'),_href=URL('catalog','book/260'))}}</strong> the physician and medical historian Andreas Reuland  examines human subject research in the Weimar Republic. It bears evidence to the fact that humans were used as "research material" decades before the Nazi era and puts these experiments into a contemporary discourse.
+    
+                      {{pass}}
+                      </p>
+                    </div>
+			</div>    
+      
+      <div class="media">
+                    <div class="media-left pull-left">
+                      <img alt="" src="{{=URL('static','images/home/heibooks_logo.png')}}" style="width: 50px;" />
+                    </div>
+					<div class="media-body">
+                      <p class="media-heading">02.06.2017<br>
+                      {{if session.forced_language =='de': }} <h5>Neu bei heiBOOKS</h5>{{elif session.forced_language =='en': }} <h5>New on heiBOOKS</h5>{{pass}}</p> 
+
+                      <p class="boxText">{{if session.forced_language =='de': }}
+                     <strong>{{=A(T('Vignettes'),_href=URL('catalog','book/229'))}}</strong> von Udo Bayer<br />
+                     Aus der württembergischen Landgemeinde Laupheim ging eine für ihre Größe in Deutschland einzigartige Zahl bedeutender jüdischer Persönlichkeiten hervor. Udo Bayer gibt eine historische Überblicksdarstellung der ehemaligen Laupheimer Judengemeinde und stellt in Kurzporträts sechs  bekannte Persönlichkeiten aus dieser Gemeinde vor. Ursprünglich auf Deutsch erschienen, liegt es nun bei heiBOOKS erstmals in englischer Übersetzung des Buches vor. 
+                      {{elif session.forced_language =='en': }}                     
+                      <strong>{{=A(T('Vignettes'),_href=URL('catalog','book/229'))}}</strong> by Udo Bayer<br />
+                     A great number of notable personalities who achieved extraordinary success in a wide variety of fields came from the rural community of Laupheim in Württemberg. Laupheim expert Udo Bayer combines a concise historical overview of the former German-Jewish community of Laupheim with six vignettes of these distinguished people. Originally published in German, it is now available in an English translation on heiBOOKS.         
+                      {{pass}}
+                      </p>
+                    </div>
+			</div>    
 
 			<div class="media">
                     <div class="media-left pull-left">
@@ -207,8 +256,6 @@ Talk by Jochen Apel and  Maria Effinger (UB Heidelberg), Tuesday 16th March, 3&n
                   </div>
               </div>
               
-
-                                
                                 </div>
                                 
                                 <!--<div class="media">
@@ -247,7 +294,28 @@ Talk by Jochen Apel and  Maria Effinger (UB Heidelberg), Tuesday 16th March, 3&n
                 <div class="col-lg-12">
 
                     <div class="row">
+					
+						<div class="col-lg-3">
 
+                            <div class="box">
+                                <div class="box-gray aligncenter">
+                                {{if session.forced_language =='de': }}
+                                    <h4>Neuerscheinung</h4>
+                                {{elif session.forced_language =='en': }}
+                                    <h4>New titles</h4>
+                                {{pass}}
+				   {{=IMG(_src=URL('static','files/presses/1/monographs/229/simple/cover.jpg'),_width='145px',_class='bildrahmen')}}
+                                </div>
+
+                                <div class="box-bottom">
+
+                                    {{=A(T('More'),_href=URL('catalog','book/229'))}}
+
+                                </div>
+
+							</div> 
+                        </div>
+							
                         <div class="col-lg-3">
 
                             <div class="box">
@@ -258,37 +326,13 @@ Talk by Jochen Apel and  Maria Effinger (UB Heidelberg), Tuesday 16th March, 3&n
                                     {{elif session.forced_language =='en': }}
                                      <h4>New titles</h4>
                                     {{pass}}
-				   {{=IMG(_src=URL('static','files/presses/1/monographs/196/simple/cover.jpg'),_width='145px',_class='bildrahmen')}}
+				   {{=IMG(_src=URL('static','files/presses/1/monographs/205/simple/cover.jpg'),_width='145px',_class='bildrahmen')}}
 
                                 </div>
 
                                 <div class="box-bottom">
-                                    {{=A(T('More'),_href=URL('catalog','book/196'))}}
+                                    {{=A(T('More'),_href=URL('catalog','book/205'))}}
                                 </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-lg-3">
-
-                            <div class="box">
-
-                                <div class="box-gray aligncenter">
-                                    {{if session.forced_language =='de': }}
-                                    <h4>Neuerscheinung</h4>
-                                {{elif session.forced_language =='en': }}
-                                    <h4>New titles</h4>
-                                {{pass}}
-
-                                    {{=IMG(_src=URL('static','files/presses/1/monographs/192/simple/cover.jpg'),_width='145px',_class='bildrahmen')}}
-                                </div>
-
-                                <div class="box-bottom">
-                                    {{=A(T('More'),_href=URL('catalog','book/192'))}}
-                                </div>
-
-
 
                             </div>
 
@@ -310,7 +354,6 @@ Talk by Jochen Apel and  Maria Effinger (UB Heidelberg), Tuesday 16th March, 3&n
 
                       <div class="box-bottom">&nbsp;</div>
                       </div>
-
 
                         </div>
 
