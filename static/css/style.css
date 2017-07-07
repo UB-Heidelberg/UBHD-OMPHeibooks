@@ -1338,6 +1338,17 @@ ul.meta-post li a{
     font-weight: bold;
 }
 
+/**Pagination Katalog**/
+
+ul.pagination {margin:0 5px 0 0;}
+
+ul.pagination > li > a, ul.pagination > li > span {padding: 5px 12px;}
+
+/**Katalogseite**/
+.btn .caret {
+    margin-left: 5px;
+}
+
 
 /* ===============================
 15. Aside, sidebar
