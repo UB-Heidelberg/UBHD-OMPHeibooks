@@ -27,11 +27,11 @@
 											{{elif session.forced_language =='en': }}
 												<h4>New titles</h4>
 											{{pass}}
-								   {{=IMG(_src=URL('static','files/presses/1/monographs/280/simple/cover.jpg'),_width='145px',_class='bildrahmen')}}
+								   {{=IMG(_src=URL('static','files/presses/1/monographs/235/simple/cover.jpg'),_width='145px',_class='bildrahmen')}}
 											</div>
 
 											<div class="box-bottom">
-											{{=A(T('More'),_href=URL('catalog','book/280'))}}
+											{{=A(T('More'),_href=URL('catalog','book/235'))}}
 											</div>
 						 </div>   
 					</div>         
@@ -45,11 +45,11 @@
                                 {{elif session.forced_language =='en': }}
                                     <h4>New titles</h4>
                                 {{pass}}
-			     	   {{=IMG(_src=URL('static','files/presses/1/monographs/227/simple/cover.jpg'),_width='145px',_class='bildrahmen')}}
+			     	   {{=IMG(_src=URL('static','files/presses/1/monographs/280/simple/cover.jpg'),_width='145px',_class='bildrahmen')}}
                                 </div>
 
                                 <div class="box-bottom">
-                                {{=A(T('More'),_href=URL('catalog','book/227'))}}
+                                {{=A(T('More'),_href=URL('catalog','book/280'))}}
                                 </div>
 
              </div>   
@@ -66,6 +66,24 @@
           {{elif session.forced_language =='en': }}
               <h4>News</h4>
           {{pass}}
+
+		  <div class="media">
+                    <div class="media-left pull-left">
+                      <img alt="" src="{{=URL('static','images/home/heibooks_logo.png')}}" style="width: 50px;" />
+                    </div>
+					<div class="media-body">
+                      <p class="media-heading">26.09.2017<br>
+                      {{if session.forced_language =='de': }} <h5>Neu bei heiBOOKS</h5>{{elif session.forced_language =='en': }} <h5>New on heiBOOKS</h5>{{pass}}</p> 
+
+                      <p class="boxText">{{if session.forced_language =='de': }}
+                      <a href="{{=URL('catalog','book/235')}}">gesund – beschützt – geborgen: Frühe Hilfen für Familien – ein Projekt zur psychosozialen Prävention für junge Eltern in schwierigen Lebenslagen in Ulaanbaatar/Mongolei (2013-2017)</a>, herausgegeben von Ute Hennige, Ulambayar Badarch, Andreas Eickhorst und Manfred Cierpka.   
+                      {{elif session.forced_language =='en': }}                     
+                      <a href="{{=URL('catalog','book/235')}}">gesund – beschützt – geborgen: Frühe Hilfen für Familien – ein Projekt zur psychosozialen Prävention für junge Eltern in schwierigen Lebenslagen in Ulaanbaatar/Mongolei (2013-2017)</a>, edited by Ute Hennige, Ulambayar Badarch, Andreas Eickhorst and Manfred Cierpka.
+                      {{pass}}
+                      </p>
+                    </div>
+			</div>
+
 		  
 		  <div class="media">
                     <div class="media-left pull-left">
@@ -304,12 +322,12 @@ Talk by Jochen Apel and  Maria Effinger (UB Heidelberg), Tuesday 16th March, 3&n
                                 {{elif session.forced_language =='en': }}
                                     <h4>New titles</h4>
                                 {{pass}}
-				   {{=IMG(_src=URL('static','files/presses/1/monographs/260/simple/cover.jpg'),_width='145px',_class='bildrahmen')}}
+				   {{=IMG(_src=URL('static','files/presses/1/monographs/227/simple/cover.jpg'),_width='145px',_class='bildrahmen')}}
                                 </div>
 
                                 <div class="box-bottom">
 
-                                    {{=A(T('More'),_href=URL('catalog','book/260'))}}
+                                    {{=A(T('More'),_href=URL('catalog','book/227'))}}
 
                                 </div>
 
@@ -326,12 +344,12 @@ Talk by Jochen Apel and  Maria Effinger (UB Heidelberg), Tuesday 16th March, 3&n
                                     {{elif session.forced_language =='en': }}
                                      <h4>New titles</h4>
                                     {{pass}}
-				   {{=IMG(_src=URL('static','files/presses/1/monographs/229/simple/cover.jpg'),_width='145px',_class='bildrahmen')}}
+				   {{=IMG(_src=URL('static','files/presses/1/monographs/260/simple/cover.jpg'),_width='145px',_class='bildrahmen')}}
 
                                 </div>
 
                                 <div class="box-bottom">
-                                    {{=A(T('More'),_href=URL('catalog','book/229'))}}
+                                    {{=A(T('More'),_href=URL('catalog','book/260'))}}
                                 </div>
 
                             </div>
