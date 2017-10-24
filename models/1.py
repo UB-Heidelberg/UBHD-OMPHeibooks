@@ -7,8 +7,11 @@ LICENSE.md
 import re
 if re.compile('\w{2}(\-\w{2})?').match(request.vars.lang or ''):
     session.forced_language = request.vars.lang
-if session.forced_language is None:
-  session.forced_language = 'de'
-
-locale = session.forced_language
+if not session.forced_language:
+    session.forced_language = 'de'
+locale = 'de_DE'
+if session.forced_language == 'en':
+    locale = 'en_US'
+elif session.forced_language == 'de':
+    locale = 'de_DE'
 T.force(locale)
