@@ -65,6 +65,30 @@
               <h4>News</h4>
           {{pass}}
 
+
+      <div class="media">
+                    <div class="media-left pull-left">
+                      <img alt="" src="{{=URL('static','images/home/heibooks_logo.png')}}" style="width: 50px;" />
+                    </div>
+					<div class="media-body">
+                      <p class="media-heading">27.10.2017<br>
+                      {{if session.forced_language =='de': }} <h5>Neuerscheinungen im Oktober 2017 auf heiBOOKS:</h5>{{elif session.forced_language =='en': }} <h5>New on heiBOOKS in October 2017</h5>{{pass}}</p> 
+
+                      <p class="boxText">{{if session.forced_language =='de': }}
+                      Johannes Sturm: <a href="{{=URL('catalog','book/313')}}">Der Violoncellist Johann Rudolph Zumsteeg und sein Werk: </a>Sichtweisen der württembergischen Hofmusik im ausgehenden 18. Jahrhundert<br><br>
+                      Walter Rings: <a href="{{=URL('catalog','book/183')}}">Die altlothringische Übersetzung der Ezechielhomilien Gregors I. des Großen (Codex Bernensis 79): </a>Edition und Analyse<br><br>
+                      Stephan Kirste: <a href="{{=URL('catalog','book/284')}}">Theorie der Körperschaft des öffentlichen Rechts: </a>Verwaltungshistorische, organisationstheoretische und verwaltungsorganisationsrechtliche Aspekte<br><br>
+                      Sabine Richling, Martin Baumann, Vincent Heuveline (Hrsg.): <a href="{{=URL('catalog','book/308')}}">Proceedings of the 3rd bwHPC-Symposium </a><br><br>  
+                      {{elif session.forced_language =='en': }}                     
+                      Johannes Sturm: <a href="{{=URL('catalog','book/313')}}">Der Violoncellist Johann Rudolph Zumsteeg und sein Werk: </a>Sichtweisen der württembergischen Hofmusik im ausgehenden 18. Jahrhundert<br><br>
+                      Walter Rings: <a href="{{=URL('catalog','book/183')}}">Die altlothringische Übersetzung der Ezechielhomilien Gregors I. des Großen (Codex Bernensis 79): </a>Edition und Analyse<br><br>
+                      Stephan Kirste: <a href="{{=URL('catalog','book/284')}}">Theorie der Körperschaft des öffentlichen Rechts: </a>Verwaltungshistorische, organisationstheoretische und verwaltungsorganisationsrechtliche Aspekte<br><br>
+                      Sabine Richling, Martin Baumann, Vincent Heuveline (Hrsg.): <a href="{{=URL('catalog','book/308')}}">Proceedings of the 3rd bwHPC-Symposium </a><br><br> 
+                      {{pass}}
+                      </p>
+                    </div>
+			</div>
+
 		  <div class="media">
                     <div class="media-left pull-left">
                       <img alt="" src="{{=URL('static','images/home/heibooks_logo.png')}}" style="width: 50px;" />
