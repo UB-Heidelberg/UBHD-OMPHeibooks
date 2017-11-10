@@ -272,6 +272,7 @@
 'Name': 'Name',
 'New': 'Neu',
 'New in': 'Neu in',
+'New on': 'Neu bei',
 'New Record': 'Neuer Eintrag',
 'new record inserted': 'neuer Eintrag hinzugefügt',
 'New Titles': 'Neuerscheinung',

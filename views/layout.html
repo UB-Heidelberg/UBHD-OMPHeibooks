@@ -107,7 +107,7 @@
                 <ul class="nav nav-pills pull-right">
                     <li><a href="{{=URL('contact','index')}}" style="padding-right: 0;">{{=T('Contact')}}</a></li>
                     <li><a href="{{=URL('contact','imprint')}}" style="padding-right: 0;">{{=T('Legal Notice')}}</a></li>
-         <!--<li><a href="suche.html">{{=T('Search')}} |</a></li>-->
+                <!--<li><a href="suche.html">{{=T('Search')}} |</a></li>-->
                     <!--<li><a href="faq.html">FAQ |</a></li>-->
                      {{if session.forced_language=='en':}}
                     <li><a href="{{=request.url}}?lang=de" style="padding-left: 10px;">DE</a></li>
@@ -130,106 +130,89 @@
        
     <div class="container">
 
-        <header>
-            <div class="col-lg-12 ">
-                <div class="navbar navbar-default navbar-static-top" style="width: 100%">
-                    <div class="container">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">5
-                                <span class="icon-bar"></span>
-
-                            </button>
-                            <a class="navbar-brand" href="index.html">
-
-                            </a>
-                        </div>
-                        <div class="navbar-collapse collapse pull-left ">
-                            <ul class="nav navbar-nav">
-                                <li><a href="{{=URL('home','index')}}">{{=T('Home')}}</a></li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
-                                       data-delay="0" data-close-others="false">{{=T('About us')}}<b class=" icon-angle-down"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="{{=URL('about_us', 'profile')}}"> {{=T('Profil')}}</a></li>
-                                        <li><a href="{{=URL('about_us','our_service')}}">{{=T('Our Service')}}</a></li>
-                                        <li><a href="{{=URL('about_us','technology')}}"> {{=T('Technology')}}</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="{{=URL('catalog','index')}}">{{=T('Books')}}</a></li>
-                                <li><a href="{{=URL('series','index')}}">{{=T('Series')}}</a></li>
-                                <!--<li><a href="{{=URL('journals','index')}}">{{=T('Journals')}}</a></li>-->
-<!--                 		<li><a href="{{=URL('editor','index')}}">{{=T('Editor')}}</a></li>-->
-	
-
-
-                                <li class="dropdown">
-
-                                    <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown"
-                                       data-delay="0" data-close-others="false">{{=T('Publishing')}} <b class="icon-angle-down"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="{{=URL('publishing','for_authors')}}">{{=T('Information for Authors')}} </a></li>
-                                        <!--li><a href="{{=URL('publishing','book_proposal')}}">{{=T('Book Proposal')}}</a></li-->
-                                        <li><a href="{{=URL('publishing','rights_and_licences')}}">{{=T('Rights and Licences')}} </a></li>
-
-                                    </ul>
-                                </li>
-
-<!--                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown"
-                                       data-delay="0" data-close-others="false">{{=T('Quality Control')}} <b class=" icon-angle-down"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="{{=URL('quality_control','peer_review')}}"> {{=T('Peer Review')}}</a></li>
-                                        <li><a href="{{=URL('quality_control','plagiarism')}}"> {{=T('Plagiarism')}}</a></li>
-                                        <li><a href="{{=URL('quality_control','data_privacy')}}">{{=T('Data Privacy')}} </a></li>
-
-
-                                    </ul>
-                                </li>
--->
-
-                            </ul>
-                        </div>
-
-                        <!-- second -->
-                        <div class="navbar-collapse collapse pull-right visible-lg hidden-md">
-                            <ul class="nav navbar-nav">
-
-
-                                <li>
-                                    <a>
-                                    <img id="nav-social-media" src="{{=URL('static','images/press/social-media-icons.png')}}" height="30px"  alt="Planets" usemap="#socialmap">
-
-
-                                    <map name="socialmap">
-					{{if request.url=='/': }}
-					{{request.url=request.url+myconf.take('web.application')}}
-					{{pass}}	
-                                 <area shape="rect" coords="0,0,30,30" alt="fb" href="https://www.facebook.com/sharer/sharer.php?u={{=myconf.take('web.url')+request.url}}">
-                                        <area shape="rect" coords="30,0,60,30" alt="twitter" href="http://twitter.com/home?status={{=myconf.take('web.url')+request.url}}">
-                                        <area shape="rect" coords="60,0,90,30" alt="twitter" href="https://www.linkedin.com/shareArticle?mini=true&url={{=myconf.take('web.url')+request.url}}">
-                                        <area shape="rect" coords="90,0,120,30" alt="twitter" href="https://plus.google.com/share?url={{=myconf.take('web.url')+request.url}}">
-
-
-                                    </map>
-
-
-                                </a></li>
-                                <!-- https://www.addthis.com/get/responsive-sharing-buttons -->
-
-
-                            </ul>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-
-
-        </header>
-
-
-    </div>
+        
+<header>               
+  <div class="col-lg-12 ">                     
+    <div class="navbar navbar-default navbar-static-top" style="width: 100%">                           
+      <div class="container">                                 
+        <div class="navbar-header">                                       
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">5                                              
+            <span class="icon-bar">            
+            </span>                                       
+          </button>                                       
+          <a class="navbar-brand" href="index.html"></a>                                 
+        </div>                                 
+        <div class="navbar-collapse collapse pull-left ">                                       
+          <ul class="nav navbar-nav">                                             
+            <li>            
+            <a href="{{=URL('home','index')}}">{{=T('Home')}}</a>            
+            </li>                                             
+            <li class="dropdown">                                                   
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">{{=T('About us')}}                 
+                <b class=" icon-angle-down"></b></a>                                                   
+              <ul class="dropdown-menu">                                                         
+                <li>                
+                <a href="{{=URL('about_us', 'profile')}}"> {{=T('Profil')}}</a>            
+            </li>                                                     
+            <li>            
+            <a href="{{=URL('about_us','our_service')}}">{{=T('Our Service')}}</a>            
+            </li>                                                     
+            <li>            
+            <a href="{{=URL('about_us','technology')}}"> {{=T('Technology')}}</a>            
+            </li>                                               
+          </ul>                                           
+          </li>                                           
+          <li>          
+          <a href="{{=URL('catalog','index')}}">{{=T('Books')}}</a>          
+          </li>                                           
+          <li>          
+          <a href="{{=URL('series','index')}}">{{=T('Series')}}</a>          
+          </li>                                           
+          <!--<li><a href="{{=URL('journals','index')}}">{{=T('Journals')}}</a></li>-->           
+          <!--                 		<li><a href="{{=URL('editor','index')}}">{{=T('Editor')}}</a></li>--> 	                                            
+          <li class="dropdown">                                                 
+            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">{{=T('Publishing')}}                
+              <b class="icon-angle-down"></b></a>                                                 
+            <ul class="dropdown-menu">                                                       
+              <li>              
+              <a href="{{=URL('publishing','for_authors')}}">{{=T('Information for Authors')}} </a>          
+          </li>                                                   
+          <!--li><a href="{{=URL('publishing','book_proposal')}}">{{=T('Book Proposal')}}</a></li-->                                                    
+          <li>          
+          <a href="{{=URL('publishing','rights_and_licences')}}">{{=T('Rights and Licences')}} </a>          
+          </li>                                               
+          </ul>                                           
+          </li>          
+          <!--  <li class="dropdown">
+            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">{{=T('Quality Control')}} <b class=" icon-angle-down"></b></a>
+                 <ul class="dropdown-menu">
+                    <li><a href="{{=URL('quality_control','peer_review')}}"> {{=T('Peer Review')}}</a></li>
+                    <li><a href="{{=URL('quality_control','plagiarism')}}"> {{=T('Plagiarism')}}</a></li>
+                     <li><a href="{{=URL('quality_control','data_privacy')}}">{{=T('Data Privacy')}} </a></li>
+                 </ul>
+                </li>
+           -->                                       
+          </ul>                                 
+        </div>                                 
+        <!-- second -->                                  
+        <div class="navbar-collapse collapse pull-right visible-lg hidden-md">                                       
+          <ul class="nav navbar-nav">                                             
+            <li>                                                   
+              <img id="nav-social-media" src="{{=URL('static','images/press/social-media-icons.png')}}" alt="Planets" usemap="#socialmap">                                                   
+              <map name="socialmap">					{{if request.url=='/': }} 					{{request.url=request.url+myconf.take('web.application')}} 					{{pass}}	                                                   
+                <area shape="rect" coords="0,0,30,30" alt="fb" href="https://www.facebook.com/sharer/sharer.php?u={{=myconf.take('web.url')+request.url}}">                                                         
+                <area shape="rect" coords="30,0,60,30" alt="twitter" href="http://twitter.com/home?status={{=myconf.take('web.url')+request.url}}">                                                         
+                <area shape="rect" coords="60,0,90,30" alt="twitter" href="https://www.linkedin.com/shareArticle?mini=true&url={{=myconf.take('web.url')+request.url}}">                                                         
+                <area shape="rect" coords="90,0,120,30" alt="twitter" href="https://plus.google.com/share?url={{=myconf.take('web.url')+request.url}}">                                                   
+              </map>            
+            </li>                                             
+            <!-- https://www.addthis.com/get/responsive-sharing-buttons -->                                        
+          </ul>                                 
+        </div>                           
+      </div>                     
+    </div>               
+  </div>         
+</header>    </div>
 
 
         <!-- end header -->
@@ -245,28 +228,21 @@
 </script>
 
 
-    <div class="container-fluid">
-            <div class="container">
-
-            <div class="row">
-
-                <div class="col-lg-12">
-
-                    <!-- Slider -->
-
-                    <div id="main-slider" class="flexslider">
-
-                        <ul class="slides">
-                            <li>
-                                <img id="hup-logo" src="{{=URL('static','images/press/slideshow/01_turm.jpg')}}" />
-                            </li>
-                        </ul>
-
-                    </div>
-            </div>
+<div class="container-fluid">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <!-- Slider -->
+        <div id="main-slider" class="flexslider">
+          <ul class="slides"> 
+            <li> 
+            <img alt="" id="hup-logo" src="{{=URL('static','images/press/slideshow/01_turm.jpg')}}" />
+            </li>
+          </ul>
         </div>
       </div>
-
+    </div>
+  </div>
       {{if left_sidebar_enabled:}}
         <div class="col-md-3 left-sidebar">
             {{block left_sidebar}}
