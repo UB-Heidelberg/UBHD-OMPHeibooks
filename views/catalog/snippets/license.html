@@ -1,0 +1,13 @@
+<h5 style="color: #656565; margin-top: 1.2em; margin-bottom: 0.5em;">{{=T('Licenses')}}</h5>
+{{license=submission_settings.getLocalizedValue('rights', locale)}}
+{{if license !='':}}
+{{=XML(license)}}
+{{else:}}
+{{if session.forced_language =='de': }}
+    <p>Dieses Werk ist unter der<br> <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.de" title="Homepage Creative Commons; Lizenz CC BY-SA 4.0">Creative Commons-Lizenz 4.0<br/> (CC BY-SA 4.0)</a> veröffentlicht.<br>
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.de" title="Homepage Creative Commons; Lizenz CC BY-SA 4.0"><img alt="Creative Commons Lizenz BY-SA 4.0" src="{{=URL(request.application, 'static', 'images/catalog/cc_by-sa-4-0_88x31.png')}}" /></a></p>
+{{elif session.forced_language =='en': }}
+    <p>This work is licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/" title="Homepage Creative Commons; License CC BY-SA 4.0">Creative Commons License 4.0<br/> (CC BY-SA 4.0)</a> .<br>
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/" title="Homepage Creative Commons; Lizenz CC BY-SA 4.0"><img alt="Creative Commons License BY-SA 4.0" src="{{=URL(request.application, 'static', 'images/catalog/cc_by-sa-4-0_88x31.png')}}" /></a></p>
+{{pass}}
+{{pass}}
