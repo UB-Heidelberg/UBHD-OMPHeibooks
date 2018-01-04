@@ -149,7 +149,10 @@ pass
 	            </div>
 	            <h3>{{=XML(cleanTitle)}}</h3>
 	            <h4>{{=subtitle}}</h4>
-	            <p>
+							{{if series:}}
+	            <i>{{=A(series_name,_href=URL('series','/info/{}'.format(series.attributes.get('path'))))}}</i>
+							{{pass}}
+							<p>
 	              <i class="icon-quote-left"></i>
 	              {{=XML(abstract)}}
 	            </p>
@@ -188,8 +191,11 @@ pass
 	            	<div class="chapter_row table_head">
 	            		<div class="chapter_cell">{{=T('Contents')}}</div>
 	            		{{for pf in digital_publication_formats:}}
+									{{format_name=pf.settings.getLocalizedValue('name', locale)}}
+									{{if format_name != 'EPUB':}}
 	            			<div class="chapter_cell">{{=TD(pf.settings.getLocalizedValue('name', locale))}}</div>
 	            		{{pass}}
+									{{pass}}
 	            	</div>
 	            	{{display_authors=haveMultipleAuthors(chapters)}}
 	            	{{for c in chapters:}}
@@ -208,6 +214,8 @@ pass
 	            			{{pass}}
 	            		</div>
 	            		{{for pf in digital_publication_formats:}}
+									{{format_name=pf.settings.getLocalizedValue('name', locale)}}
+									{{if format_name != 'EPUB':}}
 	            			<div class="chapter_cell">
 	            				{{if c_files:}}
 	            					{{c_file = c_files.get(pf.attributes.publication_format_id)}}
@@ -224,6 +232,7 @@ pass
 	            				{{pass}}
 							</div>
 	            		{{pass}}
+									{{pass}}
 	            	</div>
 	            	{{pass}}
 	            </div>
