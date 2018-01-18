@@ -1935,6 +1935,13 @@ ul.standard li {
 	list-style-type: square;
 	margin-bottom: 0.5em;
 }
+
+/** Statistik-Anzeige **/
+
+.tab-content > .tab-pane {
+  padding: 5px;
+}
+
 /**Beirat**/
 .media
 /* auch Beiträge in Aktuelles-Spalte auf Startseite*/
