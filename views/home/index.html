@@ -15,23 +15,39 @@
           <div class="row">
             <div class="col-lg-3">
               <div class="box">
+                <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4> {{=IMG(_src=URL('static','files/presses/1/monographs/236/simple/cover.jpg'),_style='width:145px',_class='bildrahmen',_alt='')}}
+                </div>
+                <div class="box-bottom"> {{=A(T('More'),_href=URL('catalog','book/236'))}}
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="box">
                 <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4> {{=IMG(_src=URL('static','files/presses/1/monographs/285/simple/cover.jpg'),_style='width:145px',_class='bildrahmen',_alt='')}}
                 </div>
                 <div class="box-bottom"> {{=A(T('More'),_href=URL('catalog','book/285'))}}
                 </div>
               </div>
             </div>
-            <div class="col-lg-3">
-              <div class="box">
-                <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4> {{=IMG(_src=URL('static','files/presses/1/monographs/253/simple/cover.jpg'),_style='width:145px',_class='bildrahmen',_alt='')}}
-                </div>
-                <div class="box-bottom"> {{=A(T('More'),_href=URL('catalog','book/253'))}}
-                </div>
-              </div>
-            </div>
             <div id="boxAktuelles" class="col-lg-6">
               <div class="box">
                 <div class="box-gray aligncenter" style="overflow-y: scroll"><h4>{{=T('News')}}</h4>
+          <div class="media">
+                    <div class="media-left pull-left">
+                      <img alt="" src="{{=URL('static','images/home/heibooks_logo.png')}}" style="width: 50px;" />
+                    </div>
+                    <div class="media-body">
+                      <p class="media-heading">01.02.2018
+                      </p> {{if session.forced_language =='de': }}<h5>Neu auf heiBOOKS:</h5>{{elif session.forced_language =='en': }}<h5>New on heiBOOKS</h5>{{pass}}
+                      {{if session.forced_language =='de': }}
+                      <p class="boxText">Namhafte Heidelberger Physiker berichten über die Entwicklung der Physik in der zweiten Hälfte des 20. Jahrhunderts: <a href="{{=URL('catalog','book/236')}}">Heidelberger Physiker berichten – Rückblicke auf Forschung in der Physik und Astronomie, Band 2: Grundlegende Beiträge zur Physik der Atomkerne und der Sternatmosphären</a>.</p>
+                      {{elif session.forced_language =='en': }}
+                      <p class="boxText">Six notable Heidelberg physicists report in autobiographical lectures on the development of physics in the second half of the 20th century: <a href="{{=URL('catalog','book/236')}}">Heidelberger Physiker berichten – Rückblicke auf Forschung in der Physik und Astronomie, Band 2: Grundlegende Beiträge zur Physik der Atomkerne und der Sternatmosphären</a>.</p>
+                      {{pass}}
+                      </p>
+                    </div>
+          </div>
+
            
           <div class="media">
                     <div class="media-left pull-left">
@@ -254,17 +270,17 @@
           <div class="row">
             <div class="col-lg-3">
               <div class="box">
-                <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4> {{=IMG(_src=URL('static','files/presses/1/monographs/304/simple/cover.jpg'),_style='width:145px',_class='bildrahmen',_alt='')}}
+                <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4> {{=IMG(_src=URL('static','files/presses/1/monographs/253/simple/cover.jpg'),_style='width:145px',_class='bildrahmen',_alt='')}}
                 </div>
-                <div class="box-bottom"> {{=A(T('More'),_href=URL('catalog','book/304'))}}
+                <div class="box-bottom"> {{=A(T('More'),_href=URL('catalog','book/253'))}}
                 </div>
               </div>
             </div>
             <div class="col-lg-3">
               <div class="box">
-                <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4>{{=IMG(_src=URL('static','files/presses/1/monographs/290/simple/cover.jpg'),_style='width:145px',_class='bildrahmen',_alt='')}}
+                <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4>{{=IMG(_src=URL('static','files/presses/1/monographs/304/simple/cover.jpg'),_style='width:145px',_class='bildrahmen',_alt='')}}
                 </div>
-                <div class="box-bottom"> {{=A(T('More'),_href=URL('catalog','book/290'))}}
+                <div class="box-bottom"> {{=A(T('More'),_href=URL('catalog','book/304'))}}
                 </div>
               </div>
             </div>
