@@ -29,239 +29,28 @@
                 </div>
               </div>
             </div>
-            <div id="boxAktuelles" class="col-lg-6">
+              <div id="boxAktuelles" class="col-lg-6">
               <div class="box">
-                <div class="box-gray aligncenter" style="overflow-y: scroll"><h4>{{=T('News')}}</h4>
-          <div class="media">
-                    <div class="media-left pull-left">
-                      <img alt="" src="{{=URL('static','images/home/heibooks_logo.png')}}" style="width: 50px;" />
-                    </div>
-                    <div class="media-body">
-                      <p class="media-heading">01.02.2018
-                      </p> {{if session.forced_language =='de': }}<h5>Neu auf heiBOOKS:</h5>{{elif session.forced_language =='en': }}<h5>New on heiBOOKS</h5>{{pass}}
-                      {{if session.forced_language =='de': }}
-                      <p class="boxText">Namhafte Heidelberger Physiker berichten über die Entwicklung der Physik in der zweiten Hälfte des 20. Jahrhunderts: <a href="{{=URL('catalog','book/236')}}">Heidelberger Physiker berichten – Rückblicke auf Forschung in der Physik und Astronomie, Band 2: Grundlegende Beiträge zur Physik der Atomkerne und der Sternatmosphären</a>.</p>
-                      {{elif session.forced_language =='en': }}
-                      <p class="boxText">Six notable Heidelberg physicists report in autobiographical lectures on the development of physics in the second half of the 20th century: <a href="{{=URL('catalog','book/236')}}">Heidelberger Physiker berichten – Rückblicke auf Forschung in der Physik und Astronomie, Band 2: Grundlegende Beiträge zur Physik der Atomkerne und der Sternatmosphären</a>.</p>
-                      {{pass}}
-                      </p>
-                    </div>
-          </div>
+                <div class="box-gray aligncenter" style="overflow-y: scroll">
+                   <h4>{{=T('News')}}</h4>
 
-           
-          <div class="media">
-                    <div class="media-left pull-left">
-                      <img alt="" src="{{=URL('static','images/home/heibooks_logo.png')}}" style="width: 50px;" />
-                    </div>
-                    <div class="media-body">
-                      <p class="media-heading">21.12.2017
-                      </p> {{if session.forced_language =='de': }}<h5>Neuerscheinungen im Dezember 2017 auf heiBOOKS:</h5>{{elif session.forced_language =='en': }}<h5>New on heiBOOKS in December 2017</h5>{{pass}}
-                      {{if session.forced_language =='de': }}
-                      <p class="boxText">Der Tagungsband <a href="{{=URL('catalog','book/285')}}">E-Science-Tage 2017: Forschungsdaten managen</a>, herausgegeben von Jonas Kratzke und Vincent Heuveline, gibt einen Einblick in aktuelle Entwicklungen für das Management von Forschungsdaten. Vorgestellt werden zukunftsweisende fachspezifische Ansätze neben innovativen institutionellen Lösungen für die Handhabung, Publikation und  Archivierung von Forschungsdaten.</p>
-                      {{elif session.forced_language =='en': }}
-                      <p class="boxText">The proceedings of the <a href="{{=URL('catalog','book/285')}}">E-Science Days 2017</a>, edited by Jonas Kratzke and Vincent Heuveline, provide an insight into current developments for the management of research data. Visionary, discipline-specific approaches are presented, alongside innovative institutional solutions for the handling, publication and archiving of research data.</p>
-                      {{pass}}
-                      </p>
-                    </div>
-          </div>
-          
-          <div class="media">
-                    <div class="media-left pull-left">
-                      <img alt="" src="{{=URL('static','images/home/heibooks_logo.png')}}" style="width: 50px;" />
-                    </div>
-                    <div class="media-body">
-                      <p class="media-heading">04.12.2017
-                      </p> {{if session.forced_language =='de': }}<h5>Neuerscheinungen im Dezember 2017 auf heiBOOKS:</h5>{{elif session.forced_language =='en': }}<h5>New on heiBOOKS in December 2017</h5>{{pass}}
-                      <p class="boxText">{{if session.forced_language =='de': }}<a href="{{=URL('catalog','book/253')}}">Heidelberger Physiker berichten: Rückblicke auf Forschung in der Physik und Astronomie. Teil 3: Mikrokosmos und Makrokosmos</a>. Sieben renommierte Heidelberger Physiker berichten in autobiographischen Vorträgen über die Entwicklung der Physik am Ende des 20. und zu Beginn des 21. Jahrhunderts.
-                        <br> {{elif session.forced_language =='en': }}<a href="{{=URL('catalog','book/253')}}">Heidelberger Physiker berichten: Rückblicke auf Forschung in der Physik und Astronomie. Teil 3: Mikrokosmos und Makrokosmos</a>. Seven renowned Heidelberg physicists report in autobiographical lectures on the development of physics at the end of the 20th and the beginning of the 21th century.
-                        <br> {{pass}}
-                      </p>
-                    </div>
-          </div> 
-           
-                  
-				  <div class="media">
-                    <div class="media-left pull-left">
-                      <img alt="" src="{{=URL('static','images/home/heibooks_logo.png')}}" style="width: 50px;" />
-                    </div>
-                    <div class="media-body">
-                      <p class="media-heading">30.11.2017
-                      </p> {{if session.forced_language =='de': }}<h5>Neuerscheinungen im November 2017 auf heiBOOKS:</h5>{{elif session.forced_language =='en': }}<h5>New on heiBOOKS in November 2017</h5>{{pass}}
-                      <p class="boxText">{{if session.forced_language =='de': }}Die Monographie <a href="{{=URL('catalog','book/304')}}">Methodenstreit und Politikwissenschaft</a> von Johann Lauer untersucht den methodologische Glaubenskrieg am Beginn des 21. Jahrhunderts zwischen szientistischem Establishment und phronetischen Perestroikans.<br /><br />In seiner Dissertation <a href="{{=URL('catalog','book/290')}}">The Vocal Duets of G. F. Handel and His Italian Contemporaries (c. 1706-1724)</a> vergleicht Ivan Ćurković die Duette Georg Friedrich Händels aus der Zeit von 1706 bis 1724 mit jenen seiner italienischen Zeitgenossen. Was verbindet sie, was unterscheidet sie?
-                        <br> {{elif session.forced_language =='en': }} The monograph <a href="{{=URL('catalog','book/304')}}">Methodenstreit und Politikwissenschaft</a> by Johann Lauer investigates the methodological war at the beginning of the 21th century between political science and phronetic political science.<br /><br />In <a href="{{=URL('catalog','book/290')}}">The Vocal Duets of G. F. Handel and His Italian Contemporaries (c. 1706-1724)</a> Ivan Ćurković compares the vocal duets by Georg Friedrich Händel, dating from 1706 to 1724, with those of his Italian contemporaries. What do they have in common, what distinguishes them?
-                        <br> {{pass}}
-                      </p>
-                    </div>
-                  </div>
-                
-                  <div class="media">
-                    <div class="media-left pull-left">
-                      <img alt="" src="{{=URL('static','images/home/heibooks_logo.png')}}" style="width: 50px;" />
-                    </div>
-                    <div class="media-body">
-                      <p class="media-heading">27.10.2017
-                      </p> {{if session.forced_language =='de': }}<h5>Neuerscheinungen im Oktober 2017 auf heiBOOKS:</h5>{{elif session.forced_language =='en': }}<h5>New on heiBOOKS in October 2017</h5>{{pass}}
-                      <p class="boxText">{{if session.forced_language =='de': }} Johannes Sturm: 
-                        <a href="{{=URL('catalog','book/313')}}">Der Violoncellist Johann Rudolph Zumsteeg und sein Werk: </a>Sichtweisen der württembergischen Hofmusik im ausgehenden 18. Jahrhundert
-                        <br>
-                        <br> Walter Rings: 
-                        <a href="{{=URL('catalog','book/183')}}">Die altlothringische Übersetzung der Ezechielhomilien Gregors I. des Großen (Codex Bernensis 79): </a>Edition und Analyse
-                        <br>
-                        <br> Stephan Kirste: 
-                        <a href="{{=URL('catalog','book/284')}}">Theorie der Körperschaft des öffentlichen Rechts: </a>Verwaltungshistorische, organisationstheoretische und verwaltungsorganisationsrechtliche Aspekte
-                        <br>
-                        <br>Sabine Richling, Martin Baumann, Vincent Heuveline (Hrsg.): 
-                        <a href="{{=URL('catalog','book/308')}}">Proceedings of the 3rd bwHPC-Symposium </a>
-                        <br>
-                        <br> {{elif session.forced_language =='en': }} Johannes Sturm: 
-                        <a href="{{=URL('catalog','book/313')}}">Der Violoncellist Johann Rudolph Zumsteeg und sein Werk: </a>Sichtweisen der württembergischen Hofmusik im ausgehenden 18. Jahrhundert
-                        <br>
-                        <br> Walter Rings: 
-                        <a href="{{=URL('catalog','book/183')}}">Die altlothringische Übersetzung der Ezechielhomilien Gregors I. des Großen (Codex Bernensis 79): </a>Edition und Analyse
-                        <br>
-                        <br> Stephan Kirste: 
-                        <a href="{{=URL('catalog','book/284')}}">Theorie der Körperschaft des öffentlichen Rechts: </a>Verwaltungshistorische, organisationstheoretische und verwaltungsorganisationsrechtliche Aspekte
-                        <br>
-                        <br> Sabine Richling, Martin Baumann, Vincent Heuveline (Hrsg.): 
-                        <a href="{{=URL('catalog','book/308')}}">Proceedings of the 3rd bwHPC-Symposium </a>
-                        <br>
-                        <br> {{pass}}
-                      </p>
-                    </div>
-                  </div>
-                  <div class="media">
-                    <div class="media-left pull-left"> 
-                      <img alt="" src="{{=URL('static','images/home/heibooks_logo.png')}}" style="width: 50px;" />
-                    </div>
-                    <div class="media-body">
-                      <p class="media-heading">26.09.2017
-                      </p><h5>{{=T('New on')}} heiBOOKS</h5>
-                      <p class="boxText">{{if session.forced_language =='de': }} 
-                        <a href="{{=URL('catalog','book/235')}}">gesund – beschützt – geborgen: Frühe Hilfen für Familien – ein Projekt zur psychosozialen Prävention für junge Eltern in schwierigen Lebenslagen in Ulaanbaatar/Mongolei (2013-2017)</a>, herausgegeben von Ute Hennige, Ulambayar Badarch, Andreas Eickhorst und Manfred Cierpka. {{elif session.forced_language =='en': }} 
-                        <a href="{{=URL('catalog','book/235')}}">gesund – beschützt – geborgen: Frühe Hilfen für Familien – ein Projekt zur psychosozialen Prävention für junge Eltern in schwierigen Lebenslagen in Ulaanbaatar/Mongolei (2013-2017)</a>, edited by Ute Hennige, Ulambayar Badarch, Andreas Eickhorst and Manfred Cierpka. {{pass}}
-                      </p>
-                    </div>
-                  </div>
-                  <div class="media">
-                    <div class="media-left pull-left"> 
-                      <img alt="" src="{{=URL('static','images/home/heibooks_logo.png')}}" style="width: 50px;" />
-                    </div>
-                    <div class="media-body">
-                      <p class="media-heading">04.07.2017
-                      </p><h5>{{=T('New on')}} heiBOOKS</h5>
-                      <p class="boxText">{{if session.forced_language =='de': }} Über die Analyse ausgewählter Werke der kubanischen Exilliteratur geht die Romanistin und Amerikanistin Ana-Sofia Uhl in Ihrem Buch 
-                        <a href="{{=URL('catalog','book/227')}}">Essen - Sprache - Identität: Selbstvergewisserung und kulturelle Transformation in der US-kubanischen Gegenwartsliteratur</a> der Frage nach, welche Bedeutung die jeweiligen AutorInnen den Kommunikationssystemen Sprache bzw. Essen für Identitätsbildungs- und -veränderungsprozesse von Kubaner in den USA beimessen. {{elif session.forced_language =='en': }} In her book 
-                        <a href="{{=URL('catalog','book/227')}}">Essen - Sprache - Identität: Selbstvergewisserung und kulturelle Transformation in der US-kubanischen Gegenwartsliteratur</a> Ana-Sofia Uhl, a scholar of Romance and Americanism, studies what relevance individual authors attribute to the communication systems of language and eating and their impact on the formation and changing processes of cultural identity of Cubans in the US. {{pass}}
-                      </p>
-                    </div>
-                  </div>
-                  <div class="media">
-                    <div class="media-left pull-left"> 
-                      <img alt="" src="{{=URL('static','images/home/heibooks_logo.png')}}" style="width: 50px;" />
-                    </div>
-                    <div class="media-body">
-                      <p class="media-heading">27.06.2017
-                      </p><h5>{{=T('New on')}} heiBOOKS</h5> 
-                      <p class="boxText">{{if session.forced_language =='de': }} Mit der Untersuchung von <strong>{{=A(T('Menschenversuchen in der Weimarer Republik'),_href=URL('catalog','book/260'))}}</strong> befasst sich die Arbeit des Arztes und Medizinhistorikers Andreas Reuland. Sie zeigt auf eindrückliche Weise, dass nicht erst im Nationalsozialismus, sondern bereits in den Jahrzehnten davor Menschen als &bdquo;Versuchsmaterial&rdquo; verwendet wurden und stellt diese Experimente in den zeitgeschichtlichen Diskurs. {{elif session.forced_language =='en': }} In his work <strong>{{=A(T('Menschenversuche in der Weimarer Republik'),_href=URL('catalog','book/260'))}}</strong> the physician and medical historian Andreas Reuland  examines human subject research in the Weimar Republic. It bears evidence to the fact that humans were used as "research material" decades before the Nazi era and puts these experiments into a contemporary discourse. {{pass}}
-                      </p>
-                    </div>
-                  </div>
-                  <div class="media">
-                    <div class="media-left pull-left">
-                      <img alt="" src="{{=URL('static','images/home/heibooks_logo.png')}}" style="width: 50px;" />
-                    </div>
-                    <div class="media-body">
-                      <p class="media-heading">02.06.2017
-                      </p><h5>{{=T('New on')}} heiBOOKS</h5>
-                      <p class="boxText">{{if session.forced_language =='de': }} <strong>{{=A(T('Vignettes'),_href=URL('catalog','book/229'))}}</strong> von Udo Bayer<br /> Aus der württembergischen Landgemeinde Laupheim ging eine für ihre Größe in Deutschland einzigartige Zahl bedeutender jüdischer Persönlichkeiten hervor. Udo Bayer gibt eine historische Überblicksdarstellung der ehemaligen Laupheimer Judengemeinde und stellt in Kurzporträts sechs  bekannte Persönlichkeiten aus dieser Gemeinde vor. Ursprünglich auf Deutsch erschienen, liegt es nun bei heiBOOKS erstmals in englischer Übersetzung des Buches vor. {{elif session.forced_language =='en': }} <strong>{{=A(T('Vignettes'),_href=URL('catalog','book/229'))}}</strong> by Udo Bayer<br />A great number of notable personalities who achieved extraordinary success in a wide variety of fields came from the rural community of Laupheim in Württemberg. Laupheim expert Udo Bayer combines a concise historical overview of the former German-Jewish community of Laupheim with six vignettes of these distinguished people. Originally published in German, it is now available in an English translation on heiBOOKS. {{pass}}
-                      </p>
-                    </div>
-                  </div>
-                  <div class="media">
-                    <div class="media-left pull-left"> 
-                      <img alt="" src="{{=URL('static','images/press/home/uni_aktuelles.png')}}" style="width: 50px;" />
-                    </div>
-                    <div class="media-body">
-                      <p class="media-heading">15.03.2017
-                      </p> {{if session.forced_language =='de': }}<h5>Von Open Access bis Open Research Data: Infrastrukturen für offene Wissenschaft an der Universität Heidelberg</h5> {{elif session.forced_language =='en': }}<h5>Von Open Access bis Open Research Data: Infrastrukturen für offene Wissenschaft an der Universität Heidelberg</h5>{{pass}} 
-                      <p class="boxText">{{if session.forced_language =='de': }} Vortrag von Dr. Jochen Apel und  Dr. Maria Effinger (UB Heidelberg), Do. 16.03.2017, 15&nbsp;Uhr, Uni Heidelberg, Neue&nbsp;Universität, HS&nbsp;14, 2.&nbsp;OG im Rahmen der 
-                        <a href="https://e-science-tage.de/de/startseite" title="Homepage der E-Science-Tage">E-Science-Tage</a> {{elif session.forced_language =='en': }} Talk by Jochen Apel and  Maria Effinger (UB Heidelberg), Tuesday 16th March, 3&nbsp;pm, Uni Heidelberg, Neue Universität, HS&nbsp;14, 2.&nbsp;OG on occasion of the 
-                        <a href="https://e-science-tage.de/en" title="Homepage E-Science-Days">E-Science-Days</a> {{pass}}
-                      </p>
-                    </div>
-                  </div>
-                  <div class="media">
-                    <div class="media-left pull-left"> 
-                      <img alt="" src="{{=URL('static','images/home/heibooks_logo.png')}}" style="width: 50px;" />
-                    </div>
-                    <div class="media-body">
-                      <p class="media-heading">10.03.2017
-                      </p><h5>{{=T('New on')}} heiBOOKS</h5>
-                      <p class="boxText">{{if session.forced_language =='de': }} Die philosophische Dissertation <strong>{{=A(T('Phenomenology of Affective Subjectivity'),_href=URL('catalog','book/196'))}}</strong> von Anastasia Kozyreva nähert sich mit einem phänomenologischen Ansatz der Frage, was die Einheit der subjektiven Erfahrung, was die Einheit eines jeden Lebens über die Ebene der expliziten Erkenntnis und Selbstreflexion hinaus ausmacht. {{elif session.forced_language =='en': }} Anastasia Kozyreva: <strong>{{=A(T('Phenomenology of Affective Subjectivity'),_href=URL('catalog','book/196'))}}</strong>. The PhD thesis in philosophy, completed at the University of Heidelberg in 2016, takes a phenomenological approach to the unity and connectivity of subjective experience as constituted on the pre-reflective or pre-cognitive level. {{pass}}
-                      </p>
-                    </div>
-                  </div>
-                  <div class="media">
-                    <div class="media-left pull-left"> 
-                      <img alt="" src="{{=URL('static','images/home/heibooks_logo.png')}}" style="width: 50px;" />
-                    </div>
-                    <div class="media-body">
-                      <p class="media-heading">02.01.2017
-                      </p><h5>{{=T('New on')}} heiBOOKS</h5>
-                      <p class="boxText">{{if session.forced_language =='de': }} Herrschaftslegitimation am Ende des Hundertjährigen Krieges: Wie der französische König Karl VII. (1403-1461) den Rat der umkämpften Stadt Rouen für sich gewinnen konnte, ist Thema der neu erschienenen Dissertation <strong>{{=A(T('„Charles VII et le conseil municipal rouennais“'),_href=URL('catalog','book/178'))}}</strong> von Elise Wintz. {{elif session.forced_language =='en': }} Legitimation of power at the end of the Hundred Years' War: How the French King Charles VII (1403-1461) won the council over is subject of the newly published PhD thesis <strong>{{=A(T('„Charles VII et le conseil municipal rouennais“'),_href=URL('catalog','book/178'))}}</strong> von Elise Wintz. {{pass}}
-                      </p>
-                    </div>
-                  </div>
-                  <div class="media">
-                    <div class="media-left pull-left"> 
-                      <img alt="" src="{{=URL('static','images/home/heibooks_logo.png')}}" style="width: 50px;" />
-                    </div>
-                    <div class="media-body">
-                      <p class="media-heading">24.10.2016
-                      </p>{{if session.forced_language =='de': }}<h5>Veranstaltungsreihe Open Access am Mittag: Publizieren an der Universität Heidelberg</h5>{{elif session.forced_language =='en': }}<h5>Series of events Open Access at noon: Publishing with the Heidelberg University</h5>{{pass}} 
-                      <p class="boxText">{{if session.forced_language =='de': }}Anlässlich der Open-Access-Woche 2016 vom 24.10. bis 30.10. lädt die UB Sie in Ihrer Mittagspause dazu ein, sich über die 
-                        <a href="http://www.ub.uni-heidelberg.de/service/openaccess/Welcome.html" title="Informationen über die Publikationsmöglichkeiten im Open Access an der Universität Heidelberg">vielfältigen Publikationsmöglichkeiten im Open Access</a>, die die Uni Heidelberg bereitstellt, zu informieren. Beginn: 13 Uhr im 
-                        <a href="http://www.ub.uni-heidelberg.de/cgi-bin/ub3d.cgi?bereich=Handschriftenlesesaal&zweig=&sprache=de" title="Lageplan: Handschriftenlesesaal der UB Heidelberg">Handschriftenlesesaal (Rundzimmer)</a> der UB. [
-                        <a href="http://www.ub.uni-heidelberg.de/bilder/oa/oa-woche_plakat_A4.pdf">&rsaquo;&rsaquo;Veranstaltungsübersicht</a>] {{elif session.forced_language =='en': }} On occasion of the open acces week, 24-30 October 2016, the University Library invites you in your lunch break to inform you about the 
-                        <a href="http://www.ub.uni-heidelberg.de/Englisch/service/openaccess/Welcome.html" title="Information on Open Access publishing options at Heidelberg University">various publishing options</a> Heidelberg University offers. Start: 1 pm in the 
-                        <a href="http://www.ub.uni-heidelberg.de/cgi-bin/ub3d.cgi?bereich=Handschriftenlesesaal&zweig=altstadt&sprache=en" title="site plan manuscript reading room of Heidelberg University Library">manuscript reading room (round chamber)</a> of the library. {{pass}}
-                      </p>
-                    </div>
-                  </div>
-                  <div class="media">
-                    <div class="media-left pull-left"> 
-                      <img alt="" src="{{=URL('static','images/home/heibooks_logo.png')}}" style="width: 50px;" />
-                    </div>
-                    <div class="media-body">
-                      <p class="media-heading">18.08.2016
-                      </p><h5>{{=T('New on')}} heiBOOKS</h5>
-                      <p class="boxText"> {{if session.forced_language =='de': }} Einige der älteren Bände der <b>"{{=A('Schriften der Universitätsbibliothek Heidelberg',_href=URL('series','info/ubhd_schriften'))}}"</b> erscheinen ab sofort auch online. Die 1999 begründete Schriftenreihe umfasst die Kataloge der in der UB Heidelberg gezeigten Ausstellungen, in denen in Kooperation mit Instituten der Heidelberger Universität aber auch mit auswärtigen Partnern überwiegend hauseigene Bestände präsentiert wurden. {{elif session.forced_language =='en': }} Some of the older volumes of <b>"{{=A('Schriften der Universitätsbibliothek Heidelberg',_href=URL('series','info/ubhd_schriften'))}}"</b> are now being published online with immediate effectThe publication series, established in 1999, includes catalogues of exhibitions - mostly presenting in-house-collections - which took place  at Heidelberg University Library, in collaboration with institutes of Heidelberg University or external partners. {{pass}}
-                      </p>
-                    </div>
-                  </div>
-                  <div class="media">
-                    <div class="media-left pull-left">
-                      <img alt="" src="{{=URL('static','images/home/heibooks_logo.png')}}" style="width: 50px;" />
-                    </div>
-                    <div class="media-body"><h5>{{=T('New on')}} heiBOOKS</h5>
-                      <p class="boxText"> {{if session.forced_language =='de': }} Die <b>Kataloge des Heidelberger Universitätsmuseums</b> erscheinen ab sofort auch online. Als jüngster Band ist nun der Begleitband zur Ausstellung "Religion in Ex-Position" frei zugänglich. Er entstand 2014/2015 als Kooperation des Instituts für Religionswissenschaft und des Universitätsmuseums der Universität Heidelberg. {{elif session.forced_language =='en': }} The <b>Catalogues of the Heidelberg University Museum</b> are now being published online with immediate effect. The newest volume accompanies the exhibition "Religion in Ex-Position" and is freely available. It was published in 2014/2015 by the Institute of Religious Studies in collaboration with the Heidelberg University Museum. {{pass}}
-                      </p>
-                    </div>
-                  </div>
-                  <div class="media">
-                    <div class="media-left pull-left">
-                      <img alt="" src="{{=URL('static','images/home/Open_access_logo.png')}}" style="width: 50px;" />
-                    </div>
-                    <div class="media-body"><h5>open-access.net</h5>
-                      <p class="boxText"> {{if session.forced_language =='de': }} Kennen Sie die Plattform <b><a href="https://www.open-access.net/startseite/" title="Homepage open-access.net">open-access.net</a></b>? Sie bietet umfassende Information über das Thema Open Access und praktische Umsetzungshilfen an. open-access.net macht Konzepte, rechtliche, organisatorische und technische Rahmenbedingungen, konkrete Erfahrungen bei der Umsetzung, Initiativen, Dienste, Dienstleistungsanbieter und Positionspapiere gut aufbereitet zugänglich. {{elif session.forced_language =='en': }} Are you aware of the platform<b> <a href="https://www.open-access.net/startseite/" title="Homepage open-access.net">open-access.net</a></b>? It offers detailed information on the subject of Open Access and a practical implementation guide. open-access.net provides well-edited, customized concepts, information on legal, organizational and technical framework conditions, shares concrete experiences with the realization, and introduces initiatives, services and position papers. {{pass}} 
-                      </p>
-                    </div>
-                  </div>
+
+                    {{
+                    for n in news_list:
+                        =n
+                    pass
+                    }}
+
+
                 </div>
-                 <div class="box-bottom">&nbsp;</div>
-             
               </div>
-            </div>
+              <div class="box-bottom">&nbsp;
+                    <!--{{if session.forced_language =='de': }}
+                    <a href="http://heiup.uni-heidelberg.de/#"><span style="color: #EFEFEF;">Mehr</span>
+                    {{elif session.forced_language =='en': }}
+                    <a href="http://heiup.uni-heidelberg.de/#"><span style="color: #EFEFEF;">More Information</span>
+                    {{pass}}-->
+              </div>
           </div>
         </div>
       </div>
