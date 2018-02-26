@@ -1,6 +1,6 @@
 var locales = {
   'Author':'Autor/In',
-  'Contents':'Inhalt',
+  'Contents':'Contents',
   'CopyRightAndLicenses':'Copyright und Lizensen',
   'Figures': 'Bilder', 
   'Focus':'Einblenden',
