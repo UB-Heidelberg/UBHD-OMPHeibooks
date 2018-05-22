@@ -62,7 +62,7 @@ def download():
         'Content-Disposition'] = "attachment; filename=" + submission_file
     db.t_usage_statistics.insert()
     db.commit()
-    return response.stream(path, chunk_size=4096)
+    return response.stream(path, chunk_size=1048576)
 
 def download_image():
     submission_id = request.args[0]
