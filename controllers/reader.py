@@ -20,8 +20,13 @@ def index():
     from gluon.serializers import json
     json_list = dict(xml_url='')
     locale = 'de_DE'
+
     if session.forced_language == 'en':
         locale = 'en_US'
+
+    if len(request.args) < 2:
+        raise HTTP(404)
+
     submission_id = request.args[0]
     file_id = request.args[1]
 
