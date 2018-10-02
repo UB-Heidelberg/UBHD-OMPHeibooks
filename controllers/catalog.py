@@ -35,7 +35,7 @@ ONIX_PRODUCT_IDENTIFIER_TYPE_CODES = {"01": "Proprietary",
                                       "31": "BNF Control number",
                                       "35": "ARK"
                                       }
-IDENTIFIER_ORDER = ['06', '22.PDF', '15.PDF', '15.Hardcover', '15.Softcover', '15.Print', '15.Online']
+IDENTIFIER_ORDER = ['06', '22.PDF', '15.PDF', '15.Hardcover', '15.Softcover', '15.Print', '15.Online','15.EPUB']
 
 
 def category():
@@ -329,7 +329,7 @@ def book():
             submission_id, pf.publication_format_id)
         full_epub_file = ompdal.getLatestRevisionOfEBook(submission_id, pf.publication_format_id)
         if full_epub_file:
-            publication_format.associated_items['full_epub_file'] = OMPItem(
+            publication_format.associated_items['full_file'] = OMPItem(
                 full_epub_file, OMPSettings(ompdal.getSubmissionFileSettings(full_epub_file.file_id)))
 
         if full_file:
@@ -403,10 +403,9 @@ def book():
         for i in p.associated_items['identification_codes'].as_list():
             idntfrs['{}.{}'.format(i['code'], p.settings.getLocalizedValue('name', locale))] = (
                 i['value'], i['code'], p.settings.getLocalizedValue('name', locale))
-    try:
-        idntfrs = sorted(idntfrs.items(), key=lambda i: IDENTIFIER_ORDER.index((i[0])))
-    except:
-        pass
+
+    idntfrs = sorted(idntfrs.items(), key=lambda i: IDENTIFIER_ORDER.index((i[0]) if i in IDENTIFIER_ORDER else '15.PDF'))
+
 
     category_row = ompdal.getCategoryBySubmissionId(submission_id)
     category = OMPItem(category_row,
