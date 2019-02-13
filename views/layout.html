@@ -103,12 +103,17 @@
                 <ul class="nav nav-pills pull-right">
                     <li><a href="{{=URL('contact','index')}}" style="padding-right: 0;">{{=T('Contact')}}</a></li>
                     <li><a href="{{=URL('contact','imprint')}}" style="padding-right: 0;">{{=T('Legal Notice')}}</a></li>
+                {{if session.forced_language=='de':}}                        
+                        <li><a href="https://www.uni-heidelberg.de/datenschutzerklaerung_web.html" style="padding-right: 0;">{{=T('Privacy Notice')}}</a></li>
+                {{elif session.forced_language=='en':}}
+                        <li><a href="https://www.uni-heidelberg.de/privacypolicy_web.html" style="padding-right: 0;">{{=T('Privacy Notice')}}</a></li>
+                {{pass}}                     
                 <!--<li><a href="suche.html">{{=T('Search')}} |</a></li>-->
                     <!--<li><a href="faq.html">FAQ |</a></li>-->
                      {{if session.forced_language=='en':}}
-                    <li><a href="{{=request.url}}?lang=de" style="padding-left: 10px;">DE</a></li>
+                    <li><a href="{{=request.url}}?lang=de">DE</a></li>
                     {{elif session.forced_language=='de':}}
-                    <li><a href="{{=request.url}}?lang=en" style="padding-left: 10px;">EN</a></li>
+                    <li><a href="{{=request.url}}?lang=en">EN</a></li>
                     {{pass}}
                 </ul>
 
