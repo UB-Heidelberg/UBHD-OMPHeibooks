@@ -4,46 +4,91 @@
     <div class="row">
         <div class="col-lg-12">
             <h3>  {{if session.forced_language =='de': }}
-                Informationen für Autoren
+                Informationen für Autoren und Herausgeber
                 {{elif session.forced_language =='en': }}
-                Information for Authors
+                Information for authors and editors
             {{pass}}
             </h3>
+    </div>
+   </div> 
+    
+    <div class="row">
 
-                {{if session.forced_language =='de': }}
-
-            <p>Sie sind Wissenschaftler/-in an der Universität Heidelberg und möchten Ihr Buch auf heiBOOKS im Open Access veröffentlichen oder planen, eine Schriftenreihe herauszugeben? Dann senden Sie uns bitte Ihren Buchvorschlag zu! Gerne vereinbaren wir auch einen Termin für ein Informationsgespräch  (<a href="{{=URL('contact','index')}}" style="padding-right: 0;">Kontaktinformationen</a>). Wir veröffentlichen sowohl bisher unveröffentlichte Publikationen (&bdquo;goldener Weg&ldquo;) als auch bereits bei einem anderen Verlag erschienene Bücher (&bdquo;grüner Weg&ldquo;), sofern Sie die Rechte darüber verfügen. Dissertationen akzeptieren wir, wenn sie mit summa cum laude oder magna cum laude bewertet wurden. Wir veröffentlichen keine Bachelor- oder Masterarbeiten.
-</p>
+   {{if session.forced_language =='de': }}
+	   <div class="col-lg-9">  
+            <p>Sie sind Wissenschaftler/-in an der Universität Heidelberg und möchten Ihre Monographie, Ihren Sammelband oder Ihre Schriftenreihe als Erstveröffentlichung („Goldener Weg“ des Open Access) oder als Zweitveröffentlichung („Grüner Weg“ des Open Access) auf heiBOOKS veröffentlichen? Dann senden Sie uns bitte den ausgefüllten Buchvorschlag zusammen mit einem Probekapitel (falls bereits vorhanden) per <a href="mailto:effinger@ub.uni-heidelberg.de" title="E-Mail senden an Dr. Maria Effinger">E-Mail</a> zu.</p>
+            <p>Dissertationen werden für die Veröffentlichung angenommen, wenn sie mit „Summa cum laude“ oder „Magna cum laude“ bewertet wurden. Bitte senden Sie uns bei Dissertationen auch die Gutachten der Betreuer und einen Nachweis, dass das Imprimatur erteilt wurde.</p>
+            <p>Gerne vereinbaren wir auch einen Termin für ein <a href="{{=URL('contact','index')}}">Informationsgespräch</a>!</p>
+          
 
 <h4>Unser Angebot für Sie:</h4>
 
-<ul class="standard">
-<li>Die Publikation des Werkes erfolgt parallel in mehreren Versionen: sowohl in <b>digitaler Form</b> (als PDF- und ggf. HTML-Datei) sowie auf Wunsch als auch als <b>gedrucktes Buch</b> (Hard- oder Softcover), erhältlich im Sortiments- wie auch im Online-Buchhandel.</li>
-<li>Um eine maximale <b>Sichtbarkeit</b> der Publikationen zu gewährleisten und den leichten Zugang digitaler wie auch der gedruckten Medien zu ermöglichen, vergeben wir für alle Veröffentlichungen in jeglicher Publikationsform (PDF, gedrucktes Buch) eine eigene <b>ISBN</b>. Buchreihen werden mit einer ISSN ausgestattet, Onlinepublikationen erhalten eine <b>DOI</b> (Digital Object Identifier). Durch die formale und inhaltliche Erschließung bis auf Beitragsebene sorgen wir für eine optimale Auffindbarkeit in Datenbanken, (wissenschaftlichen) <b>Suchmaschinen</b> und <b>nationalen wie internationalen Bibliothekskatalogen</b> (unter anderem <a href="http://katalog.ub.uni-heidelberg.de/cgi-bin/search.cgi" title="HEIDI und HeiBIB">HEIDI/HeiBIB</a>, <a href="http://swb.bsz-bw.de/DB=2.1//START_WELCOME" title="SWB">SWB</a>, <a href="http://kvk.bibliothek.kit.edu/" title="KVK">KVK</a>, <a href="https://scholar.google.de/" title="Google Scholar">Google Scholar</a>, <a href="http://www.doabooks.org/" title="DOAB">DOAB</a>, <a href="https://openlibrary.org/" title="Open Library">Open Library</a>, <a href="https://www.worldcat.org/" title="Worldcat">Worldcat</a>). Die Bücher, für die auch eine gedruckte Version gewünscht ist,  sind in den nationalen wie internationalen <b>Buchhandelsverzeichnissen</b> (VLB, KNOE, Buchhandel.de, Amazon u.a.) aufgeführt und können sowohl im Sortimentsbuchhandel als auch online bestellt werden. Zudem unterstützt <b>heiBOOKS</b> die Autoren bei dem erforderlichen Nachweis für die Tantiemenausschüttung der <b>VGWort</b>.</li>
-<li>Sie haben die Möglichkeit, auch die zugehörigen <b>Forschungsdaten</b> dauerhaft archivieren zu lassen. Diese können direkt mit Online-Publikationen auf <b>heiBOOKS</b> verknüpft werden. Alle Forschungsdaten - seien es Bilder, Videos, Audio-Dateien, Tabellen, Graphiken etc. - erhalten einen DOI (Digital Object Indentifier) und sind somit dauerhaft zitierfähig und als eigenständige wissenschaftliche Leistungen sichtbar und gezielt verlinkbar.</li>
-<li>Bitte beachten Sie, dass  <b>heiBOOKS</b> eine <b>Open-Access-Plattform</b> ist. Werke, die auf <b>heiBOOKS</b> veröffentlicht werden, stehen im Regelfall unter einer <b>Creative-Commons-Lizenz</b> (bevorzugt CC-BY oder CC-BY-SA). Die Urheberrechte an dem Werk verbleiben bei Ihnen als Autor/-in, <b>heiBOOKS erhält nur ein einfaches Nutzungsrecht</b>.</li>
-<li><b>Wichtig: Autoren sind auch für alle Inhalte, die sie nicht selbst produzieren, verantwortlich</b>. Solche Inhalte können Bilder, Videos, Daten, Audio-Dateien oder Diagramme sein. Jedes Material, das nicht eine alleinige Schöpfung des Autors ist, darf nur mit entsprechender Genehmigung verwendet werden. <b>heiBOOKS</b> übernimmt keine Haftung bei der Verwendung fremder Inhalte.</li>
-</ul>
-
-                {{elif session.forced_language =='en': }}
-
-<p>Are you a scientist/scholar at Heidelberg University and would like to publish your book on heiBOOKS in Open Access, or are you planning on publishing a publication series? Please, send us your book proposal! We will gladly arrange an information meeting  (<a href="{{=URL('contact','index')}}" style="padding-right: 0;">contact details</a>). We publish primary publications (&ldquo;gold&rdquo;) as well as books formerly published by other publishing houses (&ldquo;green&rdquo;), provided you are the copyright holder. We accept PhD dissertations assessed as summa cum lauda or magna cum laude but no bachelor or master theses.</p>
-<h4>Services We Provide:</h4>
-<ul class="standard">
-<li>Each work is published in various <b>digital formats</b> (PDF and HTML) and as a <b>print-on-demand book</b> (hard or soft cover), which can be purchased in regular bookstores and from online vendors.</li>
-<li>In order to ensure maximum <b>visibility</b> of all publications and to allow convenient access to both our digital and printed media, we provide each format (PDF, and print-on-demand books) with a unique <b>ISBN</b>. Each book series will also be assigned an ISSN and online publications will receive a <b>DOI</b> (Digital Object Identifier). Bibliographic information and content descriptors (keywords, subjects, etc.) both for the individual book and book chapters or essays within edited volumes will be cataloged to ensure optimum visibility in databases, <b>search engines</b>, and <b>both national and international library catalogs</b> (such as <a href="http://katalog.ub.uni-heidelberg.de/cgi-bin/search.cgi" title="HEIDI and HeiBIB">HEIDI/HeiBIB</a>, <a href="http://swb.bsz-bw.de/DB=2.1//START_WELCOME" title="SWB">SWB</a>, <a href="http://kvk.bibliothek.kit.edu/" title="KVK">KVK</a>, <a href="https://scholar.google.de/" title="Google Scholar">Google Scholar</a>, <a href="http://www.doabooks.org/" title="DOAB">DOAB</a>, <a href="https://openlibrary.org/" title="Open Library">Open Library</a>, <a href="https://www.worldcat.org/" title="Worldcat">Worldcat</a>). Our books are also listed in national and international <b>trade directories</b> (e.g. Amazon, VLB, KNOE, and Buchhandel.de) and can be ordered online or through retailers. Additionally, we support authors with proof for the payout of royalties from copyright collectives such as <b>VG Wort</b>.</li>
-<li>It is also possible to store additional <b>research data</b> permanently. This can then be directly linked to online-publications on <b>heiBOOKS</b>. All research data – i.e. images, videos, audio files, tables, charts etc. – have their own DOI (Digital Object Identifier) and are therefore permanently citable. They are visible and linkable as independent research achievements.</li>
-<li>Please note that, since <b>heiBOOKS</b> is an <b>Open Access publisher</b>, works published by <b>heiBOOKS</b> fall under a <b>Creative Commons license</b> (preferably CC-BY or CC-BY-SA). The copyright of the work shall remain with you as the author, with <b>the publisher retaining only very simple rights</b>.</li>
-<li><b>Important information for authors: Authors are responsible for obtaining permission to use all content that they do not produce themselves</b>. Such content can include images, videos, data, audio files, or charts. Any material that is not the sole creation of the author may be used only with the express permission of the copyright holder. <b>heiBOOKS</b> assumes no liability for the use of third-party content.</li>
-                        {{pass}}
-
-
-            </p>
-
-
-
-        </div>
+    <ul class="standard">
+      <li>Die Publikation erfolgt in <b>digitaler Form</b> Open Access als PDF und, falls gewünscht, als <b>gedrucktes Buch</b> in einer Hard- oder Softcover-Ausgabe, die im Sortiments- und Online-Buchhandel erhältlich ist. </li>
+      <li>Um eine maximale <b>Sichtbarkeit</b> der Publikationen zu gewährleisten, vergeben wir für alle Veröffentlichungen in jeglicher Publikationsform (PDF, Softcover, Hardcover) eine eigene <b>ISBN</b>. Buchreihen werden mit einer ISSN ausgestattet, Online-Publikationen erhalten zusätzlich zur ISBN einen <b>DOI</b> (Digital Object Identifier). Durch die formale und inhaltliche Erschließung sorgen wir für eine optimale Auffindbarkeit in Datenbanken, (wissenschaftlichen) <b>Suchmaschinen</b> und <b>nationalen wie internationalen Bibliothekskatalogen</b> (unter anderem <a href="http://katalog.ub.uni-heidelberg.de/cgi-bin/search.cgi" title="HEIDI und HeiBIB">HEIDI/HeiBIB</a>, <a href="http://swb.bsz-bw.de/DB=2.1//START_WELCOME" title="SWB">SWB</a>, <a href="http://kvk.bibliothek.kit.edu/" title="KVK">KVK</a>, <a href="https://scholar.google.de/" title="Google Scholar">Google Scholar</a>, <a href="https://openlibrary.org/" title="Open Library">Open Library</a>, <a href="https://www.worldcat.org/" title="Worldcat">Worldcat</a>). Bücher, die in gedruckter Form erscheinen, sind in den nationalen wie internationalen Buchhandelsverzeichnissen (<a href="https://www.buchhandel.de" title="Portal buchhandel.de">buchhandel.de</a>, <a href="https://www.amazon.de" title="Homepage amazon.de">amazon</a> u.a.) aufgeführt und sind sowohl im Sortimentsbuchhandel als auch online bestellbar.</li>
+      <li>Für Forschungsdaten, die im Zusammenhang mit der Publikation stehen, bieten wir eine dauerhafte Archivierung auf dem <a href="https://heidata.uni-heidelberg.de/" title="Portal heiDATA, Kompetenzzentrum Forschungsdaten der Universitäten Heidelberg">Heidelberger Forschungsdatenrepositorium heiDATA</a>. Diese können direkt mit den Online-Publikationen auf heiBOOKS verknüpft werden. Alle Forschungsdaten – seien es Bilder, Tabellen, Graphiken, Audios, Videos etc. – erhalten einen DOI und sind somit dauerhaft zitierfähig und als eigenständige wissenschaftliche Leistungen sichtbar und gezielt verlinkbar.</li>
+      <li>Die Veröffentlichung bei heiBOOKS ist unter den oben beschriebenen Bedingungen für Sie kostenfrei. Gedruckte Freiexemplare können wir Ihnen zwar nicht zur Verfügung stellen, Sie können jedoch die Printausgaben zu einem reduzierten Preis über uns bestellen. Die Pflichtexemplare für die National- und Landesbibliotheken werden von heiBOOKS automatisch abgeliefert.</li>
+    </ul>
+    
+<h4>Was Sie für Ihre Publikation bei heiBOOKS beachten sollten:</h4>
+    <ul class="standard">
+      <li>Im Regelfall benötigen wir ein druckfertiges PDF des Manuskripts. Hierbei beraten wir Sie gerne und stellen Ihnen ggf. auch ein Word- oder Indesign-Template zur Verfügung. Besonders wenn Sie eine Printausgabe wünschen, sollten Sie im Vorfeld auf uns zukommen.</li>
+      <li>Wir übernehmen für Sie auf Wunsch und auf der Grundlage Ihrer Vorschläge die Covergestaltung für Ihre Publikation.</li>
+      <li>Bitte beachten Sie, dass heiBOOKS eine <strong>Open-Access-Plattform</strong> ist. Werke, die bei uns veröffentlicht werden, stehen im Regelfall unter einer <strong>Creative-Commons-Lizenz</strong> (bevorzugt CC-BY oder CC-BY-SA). Wir verfolgen eine autorenfreundliche Rechtepolitik: Die Urheberrechte an dem Werk verbleiben bei Ihnen. heiBOOKS erhält nur ein einfaches Nutzungsrecht. Nähere Informationen finden Sie unter <a href="{{=URL('publishing','rights_and_licences')}}">„Rechte und Lizenzen“</a>.</li>
+      <li>Wichtig: Autoren sind auch für alle Inhalte, die sie nicht selbst produzieren, verantwortlich. Solche Inhalte können Bilder, Videos, Daten, Audio-Dateien oder Diagramme sein. Jedes Material, das nicht eine alleinige Schöpfung des Autors ist, darf nur mit entsprechender Genehmigung verwendet werden. heiBOOKS übernimmt keine Haftung bei der Verwendung fremder Inhalte.</li>
+    </ul>    
+    </div>  
+    <div class="col-lg-3">
+	   <div id="infoBoxRechts">
+        <p><strong>Informationen zum Download</strong></p>
+		      <ul class="standard" style="margin-bottom: 0;">
+            <li><a href="{{=URL('static','medien/Buchvorschlag_fuer_heiBOOKS.docx')}}" title="Formular für Buchvorschlag als .docx herunterladen">Formular für Buchvorschlag</a></li>
+          </ul>
+      </div>
     </div>
+
+    {{elif session.forced_language =='en': }}
+	   <div class="col-lg-9"> 
+      <p>If you are a scholar at the University of Heidelberg and would like to publish your monograph, your proceedings or your book series as primary publication (Gold Open Access) or as secondary publication (Green Open Access) on heiBOOKS, please send us the completed book proposal together with a sample chapter (if already available) by <a href="mailto:effinger@ub.uni-heidelberg.de" title="e-mail to Dr. Maria Effinger">e-mail</a>.</p>
+      <p>PhD dissertations will be accepted for publication if they have been rated &ldquo;summa cum laude&rdquo; or &ldquo;magna cum laude&rdquo;. In the case of PhDs, please also send us the expert opinions of the supervisors and proof that the imprimatur has been granted.</p>
+      <p>We would also be happy to arrange an appointment for an <a href="{{=URL('contact','index')}}">information talk</a>!</p>
+
+<h4>Our offer for you includes:</h4>
+    <ul class="standard">
+      <li>The publication is in <b>digital form</b> Open Access as PDF and, if desired, as a printed book in a hard or softcover edition, which is available in the book stores and online book trade. </li>
+      <li>In order to ensure maximum visibility of the publications, we assign a separate ISBN to all publications in any publication form (PDF, softcover, hardcover). Book series are equipped with an ISSN, online publications receive a DOI (Digital Object Identifier) in addition to the ISBN. Through the formal and content indexing, we ensure optimal searchability in databases, (scientific) search engines and national as well as international library catalogues (including  <a href="http://katalog.ub.uni-heidelberg.de/cgi-bin/search.cgi" title="HEIDI and HeiBIB">HEIDI/HeiBIB</a>, <a href="http://swb.bsz-bw.de/DB=2.1//START_WELCOME" title="SWB">SWB</a>, <a href="http://kvk.bibliothek.kit.edu/" title="KVK">KVK</a>, <a href="https://scholar.google.de/" title="Google Scholar">Google Scholar</a>, <a href="https://openlibrary.org/" title="Open Library">Open Library</a>, <a href="https://www.worldcat.org/" title="Worldcat">Worldcat</a>). Books published in printed form are listed in the national and international book trade directories (<a href="https://www.buchhandel.de" title="Homepage buchhandel.de">buchhandel.de</a>, <a href="https://www.amazon.de" title="Homepage amazon.de">amazon</a>, etc.) and can be ordered both from booksellers and online.</li>
+      <li>For research data related to the publication, we offer permanent archiving on the <a href="https://heidata.uni-heidelberg.de/" title="Portal heiDATA, Kompetenzzentrum Forschungsdaten der Universitäten Heidelberg">Heidelberger Forschungsdatenrepositorium heiDATA</a>. These can be linked directly with the online publications on heiBOOKS. All research data – be it pictures, tables, graphics, audios, videos etc. – receive a DOI and are therefore permanently quotable and can be linked as independent scientific achievements.</li>
+      <li>The publication at heiBOOKS is free of charge for you under the conditions described above. Printed free copies cannot be made available to you, but you can order the print editions at a reduced price through us. The compulsory copies for the national and regional libraries are automatically delivered by heiBOOKS.</li>
+    </ul>
+    
+<h4>What you should keep in mind for your publication at heiBOOKS:</h4>
+    <ul class="standard">
+      <li>As a rule, we need a print-ready PDF of the manuscript. We will be happy to advise you and provide you with a Word or Indesign template if necessary. Especially if you want a print edition, you should contact us in advance.</li>
+      <li>If you wish, we can design the cover for your publication on the basis of your suggestions.</li>
+      <li>Please note that heiBOOKS is an <strong>Open Access platform</strong>. Works published by us are usually under a <strong>Creative Commons license</strong> (preferably CC-BY or CC-BY-SA). We pursue an author-friendly rights policy: The copyrights in the work remain with you. heiBOOKS receives only a simple right of use. Further information can be found under &ldquo;Rights and Licenses&rdquo;.</li>
+      <li>Important: Authors are also responsible for all content they do not produce themselves. Such content can be images, videos, data, audio files or diagrams. Any material, which is not the sole creation of the author, may only be used with appropriate permission. heiBOOKS does not assume any liability for the use of foreign contents.</li>
+    </ul>
+    </div>  
+
+    <!--<div class="col-lg-3">
+	   <div id="infoBoxRechts">
+        <p><strong>Informationen zum Download</strong></p>
+		      <ul class="standard" style="margin-bottom: 0;">
+            <li><a href="{{=URL('static','medien/Buchvorschlag_fuer_heiBOOKS.docx')}}" title="Formular für Buchvorschlag als .docx herunterladen">Formular für Buchvorschlag</a></li>
+            
+            <a href="/static/medien/Buchvorschlag_fuer_heiBOOKS.docx" title="Formular für Buchvorschlag als DOC herunterladen">Formular für Buchvorschlag</a>
+		        </li>
+        </ul>
+      </div>
+    </div> -->   
+      {{pass}}
+
+
+    
+
+    
+  </div>
+    
 </div>
 
 
