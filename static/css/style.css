@@ -339,12 +339,12 @@ section.callaction {
 .box-bottom a:hover {
 	color: #eee;
 	text-decoration: none;
-ter_logo_ub img {
-	width: 100%;
-	max-width: 340px;
-	margin-top: 3em;
-	padding-right: 0px;
 }
+
+a[href^="https://doi.org/10.11588"] {
+  word-break: break-all;
+  width: 170px;
+  display: block;
 }
 /* ===================================9. Section: Bottom==================================== */
 #bottom {
