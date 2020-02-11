@@ -468,7 +468,13 @@ def book():
         title_attribution = ompformat.formatName(authors[0].settings)
     else:
         title_attribution = ompformat.formatName(chapter_authors[0].settings)
-    attribution = ompformat.formatAttribution(editors, authors, translators, chapter_authors)
+
+    if authors:
+        attribution = ompformat.formatAttribution([], authors, [], chapter_authors)
+    else:
+        attribution = ompformat.formatAttribution(editors, [], [], chapter_authors)
+    additional_attribution = ompformat.formatAttribution(editors, [], translators, [])
+
 
     response.title = "{}: {} - {}".format(title_attribution, cleanTitle, settings.short_title if settings.short_title else settings.title)
 
