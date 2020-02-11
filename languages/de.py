@@ -158,6 +158,7 @@
 'E-mail': 'E-mail',
 'ed': 'Hrsg',
 'Edit current record': 'Diesen Eintrag editieren',
+'edited by': 'herausgegeben von',
 'Editor': 'Herausgeber',
 'Editors': 'Herausgeber',
 'eds': 'Hrsg',
