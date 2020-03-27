@@ -82,6 +82,7 @@
 'Belletristik': 'Belletristik',
 'Bindeart': 'Bindeart',
 'Book': 'Buch',
+'Book Download': 'Download Buch',
 'book not found': 'book not found',
 'Book Proposal': 'Book Proposal',
 'Book Recommendation': 'Buchempfehlung',
