@@ -329,6 +329,7 @@
 'Postfach': 'Postfach',
 'Powered by': 'Unterstützt von',
 'Preface': 'Allgemeines',
+'Preview': 'Vorschau',
 'previous %s rows': 'vorherige %s Reihen',
 'Print On Demand': 'Print On Demand',
 'Privacy Notice': 'Datenschutzerklärung',
