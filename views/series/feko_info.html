@@ -1,0 +1,63 @@
+{{extend 'layout.html'}}
+<div id="main" class="container">
+  <div class="row">
+    <div class="col-lg-12"> <h3> {{if session.forced_language =='de': }} FEST kompakt. Analysen &ndash; Stellungnahmen &ndash; Perspektiven {{elif session.forced_language =='en': }} FEST kompakt. Analysen &ndash; Stellungnahmen &ndash; Perspektiven  {{pass}} </h3>
+	</div>
+	
+    {{if session.forced_language =='de': }}	
+	<div class="col-lg-9">
+	   <p>Die Reihe „FEST kompakt“ versammelt Beiträge zu aktuellen politischen und gesellschaftlichen Themen aus der laufenden Arbeit der interdisziplinären Forschungsstätte der Evangelischen Studiengemeinschaft (FEST) in Heidelberg. Die Breite der Themen – sie berühren die Politik-, Sozial- und Kulturwissenschaften, die Philosophie und Theologie sowie die Rechts-, Wirtschafts- und Naturwissenschaften – soll Lust machen, sich auf die Vielfalt aktueller wissenschaftlicher Debatten einzulassen.</p>
+	   <p>Jeder Band führt &ndash; ausgehend von einem zentralen Begriff, einer aktuellen Kontroverse oder einer zu diskutierenden These &ndash; in ein wissenschaftliches Gebiet ein. Ziel ist es, wesentliche Themen und Fragestellungen auch dem Laien verständlich darzustellen. Dabei werden nicht nur Fakten präsentiert, vielmehr wird Wissenschaft als Denkbewegung vorgestellt, die zum Nachvollzug, aber auch zum Widerspruch anregen soll.</p>
+	   <p>Die Reihe wendet sich an Leserinnen und Leser, die sich anspruchsvoll, knapp und kompetent informieren wollen und zum weiteren Nachdenken inspiriert werden möchten.</p>
+      <div class="widget">
+        <ul class="tags">
+          <li>
+          <p>
+            <a href="{{=URL('catalog', 'series/ubhd_schriften')}}">{{=T('Volumes')}}</a>
+          </p>
+          </li>
+        </ul>
+      </div>
+    </div>	
+
+    <div class="col-lg-3">	
+      <div id="infoBoxRechts">
+		<p><b>Herausgeber</b><br />
+		Benjamin Held<br />
+		Thomas Kirchhoff<br />
+		Frederike van Oorschot<br /> 
+		Philipp Stoellger<br />
+		Ines-Jacqueline Werkner<br />
+        </p>
+	  </div>
+    </div>
+	
+    {{elif session.forced_language =='en': }}
+		<div class="col-lg-9">
+	   <p>The series “FEST kompakt” features contributions on current political and societal topics from the ongoing work of the interdisciplinary Forschungsstätte der Evangelischen Studiengemeinschaft (FEST) in Heidelberg. The breadth of topics – which includes perspectives from political and social sciences, cultural studies, philosophy, and theology, as well as law, economics, and natural sciences – is intended to spark interest in the diversity of current scholarly discussions.</p>
+	   <p>Starting from a central term, a current controversy, or a thesis to be discussed, each volume introduces an academic field with the aim to comprehensibly present the essential topics and issues in lay terms. The focus is not on simply presenting facts, but rather on introducing scholarship as a movement of thought, prompting reenactment as well as disagreement. The series addresses readers who want to inform themselves in a sophisticated, concise, and competent manner, and who want to be inspired to further reflection.</p>
+      <div class="widget">
+        <ul class="tags">
+          <li>
+          <p>
+            <a href="{{=URL('catalog', 'series/ubhd_schriften')}}">{{=T('Volumes')}}</a>
+          </p>
+          </li>
+        </ul>
+      </div>
+    </div>	
+
+    <div class="col-lg-3">	
+      <div id="infoBoxRechts">
+		<p><b>Editors</b><br />
+		Benjamin Held<br />
+		Thomas Kirchhoff<br />
+		Frederike van Oorschot<br /> 
+		Philipp Stoellger<br />
+		Ines-Jacqueline Werkner<br />
+        </p>
+	  </div>
+    </div>
+	{{pass}}
+  </div>
+</div>
