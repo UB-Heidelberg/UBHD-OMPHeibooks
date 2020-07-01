@@ -115,7 +115,7 @@
 'Clear RAM': 'RAM löschen',
 'Client IP': 'Client IP',
 'Close': 'Schließen',
-'Coming soon': 'Coming soon',
+'Coming soon': 'Erscheint demnächst',
 'Comment': 'Kommentieren',
 'Community': 'Community',
 'Components and Plugins': 'Komponenten und Plugins',
