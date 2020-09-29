@@ -3,13 +3,13 @@
     <div id="downloadTable">
         <div class="chapter_row table_head">
             <div class="chapter_cell">{{=T('Contents')}}</div>
-                {{for pf in digital_publication_formats:}}
-                {{format_name=pf.settings.getLocalizedValue('name', locale)}}
-                {{if format_name != 'EPUB':}}
-                    <div class="chapter_cell">{{=TD(format_name)}}</div>
-                {{pass}}
-                {{pass}}
-            </div>
+        {{for pf in digital_publication_formats:}}
+        {{format_name=pf.settings.getLocalizedValue('name', locale)}}
+        {{if format_name != 'EPUB':}}
+            <div class="chapter_cell">{{=TD(format_name)}}</div>
+        {{pass}}
+        {{pass}}
+        </div>
     {{display_authors=haveMultipleAuthors(chapters)}}
     {{for c in chapters:}}
     {{c_title = c.settings.getLocalizedValue('title', locale)}}
@@ -24,7 +24,7 @@
                 <div class="chapter_author">{{=", ".join([formatName(a.settings) for a in c_authors])}}</div>
             {{pass}}
                 <div class="chapter_title">
-                 {{if c_pub_id_doi:}}
+                {{if c_pub_id_doi:}}
                 {{=A(c_title,_href=URL('catalog','book',args=(submission_id, 'c'+str(c_id))))}}
                  {{else:}}
                 {{=c_title}}
@@ -44,14 +44,15 @@
             {{if c_file:}}
             {{if "xml" in c_file.attributes.file_type or "html" in c_file.attributes.file_type:}}
             {{css_class="fa fa-html5"}}
-            {{target='_blank'}}
             {{else:}}
             {{css_class="fa fa-file-text-o"}}
-            {{target='_self'}}
             {{pass}}
                 <div class="chapter_file">
-
-                {{=A(I(_class=css_class),_target=target, _href=downloadLink(request, c_file.attributes, myconf.take('web.url'), c_file.settings.getLocalizedValue('vgWortPublic', '')))}}
+                {{
+                vgwPixelPublic = c_file.settings.getLocalizedValue("vgWortPublic", "")
+                onclick = "vgwPixelCall('" + vgwPixelPublic+ "')" if vgwPixelPublic else ""
+                }}
+                {{=A(I(_class=css_class),_target="_target",_onclick=onclick, _href=downloadLink(request, c_file.attributes, myconf.take('web.url')))}}
                 </div>
             {{pass}}
             {{pass}}

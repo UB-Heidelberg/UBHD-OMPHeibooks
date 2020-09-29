@@ -7,42 +7,44 @@
 <div id="main" class="container">
     <section id="content">
         <div style="height: 20px"></div>
-            <div class="row">
-                <div class="col-lg-3">
-                    {{include 'catalog/book/submission/cover_image.html' }}
-                    <div class="box">
-                        <div class="box-gray alignleft" style="height: auto;">
-                            <!-- citations begin -->
-                            {{=H5(T('How to cite this title'),_style="color: #656565; margin-bottom: 0.5em;")}}
-                            {{include '../static/omp-resources/views/catalog/citation.html' }}
-                            <!-- citations end-->
-                            {{include 'catalog/book/submission/license.html' }}
-                            {{include 'catalog/book/submission/identification_codes.html' }}
-                            {{include 'catalog/book/submission/published_date.html' }}
-                            {{include 'catalog/book/submission/source.html' }}
-                            <!-- statistik begin-->
-                            <div id="oas-widget" class="applied-to-ojs" style="margin-top: 1.2em">
-                                <div class="btn btn-default" id="statistik-button">{{=T('Statistics')}}</div>
-                                <br />
-                                <div style="display:none" class="table" id="oas">
-                                {{include '../static/omp-resources/views/catalog/statistik.html' }}
-                                </div>
+        <div class="row">
+            <div class="col-lg-3">
+            {{include 'catalog/book/submission/cover_image.html' }}
+                <div class="box">
+                    <div class="box-gray alignleft" style="height: auto;">
+                        <!-- citations begin -->
+                    {{=H5(T('How to cite this title'),_style="color: #656565; margin-bottom: 0.5em;")}}
+                    {{include '../static/omp-resources/views/catalog/citation.html' }}
+                        <!-- citations end-->
+                    {{include 'catalog/book/submission/license.html' }}
+                    {{include 'catalog/book/submission/identification_codes.html' }}
+                    {{include 'catalog/book/submission/published_date.html' }}
+                    {{include 'catalog/book/submission/source.html' }}
+                        <!-- statistik begin-->
+                        <div id="oas-widget" class="applied-to-ojs" style="margin-top: 1.2em">
+                            <div class="btn btn-default" id="statistik-button">{{=T('Statistics')}}</div>
+                            <br/>
+                            <div style="display:none" class="table" id="oas">
+                            {{include '../static/omp-resources/views/catalog/statistik.html' }}
                             </div>
-                            <!-- statistik end -->
                         </div>
+                        <!-- statistik end -->
                     </div>
                 </div>
-                <div class="col-lg-9">
-                    <article>
-                        <div class="summary">
-                        {{include 'catalog/book/submission/html_galley.html'}}
-                        {{include 'catalog/book/submission/pdf_galley.html'}}
+            </div>
+            <div class="col-lg-9">
+                <article>
+                    <!--vgwPixelCall script - has to be included before pdf_galley.html and chapter_list.html -->
+                {{include '../static/omp-resources/views/catalog/vgwort.html'}}
+                    <div class="summary">
+                    {{include 'catalog/book/submission/html_galley.html'}}
+                    {{include 'catalog/book/submission/pdf_galley.html'}}
                         <!--purchase -->
-                        {{include 'catalog/book/submission/purchase.html'}}
-                         <!--purchase -->
-                         <!--recommend -->
+                    {{include 'catalog/book/submission/purchase.html'}}
+                        <!--purchase -->
+                        <!--recommend -->
                         <div class="btn-group" role="group" aria-label="2">
-                            {{if 'emails' in myconf and 'notification' in myconf['emails'] and  int(myconf['emails']['notification']) == 1: }}
+                        {{if 'emails' in myconf and 'notification' in myconf['emails'] and  int(myconf['emails']['notification']) == 1: }}
                             {{ include '../static/omp-resources/views/catalog/recommend.html' }}
                             {{ pass }}
 
@@ -64,25 +66,26 @@
                                 <!--authors -->
                                 <div id="autoren" class="col-lg-9 col-md-9 col-xs-7">
                                     <h5>
-                                        {{=attribution}}
+                                    {{=attribution}}
                                     </h5>
                                 </div>
-                                {{include 'catalog/snippets/category.html'}}
+                            {{include 'catalog/snippets/category.html'}}
                             </div>
                         </div>
 
                         <h3>{{=XML(cleanTitle)}}</h3>
                         <h4>{{=subtitle}}</h4>
-                        {{if additional_attribution:}}<h5>{{=additional_attribution}}</h5>{{pass}}
-                        {{if series:}}<i>{{=A(series_name,_href=URL('series','/info',args=[series.attributes.get('path')]))}}</i>{{pass}}
-                        {{if abstract:}}<p>{{=XML(abstract)}}</p> {{pass}}
-                        {{include '../static/omp-resources/views/catalog/reviews.html' }}
-                        {{include 'catalog/book/submission/author_biography.html'}}
-                        {{include 'catalog/book/submission/chapter_list.html'}}
-                        </div>
-                    </article>
-                </div>
+                    {{if additional_attribution:}}<h5>{{=additional_attribution}}</h5>{{pass}}
+
+                    {{if series:}}<i>{{=A(series_name,_href=URL('series','/info',args=[series.attributes.get('path')]))}}</i>{{pass}}
+                    {{if abstract:}}<p>{{=XML(abstract)}}</p> {{pass}}
+                    {{include '../static/omp-resources/views/catalog/reviews.html' }}
+                    {{include 'catalog/book/submission/author_biography.html'}}
+                    {{include 'catalog/book/submission/chapter_list.html'}}
+                    </div>
+                </article>
             </div>
+        </div>
     </section>
 </div>
 {{include 'catalog/book/submission/annotation.html'}}
