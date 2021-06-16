@@ -3,6 +3,11 @@
 {{from ompdal import OMPDAL}}
 {{from datetime import datetime}}
 {{file_ids=[]}}
+{{block head}}
+{{for meta_tag in meta_tags:}}
+{{=meta_tag}}
+{{pass}}
+{{end}}
 
 <div id="main" class="container">
     <section id="content">
