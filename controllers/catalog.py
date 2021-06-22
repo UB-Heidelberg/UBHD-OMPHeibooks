@@ -503,7 +503,7 @@ def book():
     # Highwire Press Tags for Google Scholar inclusion
     # See https://scholar.google.com/intl/de/scholar/inclusion.html#indexing
     pdf_file = ompdal.getLatestRevisionOfFullBookFileByPublicationFormat(submission_id, pdf.publication_format_id)
-    pdf_url = myconf.take('web.url') + ompformat.downloadLink(request, pdf_file, myconf.take('web.url'))
+    pdf_url = myconf.take('web.url') + ompformat.downloadLink(pdf_file)
     meta_title = cleanTitle
     if subtitle:
         meta_title = "{}: {}".format(meta_title, subtitle)
