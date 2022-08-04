@@ -15,6 +15,18 @@ $('.flexslider').flexslider();
               <div class="col-lg-3">
                 <div class="box">
                   <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4>
+                     {{=A(IMG(_src=URL(myconf.take('web.application'),'static','files/presses/1/monographs/1052/simple/cover.jpg'),_alt='',_style='width:145px', _class='bildrahmen'),_href=URL('catalog','book/1052'))}}                 
+                  </div>
+                  <div class="box-bottom"> {{=A(T('More'),_href=URL('catalog','book/1052'))}}
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="col-lg-3">
+                <div class="box">
+                  <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4>
                      {{=A(IMG(_src=URL(myconf.take('web.application'),'static','files/presses/1/monographs/1049/simple/cover.jpg'),_alt='',_style='width:145px', _class='bildrahmen'),_href=URL('catalog','book/1049'))}}                 
                   </div>
                   <div class="box-bottom"> {{=A(T('More'),_href=URL('catalog','book/1049'))}}
@@ -23,15 +35,6 @@ $('.flexslider').flexslider();
               </div>
 
 
-              <div class="col-lg-3">
-                <div class="box">
-                  <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4>
-                     {{=A(IMG(_src=URL(myconf.take('web.application'),'static','files/presses/1/monographs/1060/simple/cover.jpg'),_alt='',_style='width:145px', _class='bildrahmen'),_href=URL('catalog','book/1060'))}}                 
-                  </div>
-                  <div class="box-bottom"> {{=A(T('More'),_href=URL('catalog','book/1060'))}}
-                  </div>
-                </div>
-              </div>
 
    
 
@@ -66,6 +69,16 @@ $('.flexslider').flexslider();
       <div class="col-lg-3">
         <div class="box">
           <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4>
+             {{=A(IMG(_src=URL(myconf.take('web.application'),'static','files/presses/1/monographs/1060/simple/cover.jpg'),_alt='',_style='width:145px', _class='bildrahmen'),_href=URL('catalog','book/1060'))}}                 
+          </div>
+          <div class="box-bottom"> {{=A(T('More'),_href=URL('catalog','book/1060'))}}
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3">
+        <div class="box">
+          <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4>
              {{=A(IMG(_src=URL(myconf.take('web.application'),'static','files/presses/1/monographs/979/simple/cover.jpg'),_alt='',_style='width:145px', _class='bildrahmen'),_href=URL('catalog','book/979'))}}                 
           </div>
           <div class="box-bottom"> {{=A(T('More'),_href=URL('catalog','book/979'))}}
@@ -74,20 +87,14 @@ $('.flexslider').flexslider();
       </div>
 
 
-      <div class="col-lg-3">
-        <div class="box">
-          <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4>
-             {{=A(IMG(_src=URL(myconf.take('web.application'),'static','files/presses/1/monographs/1004/simple/cover.jpg'),_alt='',_style='width:145px', _class='bildrahmen'),_href=URL('catalog','book/1004'))}}                 
-          </div>
-          <div class="box-bottom"> {{=A(T('More'),_href=URL('catalog','book/1004'))}}
-          </div>
-        </div>
-      </div>      
-
             <div class="col-lg-6 boxAktuelles">
               <div class="box">
                 <div class="box-gray aligncenter"><h4>heiBOOKS</h4>
-                  <p class="boxText"> {{if session.forced_language =='de': }} heiBOOKS bietet Wissenschaftlerinnen und Wissenschaftlern der Universität Heidelberg die Möglichkeit, E-Books im Open Access zu publizieren. Die Universitätsbibliothek hostet die Open Source Software Open Monograph Systems (OMP), unterstützt bei der Erstellung des E-Books, sichert die Nachhaltigkeit der publizierten Inhalte und sorgt für deren größtmögliche Sichtbarkeit. {{elif session.forced_language =='en': }} The service heiBOOKS provides researchers at Heidelberg University with the opportunity to publish e-books in Open Access. The University Library hosts the open source software Open Monograph Press (OMP), provides support with the production of the e-book, guarantees long term availability and ensures the greatest possible visibility. {{pass}}
+                  <p class="boxText"> {{if session.forced_language =='de': }} 
+                    heiBOOKS bietet Wissenschaftlerinnen und Wissenschaftlern der Universität Heidelberg die Möglichkeit, E-Books im Open Access zu publizieren. Die Universitätsbibliothek hostet die Open Source Software Open Monograph Systems (OMP), unterstützt bei der Erstellung des E-Books, sichert die Nachhaltigkeit der publizierten Inhalte und sorgt für deren größtmögliche Sichtbarkeit. 
+                    {{elif session.forced_language =='en': }} 
+                    The service heiBOOKS provides researchers at Heidelberg University with the opportunity to publish e-books in Open Access. The University Library hosts the open source software Open Monograph Press (OMP), provides support with the production of the e-book, guarantees long term availability and ensures the greatest possible visibility. 
+                    {{pass}}
                   </p>
                 </div>
                 <div class="box-bottom">&nbsp;
