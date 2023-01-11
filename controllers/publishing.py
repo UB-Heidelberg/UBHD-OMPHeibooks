@@ -10,3 +10,6 @@ def for_authors():
 
 def rights_and_licences():
     return dict()
+
+def export():
+    return dict()
