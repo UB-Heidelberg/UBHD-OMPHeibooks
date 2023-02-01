@@ -13,3 +13,6 @@ def rights_and_licences():
 
 def export():
     return dict()
+
+def vgwort():
+    return dict()
