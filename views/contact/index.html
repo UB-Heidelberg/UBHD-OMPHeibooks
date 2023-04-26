@@ -39,12 +39,21 @@
                 </p>
 			<br> 
 			<h4>{{=T('Order and Sales')}}</h4>
+            <p><strong>Johanna Hildenbeutel</strong><br>
+			Tel.: +49 6221 54 4877<br>
+			Fax: +49 6221 54 2623<br>
+			Email: <a href="mailto:heiup-orders@ub.uni-heidelberg.de">heiup-orders@ub.uni-heidelberg.de</a></p>
+			
             <p><strong>Myriam Rausch</strong><br>
               Tel.: +49 6221 54 2383<br>
               Fax: +49 6221 54 2623<br>
               Email: <a href="mailto:book-orders@ub.uni-heidelberg.de">book-orders@ub.uni-heidelberg.de</a>
             </p> 
-
+              {{if session.forced_language=='de':}}            
+            <p>Bitte beachten Sie, dass Zahlungen nur per Überweisung möglich sind. Bei Auslandsüberweisungen können dafür hohe Gebühren anfallen.</p> 
+              {{elif session.forced_language=='en':}}            
+            <p>Please note, that we can only accept payments by bank transfer and that high bank fees may apply.</p>
+              {{pass}} 
           </div>
         </div>
     </div>
